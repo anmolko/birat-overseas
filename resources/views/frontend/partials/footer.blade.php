@@ -1,6 +1,7 @@
 <!--Site Footer Start-->
 <footer class="site-footer">
-    <div class="site-footer-bg" style="background-image: url(assets/images/backgrounds/site-footer-bg.png);">
+    <div class="site-footer-bg"
+         style="background-image: url({{asset('assets/frontend/images/backgrounds/site-footer-bg.png')}});">
     </div>
     <div class="container">
         <div class="site-footer__top">
@@ -8,17 +9,14 @@
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                     <div class="footer-widget__column footer-widget__about">
                         <div class="footer-widget__logo">
-                            <a href="index.html"><img src="assets/images/resources/footer-logo.png" alt=""></a>
+                            <a href="/"><img class="footer-logo"
+                                             src="{{ (@$setting_data->logo_white) ? asset('/images/settings/'.@$setting_data->logo_white): asset('/images/settings/'.@$setting_data->logo) }}"
+                                             alt=""></a>
                         </div>
                         <div class="footer-widget__about-text-box">
-                            <p class="footer-widget__about-text">Aliqua id fugiat nostrud irure ex duis ea quis
-                                id quis ad et. Sunt qui esse pariatur duis deserunt.</p>
-                        </div>
-                        <div class="site-footer__social">
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-facebook"></i></a>
-                            <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <div class="footer-widget__about-text">
+                                {!! ucfirst(@$setting_data->website_description ?? '') !!}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -31,7 +29,7 @@
                                     <span class="icon-email"></span>
                                 </div>
                                 <div class="text">
-                                    <p><a href="mailto:needhelp@company.com">needhelp@company.com</a></p>
+                                    <p><a href="mailto:{{@$setting_data->email}}">{{@$setting_data->email}}</a></p>
                                 </div>
                             </li>
                             <li>
@@ -39,73 +37,56 @@
                                     <span class="icon-pin"></span>
                                 </div>
                                 <div class="text">
-                                    <p>30 Commercial Road Fratton, Australia</p>
+                                    <p>{{@$setting_data->address}}</p>
                                 </div>
                             </li>
                         </ul>
                         <div class="footer-widget__open-hour">
-                            <h3 class="footer-widget__open-hour-title">Open Hours</h3>
-                            <h3 class="footer-widget__open-hour-text">Mon – Sat: 8:00 am to 6:00 pm Sunday:
-                                Closed</h3>
+                            <h3 class="footer-widget__open-hour-title">Follow us</h3>
+                            <div class="site-footer__social">
+                                @if(@$setting_data->facebook)
+                                    <a href="{{@$setting_data->facebook}}"><i class="fab fa-facebook"></i></a>
+                                @endif
+                                @if(@$setting_data->instagram)
+                                    <a href="{{@$setting_data->instagram}}"><i class="fab fa-instagram"></i></a>
+                                @endif
+                                @if(@$setting_data->youtube)
+                                    <a href="{{@$setting_data->youtube}}"><i class="fab fa-twitter"></i></a>
+                                @endif
+                                @if(@$setting_data->linkedin)
+                                    <a href="{{@$setting_data->linkedin}}"><i class="fab fa-twitter"></i></a>
+                                @endif
+                                @if(!empty(@$setting_data->ticktock))
+                                    <a href="{{@$setting_data->ticktock}}"><i class="fab fa-pinterest-p"></i></a>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="footer-widget__column footer-widget__gallery clearfix">
-                        <h3 class="footer-widget__title">Instagram</h3>
-                        <ul class="footer-widget__gallery-list list-unstyled clearfix">
-                            <li>
-                                <div class="footer-widget__gallery-img">
-                                    <img src="assets/images/resources/footer-widget-gallery-img-1.jpg" alt="">
-                                    <a href="#"><span class="fa fa-link"></span></a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="footer-widget__gallery-img">
-                                    <img src="assets/images/resources/footer-widget-gallery-img-2.jpg" alt="">
-                                    <a href="#"><span class="fa fa-link"></span></a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="footer-widget__gallery-img">
-                                    <img src="assets/images/resources/footer-widget-gallery-img-3.jpg" alt="">
-                                    <a href="#"><span class="fa fa-link"></span></a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="footer-widget__gallery-img">
-                                    <img src="assets/images/resources/footer-widget-gallery-img-4.jpg" alt="">
-                                    <a href="#"><span class="fa fa-link"></span></a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="footer-widget__gallery-img">
-                                    <img src="assets/images/resources/footer-widget-gallery-img-5.jpg" alt="">
-                                    <a href="#"><span class="fa fa-link"></span></a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="footer-widget__gallery-img">
-                                    <img src="assets/images/resources/footer-widget-gallery-img-6.jpg" alt="">
-                                    <a href="#"><span class="fa fa-link"></span></a>
-                                </div>
-                            </li>
+                    <div class="footer-widget__column footer-widget-three__latest-news clearfix">
+                        <h3 class="footer-widget-three__title">Latest Jobs</h3>
+                        <ul class="footer-widget-three__latest-news-list list-unstyled clearfix">
+                            @foreach(@$footer_jobs as $index=>$job)
+                                <li>
+                                    <div class="footer-widget-three__latest-news-img">
+                                        <img src="{{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/birat.png')}}"
+                                             alt="">
+                                    </div>
+                                    <div class="footer-widget-three__latest-news-content">
+                                        <p class="footer-widget-three__latest-news-date">
+                                            @if(@$job->end_date >= $today)
+                                                {{date('M j, Y',strtotime(@$job->end_date))}}
+                                            @else
+                                                Expired
+                                            @endif</p>
+                                        <h4 class="footer-widget-three__latest-news-title"><a
+                                                href="{{route('job.single',@$job->slug)}}"> {{ ucfirst($job->name)}}</a></h4>
+                                    </div>
+                                </li>
+                            @endforeach
                         </ul>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                    <div class="footer-widget__column footer-widget__newsletter">
-                        <h3 class="footer-widget__title">Newsletter</h3>
-                        <p class="footer-widget__newsletter-text">Subscribe our newsletter to get our <br>
-                            latest update & news.</p>
-                        <form class="footer-widget__newsletter-form">
-                            <div class="footer-widget__newsletter-input-box">
-                                <input type="email" placeholder="Email address" name="email">
-                                <button type="submit" class="footer-widget__newsletter-btn"><i
-                                        class="far fa-paper-plane"></i></button>
-                            </div>
-                        </form>
-                        <div class="footer-widget__phone">
+                        <div class="footer-widget__phone mt-4">
                             <div class="footer-widget__phone-icon">
                                 <span class="icon-telephone"></span>
                             </div>
@@ -116,13 +97,30 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                    <div class="footer-widget__column footer-widget-three__contact clearfix">
+                        <h3 class="footer-widget-three-contact__title">{{$footer_nav_title1 ?? 'Quick Links'}}</h3>
+                        <ul class="footer-widget-three__contact-list list-unstyled clearfix">
+                            @foreach($footer_nav_data1 as $nav)
+                                @if(empty($nav->children[0]))
+                                    <li><a href="{{get_menu_url($nav->type, $nav)}}" target="{{@$nav->target ? '_blank':''}}">
+                                            {{ @$nav->name ?? @$nav->title ?? ''}}
+                                        </a>
+                                    </li>
+                                @endif
+                            @endforeach
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="site-footer__bottom">
             <div class="row">
                 <div class="col-xl-12">
                     <div class="site-footer__bottom-inner">
-                        <p class="site-footer__bottom-text">© All Copyright 2023 by <a href="#">Insur.com</a>
+                        <p class="site-footer__bottom-text">© All Copyright {{date("Y")}} by
+                            <a href="#">{{$setting_data->website_name ?? 'BIRAT OVERSEAS PVT. LTD'}}</a>
+                            developed by <a href="https://www.canosoft.com.np/" target="_blank">Canosoft Techonology</a>
                         </p>
                     </div>
                 </div>
@@ -144,7 +142,7 @@
 
         <div class="logo-box">
             <a href="index.html" aria-label="logo image"><img src="assets/images/resources/logo-2.png" width="143"
-                                                              alt="" /></a>
+                                                              alt=""/></a>
         </div>
         <!-- /.logo-box -->
         <div class="mobile-nav__container"></div>
@@ -170,7 +168,6 @@
         </div><!-- /.mobile-nav__top -->
 
 
-
     </div>
     <!-- /.mobile-nav__content -->
 </div>
@@ -182,7 +179,7 @@
     <div class="search-popup__content">
         <form action="#">
             <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-            <input type="text" id="search" placeholder="Search Here..." />
+            <input type="text" id="search" placeholder="Search Here..."/>
             <button type="submit" aria-label="search submit" class="thm-btn">
                 <i class="icon-magnifying-glass"></i>
             </button>

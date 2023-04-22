@@ -1931,6 +1931,9 @@ ul {
     margin-left: 45px;
 }
 
+.footer-logo{
+    width: 100%;
+}
 /*--------------------------------------------------------------
 # Search Popup
 --------------------------------------------------------------*/
@@ -4902,7 +4905,7 @@ ul {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-top: 32px;
+  margin-top: 15px;
 }
 
 .site-footer__social a {
@@ -18518,7 +18521,7 @@ body.boxed-wrapper {
 .footer-widget-three__contact {
   position: relative;
   display: block;
-  background-color: #121415;
+  background-color: #0d1925;
   border-radius: var(--insur-bdr-radius);
   padding: 37px 40px 32px;
 }
