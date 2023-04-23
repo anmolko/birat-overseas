@@ -3317,7 +3317,7 @@ ul {
 }
 
 .service-one__text {
-  font-size: 14px;
+  font-size: 16px;
   letter-spacing: var(--insur-letter-spacing);
   line-height: 24px;
 }
@@ -6275,7 +6275,7 @@ ul {
 }
 
 .brand-one__title h2 {
-  font-size: 16px;
+  font-size: 22px;
   color: var(--insur-black);
   font-weight: 700;
   line-height: 28px;
@@ -8341,7 +8341,8 @@ ul {
   position: relative;
   display: block;
   background-color: var(--insur-base);
-  padding: 120px 0 0;
+  /*padding: 120px 0 0;*/
+    padding: 55px 0 20px;
   overflow: hidden;
   z-index: 1;
 }
@@ -8470,6 +8471,7 @@ ul {
   position: relative;
   display: block;
   margin-left: 58px;
+  margin-top: 25px;
 }
 
 .download__img {

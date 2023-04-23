@@ -58,6 +58,65 @@
         </section>
     @endif
 
+    @if($homepage_info->mission)
+        <section class="feature-one">
+            <div class="container">
+                <div class="feature-one__inner">
+                    <div class="row">
+                        <!--Feature One Single Start-->
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="feature-one__single">
+                                <div class="feature-one__single-inner">
+                                    <div class="feature-one__icon">
+                                        <span class="icon-mission"></span>
+                                    </div>
+                                    <div class="feature-one__count"></div>
+                                    <div class="feature-one__shape">
+                                        <img src="{{asset('assets/frontend/images/shapes/feature-one-shape-1.png')}}" alt="">
+                                    </div>
+                                    <h3 class="feature-one__title"><a>Our Mission</a></h3>
+                                    <p class="feature-one__text">{{ ucfirst(@$homepage_info->mission) }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
+                            <div class="feature-one__single">
+                                <div class="feature-one__single-inner">
+                                    <div class="feature-one__icon">
+                                        <span class="icon-insurance-2"></span>
+                                    </div>
+                                    <div class="feature-one__count"></div>
+                                    <div class="feature-one__shape">
+                                        <img src="{{asset('assets/frontend/images/shapes/feature-one-shape-1.png')}}" alt="">
+                                    </div>
+                                    <h3 class="feature-one__title"><a>Our Vision</a></h3>
+                                    <p class="feature-one__text">{{ ucfirst(@$homepage_info->vision) }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
+                            <div class="feature-one__single">
+                                <div class="feature-one__single-inner">
+                                    <div class="feature-one__icon">
+                                        <span class="icon-house"></span>
+                                    </div>
+                                    <div class="feature-one__count"></div>
+                                    <div class="feature-one__shape">
+                                        <img src="{{asset('assets/frontend/images/shapes/feature-one-shape-1.png')}}" alt="">
+                                    </div>
+                                    <h3 class="feature-one__title"><a>Our Goal</a></h3>
+                                    <p class="feature-one__text">{{ ucfirst(@$homepage_info->value) }}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Feature One Single End-->
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
     @if(!empty($homepage_info->welcome_description))
         <section class="about-three mt-5">
             <div class="container">
@@ -178,6 +237,120 @@
             </div>
         </section>
     @endif
+    @if(!empty($homepage_info->core_main_heading))
+        <section class="services-one">
+        <div class="services-one__top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="services-one__top-left">
+                            <div class="section-title text-left">
+                                <div class="section-sub-title-box">
+                                    <p class="section-sub-title">{{ucfirst(@$homepage_info->core_main_description)}}</p>
+                                    <div class="section-title-shape-1">
+                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                    </div>
+                                    <div class="section-title-shape-2">
+                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                    </div>
+                                </div>
+                                <h2 class="section-title__title">{{ucfirst(@$homepage_info->core_main_heading)}}</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="services-one__bottom">
+            <div class="services-one__container">
+                <div class="row">
+                    <!--Services One Single Start-->
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-delay="100ms">
+                        <div class="services-one__single">
+                            <div class="service-one__content">
+                                <div class="services-one__icon">
+                                    <span class="icon-agreement"></span>
+                                </div>
+                                <h2 class="service-one__title">
+                                    <a>{{ucwords(@$homepage_info->core_heading1 ?? '')}}</a></h2>
+                                <p class="service-one__text">
+                                    {{ucfirst(@$homepage_info->core_description1 ?? '')}}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-delay="200ms">
+                        <div class="services-one__single">
+                            <div class="service-one__content">
+                                <div class="services-one__icon">
+                                    <span class="icon-mission"></span>
+                                </div>
+                                <h2 class="service-one__title">
+                                    <a>{{ucwords(@$homepage_info->core_heading2)}}</a></h2>
+                                <p class="service-one__text">{{ucfirst(@$homepage_info->core_description2)}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6 mb-4 wow fadeInUp" data-wow-delay="300ms">
+                        <div class="services-one__single">
+                            <div class="service-one__content">
+                                <div class="services-one__icon">
+                                    <span class="icon-fire"></span>
+                                </div>
+                                <h2 class="service-one__title"><a>
+                                        {{ucwords(@$homepage_info->core_heading3)}}
+                                    </a></h2>
+                                <p class="service-one__text">
+                                    {{ucfirst(@$homepage_info->core_description3)}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="400ms">
+                        <div class="services-one__single">
+                            <div class="service-one__content">
+                                <div class="services-one__icon">
+                                    <span class="icon-heart-beat"></span>
+                                </div>
+                                <h2 class="service-one__title"><a>{{ucwords(@$homepage_info->core_heading4)}}</a>
+                                </h2>
+                                <p class="service-one__text">{{ucfirst(@$homepage_info->core_description4)}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="500ms">
+                        <div class="services-one__single">
+                            <div class="service-one__content">
+                                <div class="services-one__icon">
+                                    <span class="icon-briefcase"></span>
+                                </div>
+                                <h2 class="service-one__title"><a>{{ucwords(@$homepage_info->core_heading5)}}</a></h2>
+                                <p class="service-one__text">{{ucfirst(@$homepage_info->core_description5)}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="600ms">
+                        <div class="services-one__single">
+                            <div class="service-one__content">
+                                <div class="services-one__icon">
+                                    <span class="icon-meeting"></span>
+                                </div>
+                                <h2 class="service-one__title"><a>{{ucwords(@$homepage_info->core_heading6)}}</a></h2>
+                                <p class="service-one__text">{{ucfirst(@$homepage_info->core_description6)}}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--Services One Single End-->
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
     @if(count($clients) > 0)
         <section class="brand-one">
         <div class="container">
@@ -229,7 +402,45 @@
         </div>
     </section>
     @endif
-    <!--Benefits Start-->
+
+    @if(!empty($homepage_info->action_heading))
+        <section class="download">
+            <div class="download-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/download-bg.png')}});"></div>
+            <div class="download-shape-1 float-bob-y">
+                <img src="{{asset('assets/frontend/images/shapes/download-shape-1.png')}}" alt="">
+            </div>
+            <div class="download-shape-2 float-bob-x">
+                <img src="{{asset('assets/frontend/images/shapes/download-shape-2.png')}}" alt="">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-6">
+                        <div class="download__left">
+                            <p class="download__sub-title">{{@$homepage_info->action_heading2}}</p>
+                            <h3 class="download__title">{{@$homepage_info->action_heading}}</h3>
+                        </div>
+                    </div>
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="download__right">
+                            <div class="download__img wow slideInRight" data-wow-delay="100ms"
+                                 data-wow-duration="2500ms">
+                                <div class="download__apps">
+                                    <div class="download__app-one">
+                                        <a href="{{@$homepage_info->action_link2}}">
+                                            <i class="fa fa-play"></i>
+                                            <p> <span> Get started </span> <br>
+                                                {{@$homepage_info->action_link ?? 'Learn more'}}</p>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    <!--Download End-->
     <section class="benefits">
         <div class="benefits-bg" style="background-image: url(assets/images/backgrounds/benefits-bg.png);"></div>
         <div class="benefits-bg-2" style="background-image: url(assets/images/backgrounds/benefits-bg-2.jpg);">
@@ -296,8 +507,6 @@
             </div>
         </div>
     </section>
-    <!--Benefits End-->
-
     <!--Testimonial Three Start-->
     <section class="testimonial-three">
         <div class="container">

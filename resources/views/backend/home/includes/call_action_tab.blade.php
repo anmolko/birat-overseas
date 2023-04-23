@@ -16,10 +16,18 @@
                         </figure>
                         <div class="position-relative mb-3">
                             <label class="form-label" for="direction-heading-input">Heading <span class="text-muted text-danger">*</span></label>
-                            <input type="text" class="form-control" maxlength="90" id="direction-heading-input" name="action_heading" value="{{@$homesettings->action_heading}}"
+                            <input type="text" class="form-control" maxlength="25" id="direction-heading-input" name="action_heading" value="{{@$homesettings->action_heading}}"
                                    placeholder="Enter heading" required>
                             <div class="invalid-feedback">
                                 Please enter the heading.
+                            </div>
+                        </div>
+                        <div class="position-relative mb-3">
+                            <label class="form-label" for="direction-heading-input">SubHeading <span class="text-muted text-danger">*</span></label>
+                            <input type="text" class="form-control" maxlength="45" id="direction-heading-input" name="action_heading2" value="{{@$homesettings->action_heading2}}"
+                                   placeholder="Enter subheading" required>
+                            <div class="invalid-feedback">
+                                Please enter the subheading.
                             </div>
                         </div>
                         <div class="position-relative mb-3">

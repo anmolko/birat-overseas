@@ -132,7 +132,7 @@
                     <div class="left-column clearfix">
                         <div class="image-layer" style="background-image: url({{asset('assets/frontend/images/background/1.jpg')}})"></div>
                         <div class="inner-column">
-                            <h2>{{@$homepage_info->action_heading}}</h2>
+                            <h2></h2>
                         </div>
                     </div>
 
