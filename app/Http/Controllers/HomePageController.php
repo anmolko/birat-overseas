@@ -397,7 +397,7 @@ class HomePageController extends Controller
             $path    = base_path().'/public/images/home/welcome/';
             $image = $request->file('what_image5');
             $name1 = uniqid().'_why_us_'.$image->getClientOriginalName();
-            $moved          = Image::make($image->getRealPath())->fit(650, 680)->orientate()->save($path.$name1);
+            $moved          = Image::make($image->getRealPath())->fit(430, 585)->orientate()->save($path.$name1);
             if ($moved){
                 $update_theme->what_image5 = $name1;
                 if (!empty($oldimage1) && file_exists(public_path().'/images/home/welcome/'.$oldimage1)){

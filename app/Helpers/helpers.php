@@ -193,6 +193,7 @@ if (!function_exists('get_icons')) {
         return $icon;
     }
 }
+
 if (!function_exists('get_solution_icons')) {
     /**
      * @param $menu_type
@@ -269,5 +270,69 @@ if (!function_exists('get_legal_documents')) {
         }else{
             return $values;
         }
+    }
+}
+
+if (!function_exists('get_recruitment_icons')) {
+    /**
+     * @param $index
+     * @return string
+     */
+    function get_recruitment_icons($index): string
+    {
+        $icon   = '';
+        if($index == 0){
+            $icon = 'icon-select';
+        }else if($index == 1){
+            $icon = 'icon-meeting';
+        }else if($index == 2){
+            $icon = 'icon-agreement';
+        }else if($index == 3){
+            $icon = 'icon-insurance-agent';
+        }else if($index == 4){
+            $icon = 'icon-employees';
+        }else if($index == 5){
+            $icon = 'icon-profits';
+        }else if($index == 6){
+            $icon = 'icon-insurance-2';
+        }else if($index == 7){
+            $icon = 'icon-success';
+        }else{
+            $icon = 'icon-insurance';
+        }
+
+        return $icon;
+    }
+}
+
+if (!function_exists('get_recruitment_class')) {
+    /**
+     * @param $index
+     * @return string
+     */
+    function get_recruitment_class($index): string
+    {
+        $icon   = '';
+        if($index == 0){
+            $icon = '';
+        }else if($index == 1){
+            $icon = 'process__single-2';
+        }else if($index == 2){
+            $icon = 'process__single-3';
+        }else if($index == 3){
+            $icon = 'process__single-4';
+        }else if($index == 4){
+            $icon = '';
+        }else if($index == 5){
+            $icon = 'process__single-2';
+        }else if($index == 6){
+            $icon = 'process__single-3';
+        }else if($index == 7){
+            $icon = 'process__single-4';
+        }else{
+            $icon = '';
+        }
+
+        return $icon;
     }
 }

@@ -117,6 +117,7 @@
             </div>
         </section>
     @endif
+
     @if(!empty($homepage_info->welcome_description))
         <section class="about-three mt-5">
             <div class="container">
@@ -237,6 +238,7 @@
             </div>
         </section>
     @endif
+
     @if(!empty($homepage_info->core_main_heading))
         <section class="services-one">
         <div class="services-one__top">
@@ -351,6 +353,7 @@
         </div>
     </section>
     @endif
+
     @if(count($clients) > 0)
         <section class="brand-one">
         <div class="container">
@@ -414,13 +417,13 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-7 col-lg-6">
+                    <div class="col-xl-9 col-lg-6">
                         <div class="download__left">
                             <p class="download__sub-title">{{@$homepage_info->action_heading2}}</p>
                             <h3 class="download__title">{{@$homepage_info->action_heading}}</h3>
                         </div>
                     </div>
-                    <div class="col-xl-5 col-lg-6">
+                    <div class="col-xl-3 col-lg-6">
                         <div class="download__right">
                             <div class="download__img wow slideInRight" data-wow-delay="100ms"
                                  data-wow-duration="2500ms">
@@ -428,8 +431,7 @@
                                     <div class="download__app-one">
                                         <a href="{{@$homepage_info->action_link2}}">
                                             <i class="fa fa-play"></i>
-                                            <p> <span> Get started </span> <br>
-                                                {{@$homepage_info->action_link ?? 'Learn more'}}</p>
+                                            <p> <span> Get started </span> <br> {{@$homepage_info->action_link ?? 'Learn more'}}</p>
                                         </a>
                                     </div>
                                 </div>
@@ -440,7 +442,158 @@
             </div>
         </section>
     @endif
-    <!--Download End-->
+
+    @if(@$recruitments[0]->heading)
+        <section class="process">
+            <div class="container">
+                <div class="section-title text-center">
+                    <div class="section-sub-title-box">
+                        <p class="section-sub-title">work process</p>
+                        <div class="section-title-shape-1">
+                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                        </div>
+                        <div class="section-title-shape-2">
+                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                        </div>
+                    </div>
+                    <h2 class="section-title__title">Our easy work process <br> in 4 steps</h2>
+                </div>
+                <div class="process__inner">
+                    <div class="process-shape-1">
+                        <img src="{{asset('assets/frontend/images/shapes/process-shape-1.png')}}" alt="">
+                    </div>
+                    @if(count($recruitments)>4)
+                        <div class="process-shape-2">
+                            <img src="{{asset('assets/frontend/images/shapes/process-shape-1.png')}}" alt="">
+                        </div>
+                    @endif
+                    <div class="row">
+                        @foreach(@$recruitments as $index=>$recruitment)
+                            <div class="col-xl-3 col-lg-3 col-md-6">
+                                <div class="process__single {{get_recruitment_class($index)}}">
+                                    <div class="process__icon-box">
+                                        <div class="process__icon">
+                                            <span class="{{get_recruitment_icons($index)}}"></span>
+                                        </div>
+                                        <div class="process__count"></div>
+                                    </div>
+                                    <div class="process__content">
+                                        <h3 class="process__title">{{@$recruitment->title}}</h3>
+                                        <p class="process__text">{{@$recruitment->icon_description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="process__bottom">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="process__contact">
+                                <div class="process__input-box">
+                                    <input type="text" placeholder="Like our process? Feel free to contact us.">
+                                    <a type="submit" class="process__btn">Get Started</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
+    @if(!empty($homepage_info->why_heading))
+        <section class="about-two">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-5">
+                        <div class="about-two__left">
+                            <div class="section-title text-left">
+                                <div class="section-sub-title-box">
+                                    <p class="section-sub-title">Why choose us</p>
+                                    <div class="section-title-shape-1">
+                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                    </div>
+                                    <div class="section-title-shape-2">
+                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                    </div>
+                                </div>
+                                <h2 class="section-title__title">{{@$homepage_info->why_heading}}</h2>
+                            </div>
+                            <p class="about-two__text">{{ucwords(@$homepage_info->why_description)}}</p>
+                            @if(@$homepage_info->why_subheading)
+                                <div class="main-slider-two__video-link main-slider-two__video-link-2 welcome-section-video" style="position: initial;">
+                                    <a href="{{@$homepage_info->why_subheading}}" class="video-popup">
+                                        <div class="main-slider-two__video-icon welcome-section-video-icon">
+                                            <span class="fa fa-play"></span>
+                                            <i class="ripple"></i>
+                                        </div>
+                                    </a>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-xl-5">
+                        <div class="about-two__middle">
+                            <div class="about-two__img-box">
+                                <div class="about-two__img">
+                                    <img src="{{asset('/images/home/welcome/'.@$homepage_info->what_image5)}}" alt="">
+                                </div>
+                                <div class="about-two__dots float-bob-y">
+                                    <img src="{{asset('assets/frontend/images/shapes/about-two-dots.png')}}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-2">
+                        <div class="about-two__counter">
+                            <ul class="list-unstyled about-two__counter-list">
+                                <li>
+                                    <div class="about-two__counter-single">
+                                        <div class="about-two__counter-count count-box">
+                                            <h3 class="count-text" data-speed="4000"
+                                                data-stop="{{@$homepage_info->project_completed ?? '450'}}">00</h3>
+                                        </div>
+                                        <p class="about-two__counter-text-1">Projects completed</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="about-two__counter-single">
+                                        <div class="about-two__counter-count count-box">
+                                            <h3 class="count-text" data-speed="4000"
+                                                data-stop="{{@$homepage_info->happy_clients ?? '660'}}">00</h3>
+                                        </div>
+                                        <p class="about-two__counter-text-1">Happy Customer</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="about-two__counter-single">
+                                        <div class="about-two__counter-count count-box">
+                                            <h3 class="count-text" data-speed="4000"
+                                                data-stop="{{@$homepage_info->visa_approved ?? '450'}}">00</h3>
+                                            <span class="about-two__counter-percent"></span>
+                                        </div>
+                                        <p class="about-two__counter-text-1">Visa success rates</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="about-two__counter-single">
+                                        <div class="about-two__counter-count count-box">
+                                            <h3 class="count-text" data-speed="4000"
+                                                data-stop="{{@$homepage_info->success_stories ?? '987'}}">00</h3>
+                                            <span class="about-two__counter-percent"></span>
+                                        </div>
+                                        <p class="about-two__counter-text-1">Success rates</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
     <section class="benefits">
         <div class="benefits-bg" style="background-image: url(assets/images/backgrounds/benefits-bg.png);"></div>
         <div class="benefits-bg-2" style="background-image: url(assets/images/backgrounds/benefits-bg-2.jpg);">
@@ -507,370 +660,97 @@
             </div>
         </div>
     </section>
-    <!--Testimonial Three Start-->
-    <section class="testimonial-three">
-        <div class="container">
-            <div class="testimonial-three__top">
-                <div class="row">
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="testimonial-three__left">
-                            <div class="section-title text-left">
-                                <div class="section-sub-title-box">
-                                    <p class="section-sub-title">testimonials</p>
-                                    <div class="section-title-shape-1">
-                                        <img src="assets/images/shapes/section-title-shape-1.png" alt="">
-                                    </div>
-                                    <div class="section-title-shape-2">
-                                        <img src="assets/images/shapes/section-title-shape-2.png" alt="">
-                                    </div>
-                                </div>
-                                <h2 class="section-title__title">What our customers are talking about</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-6 col-lg-6">
-                        <div class="testimonial-three__right">
-                            <p class="testimonial-three__right-text">Pellentesque habitant morbi tristique senectus
-                                netus et malesuada fames ac turp egestas. Aliquam viverra arcu. Donec aliquet
-                                blandit enim feugiat mattis.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="testimonial-three__bottom">
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="owl-carousel owl-theme thm-owl__carousel testimonial-three__carousel"
-                             data-owl-options='{
-                                "loop": true,
-                                "autoplay": true,
-                                "margin": 30,
-                                "nav": false,
-                                "dots": true,
-                                "smartSpeed": 500,
-                                "autoplayTimeout": 10000,
-                                "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
-                                "responsive": {
-                                    "0": {
-                                        "items": 1
-                                    },
-                                    "768": {
-                                        "items": 2
-                                    },
-                                    "992": {
-                                        "items": 2
-                                    },
-                                    "1200": {
-                                        "items": 3
-                                    }
-                                }
-                            }'>
-                            <!--Testimonial Three Single Start-->
-                            <div class="item">
-                                <div class="testimonial-three__single">
-                                    <div class="testimonial-three__client-img-box">
-                                        <div class="testimonial-three__client-img">
-                                            <img src="assets/images/testimonial/testimonial-3-1.jpg" alt="">
-                                        </div>
-                                        <div class="testimonial-three__quote">
-                                            <img src="assets/images/testimonial/testimonial-1-quote.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-three__star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-three__text">Pellentesque habitant morbi tristique
-                                        senectus et malesuada fames ac turp egestas. Aliquam viverra arcu. Donec
-                                        aliquet blandit enim feugiat mattis.</p>
-                                    <div class="testimonial-three__client">
-                                        <h4 class="testimonial-three__client-name">Smith Vectoria</h4>
-                                        <p class="testimonial-three__client-sub-title">director</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Testimonial Three Single End-->
-                            <!--Testimonial Three Single Start-->
-                            <div class="item">
-                                <div class="testimonial-three__single">
-                                    <div class="testimonial-three__client-img-box">
-                                        <div class="testimonial-three__client-img">
-                                            <img src="assets/images/testimonial/testimonial-3-2.jpg" alt="">
-                                        </div>
-                                        <div class="testimonial-three__quote">
-                                            <img src="assets/images/testimonial/testimonial-1-quote.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-three__star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-three__text">Pellentesque habitant morbi tristique
-                                        senectus et malesuada fames ac turp egestas. Aliquam viverra arcu. Donec
-                                        aliquet blandit enim feugiat mattis.</p>
-                                    <div class="testimonial-three__client">
-                                        <h4 class="testimonial-three__client-name">Jessica Brown</h4>
-                                        <p class="testimonial-three__client-sub-title">director</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Testimonial Three Single End-->
-                            <!--Testimonial Three Single Start-->
-                            <div class="item">
-                                <div class="testimonial-three__single">
-                                    <div class="testimonial-three__client-img-box">
-                                        <div class="testimonial-three__client-img">
-                                            <img src="assets/images/testimonial/testimonial-3-3.jpg" alt="">
-                                        </div>
-                                        <div class="testimonial-three__quote">
-                                            <img src="assets/images/testimonial/testimonial-1-quote.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-three__star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-three__text">Pellentesque habitant morbi tristique
-                                        senectus et malesuada fames ac turp egestas. Aliquam viverra arcu. Donec
-                                        aliquet blandit enim feugiat mattis.</p>
-                                    <div class="testimonial-three__client">
-                                        <h4 class="testimonial-three__client-name">Kevin Martin</h4>
-                                        <p class="testimonial-three__client-sub-title">director</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Testimonial Three Single End-->
-                            <!--Testimonial Three Single Start-->
-                            <div class="item">
-                                <div class="testimonial-three__single">
-                                    <div class="testimonial-three__client-img-box">
-                                        <div class="testimonial-three__client-img">
-                                            <img src="assets/images/testimonial/testimonial-3-1.jpg" alt="">
-                                        </div>
-                                        <div class="testimonial-three__quote">
-                                            <img src="assets/images/testimonial/testimonial-1-quote.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-three__star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-three__text">Pellentesque habitant morbi tristique
-                                        senectus et malesuada fames ac turp egestas. Aliquam viverra arcu. Donec
-                                        aliquet blandit enim feugiat mattis.</p>
-                                    <div class="testimonial-three__client">
-                                        <h4 class="testimonial-three__client-name">Smith Vectoria</h4>
-                                        <p class="testimonial-three__client-sub-title">director</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Testimonial Three Single End-->
-                            <!--Testimonial Three Single Start-->
-                            <div class="item">
-                                <div class="testimonial-three__single">
-                                    <div class="testimonial-three__client-img-box">
-                                        <div class="testimonial-three__client-img">
-                                            <img src="assets/images/testimonial/testimonial-3-2.jpg" alt="">
-                                        </div>
-                                        <div class="testimonial-three__quote">
-                                            <img src="assets/images/testimonial/testimonial-1-quote.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-three__star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-three__text">Pellentesque habitant morbi tristique
-                                        senectus et malesuada fames ac turp egestas. Aliquam viverra arcu. Donec
-                                        aliquet blandit enim feugiat mattis.</p>
-                                    <div class="testimonial-three__client">
-                                        <h4 class="testimonial-three__client-name">Jessica Brown</h4>
-                                        <p class="testimonial-three__client-sub-title">director</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Testimonial Three Single End-->
-                            <!--Testimonial Three Single Start-->
-                            <div class="item">
-                                <div class="testimonial-three__single">
-                                    <div class="testimonial-three__client-img-box">
-                                        <div class="testimonial-three__client-img">
-                                            <img src="assets/images/testimonial/testimonial-3-3.jpg" alt="">
-                                        </div>
-                                        <div class="testimonial-three__quote">
-                                            <img src="assets/images/testimonial/testimonial-1-quote.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-three__star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-three__text">Pellentesque habitant morbi tristique
-                                        senectus et malesuada fames ac turp egestas. Aliquam viverra arcu. Donec
-                                        aliquet blandit enim feugiat mattis.</p>
-                                    <div class="testimonial-three__client">
-                                        <h4 class="testimonial-three__client-name">Kevin Martin</h4>
-                                        <p class="testimonial-three__client-sub-title">director</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Testimonial Three Single End-->
-                            <!--Testimonial Three Single Start-->
-                            <div class="item">
-                                <div class="testimonial-three__single">
-                                    <div class="testimonial-three__client-img-box">
-                                        <div class="testimonial-three__client-img">
-                                            <img src="assets/images/testimonial/testimonial-3-1.jpg" alt="">
-                                        </div>
-                                        <div class="testimonial-three__quote">
-                                            <img src="assets/images/testimonial/testimonial-1-quote.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-three__star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-three__text">Pellentesque habitant morbi tristique
-                                        senectus et malesuada fames ac turp egestas. Aliquam viverra arcu. Donec
-                                        aliquet blandit enim feugiat mattis.</p>
-                                    <div class="testimonial-three__client">
-                                        <h4 class="testimonial-three__client-name">Smith Vectoria</h4>
-                                        <p class="testimonial-three__client-sub-title">director</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Testimonial Three Single End-->
-                            <!--Testimonial Three Single Start-->
-                            <div class="item">
-                                <div class="testimonial-three__single">
-                                    <div class="testimonial-three__client-img-box">
-                                        <div class="testimonial-three__client-img">
-                                            <img src="assets/images/testimonial/testimonial-3-2.jpg" alt="">
-                                        </div>
-                                        <div class="testimonial-three__quote">
-                                            <img src="assets/images/testimonial/testimonial-1-quote.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-three__star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-three__text">Pellentesque habitant morbi tristique
-                                        senectus et malesuada fames ac turp egestas. Aliquam viverra arcu. Donec
-                                        aliquet blandit enim feugiat mattis.</p>
-                                    <div class="testimonial-three__client">
-                                        <h4 class="testimonial-three__client-name">Jessica Brown</h4>
-                                        <p class="testimonial-three__client-sub-title">director</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Testimonial Three Single End-->
-                            <!--Testimonial Three Single Start-->
-                            <div class="item">
-                                <div class="testimonial-three__single">
-                                    <div class="testimonial-three__client-img-box">
-                                        <div class="testimonial-three__client-img">
-                                            <img src="assets/images/testimonial/testimonial-3-3.jpg" alt="">
-                                        </div>
-                                        <div class="testimonial-three__quote">
-                                            <img src="assets/images/testimonial/testimonial-1-quote.png" alt="">
-                                        </div>
-                                    </div>
-                                    <div class="testimonial-three__star">
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                        <i class="fa fa-star"></i>
-                                    </div>
-                                    <p class="testimonial-three__text">Pellentesque habitant morbi tristique
-                                        senectus et malesuada fames ac turp egestas. Aliquam viverra arcu. Donec
-                                        aliquet blandit enim feugiat mattis.</p>
-                                    <div class="testimonial-three__client">
-                                        <h4 class="testimonial-three__client-name">Kevin Martin</h4>
-                                        <p class="testimonial-three__client-sub-title">director</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--Testimonial Three Single End-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--Testimonial Three End-->
 
-    <!--Download Start-->
-    <section class="download">
-        <div class="download-bg" style="background-image: url(assets/images/backgrounds/download-bg.png);"></div>
-        <div class="download-shape-1 float-bob-y">
-            <img src="assets/images/shapes/download-shape-1.png" alt="">
-        </div>
-        <div class="download-shape-2 float-bob-x">
-            <img src="assets/images/shapes/download-shape-2.png" alt="">
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-7 col-lg-6">
-                    <div class="download__left">
-                        <p class="download__sub-title">Get our application free now! Protect yourself</p>
-                        <h3 class="download__title">Download our application</h3>
-                        <div class="download__apps">
-                            <div class="download__app-one">
-                                <a href="#">
-                                    <i class="fa fa-play"></i>
-                                    <p> <span>Available on</span> <br> Google Play</p>
-                                </a>
-                            </div>
-                            <div class="download__app-one download__app-one--two">
-                                <a href="#">
-                                    <i class="fab fa-apple"></i>
-                                    <p> <span>get it on</span> <br> Play Store</p>
-                                </a>
+    @if(count($director) > 0)
+        <section class="testimonial-three">
+            <div class="container">
+                <div class="testimonial-three__top">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="testimonial-three__left">
+                                <div class="section-title text-left">
+                                    <div class="section-sub-title-box">
+                                        <p class="section-sub-title">Up close</p>
+                                        <div class="section-title-shape-1">
+                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                        </div>
+                                        <div class="section-title-shape-2">
+                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                        </div>
+                                    </div>
+                                    <h2 class="section-title__title">Look what our directors are talking about</h2>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-5 col-lg-6">
-                    <div class="download__right">
-                        <div class="download__img wow slideInRight" data-wow-delay="100ms"
-                             data-wow-duration="2500ms">
-                            <img src="assets/images/resources/download-img-1.png" alt="">
-                            <div class="download__badge">
-                                <img src="assets/images/shapes/download-dadge.png" alt="">
+                <div class="testimonial-three__bottom">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="owl-carousel owl-theme thm-owl__carousel testimonial-three__carousel"
+                                 data-owl-options='{
+                                    "loop": true,
+                                    "autoplay": true,
+                                    "margin": 30,
+                                    "nav": false,
+                                    "dots": true,
+                                    "smartSpeed": 500,
+                                    "autoplayTimeout": 10000,
+                                    "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                                    "responsive": {
+                                        "0": {
+                                            "items": 1
+                                        },
+                                        "768": {
+                                            "items": 1
+                                        },
+                                        "992": {
+                                            "items": 1
+                                        },
+                                        "1200": {
+                                            "items": 1
+                                        }
+                                    }
+                                }'>
+                                @foreach($director as $managing)
+                                    <div class="item">
+                                        <section class="team-details">
+                                            <div class="container">
+                                                <div class="team-details__top">
+                                                    <div class="row">
+                                                        <div class="col-xl-6 col-lg-6">
+                                                            <div class="team-details__top-left">
+                                                                <div class="team-details__top-img">
+                                                                    <img src="{{asset('/images/director/'.@$managing->image)}}" alt="">
+                                                                    <div class="team-details__big-text">director</div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xl-6 col-lg-6">
+                                                            <div class="team-details__top-right">
+                                                                <div class="team-details__top-content">
+                                                                    <p class="team-details__top-title">{{ucfirst(@$managing->designation)}}</p>
+                                                                    <h3 class="team-details__top-name">{{ucfirst(@$managing->heading)}}</h3>
+                                                                    <p class="team-details__top-text-2">{{@$managing->description}}</p>
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                @endforeach
+
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <!--Download End-->
+        </section>
+    @endif
 
     <!--We Provide Start-->
     <section class="we-provide">

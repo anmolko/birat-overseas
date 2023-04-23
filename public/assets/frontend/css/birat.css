@@ -2428,6 +2428,11 @@ ul {
   justify-content: center;
 }
 
+.main-slider-two__video-link-2{
+    margin-top: 45px;
+    justify-content: flex-start;
+}
+
 .welcome-section-video{
     position: initial;
 }
@@ -5478,6 +5483,7 @@ ul {
   font-size: 18px;
   line-height: 30px;
   letter-spacing: var(--insur-letter-spacing);
+  text-align: justify;
 }
 
 .about-two__points {
@@ -6751,6 +6757,12 @@ ul {
   left: 135px;
 }
 
+.process-shape-2 {
+    position: absolute;
+    top: 415px;
+    left: 135px;
+}
+
 .process-shape-1 img {
   width: auto;
 }
@@ -6924,6 +6936,7 @@ ul {
   border-bottom-right-radius: var(--insur-bdr-radius);
   text-align: center;
   transition: all 500ms ease;
+  padding-top: 10px;
 }
 
 .process__btn:hover {
@@ -8124,7 +8137,7 @@ ul {
 .testimonial-three__top {
   position: relative;
   display: block;
-  margin-bottom: 108px;
+  margin-bottom: 0px;
 }
 
 .testimonial-three__left {
@@ -11443,7 +11456,7 @@ ul {
 .team-details__top {
   position: relative;
   display: block;
-  padding: 120px 0 120px;
+  padding: 50px 0 10px;
 }
 
 .team-details__top-left {
@@ -11463,7 +11476,7 @@ ul {
 }
 
 .team-details__big-text {
-  font-size: 80px;
+  font-size: 65px;
   line-height: 80px;
   text-transform: uppercase;
   color: var(--insur-extra);

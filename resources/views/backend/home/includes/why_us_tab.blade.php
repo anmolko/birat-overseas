@@ -24,10 +24,11 @@
                         </div>
                         <div class="position-relative mb-3">
                             <label class="form-label">Small Description</label>
-                            <input type="text" class="form-control" maxlength="200" name="why_description" value="{{@$homesettings->why_description}}"
-                                   placeholder="Enter subheading">
+                            <textarea class="form-control" maxlength="400"
+                                      name="why_description"
+                                      rows="6" required>{{@$homesettings->why_description}}</textarea>
                             <div class="invalid-feedback">
-                                Please enter the heading.
+                                Please enter the small description.
                             </div>
                         </div>
 
@@ -63,7 +64,7 @@
                                 <input  type="file" accept="image/png, image/jpeg" hidden
                                         id="sliderlist-5-image" onchange="loadbasicFile('sliderlist-5-image','current-sliderlist-5-img',event)" name="what_image5" {{(@$homesettings->what_image5 !== null) ? "":"required" }}
                                         class="profile-foreground-img-file-input" >
-                                <figcaption class="figure-caption"> Image for current box. (SIZE: 560px X 375px)</figcaption>
+                                <figcaption class="figure-caption"> Image for current box. (SIZE: 430 X 585px)</figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
@@ -73,9 +74,6 @@
                             </div>
                         </div>
                     </div>
-
-
-                    <!-- end card body -->
                 </div>
 
 
@@ -125,7 +123,7 @@
             </div>
         </div>
 
-        <div class="text-center mb-3 mt-2">
+        <div class="text-center mb-3 mt-4">
             <button type="submit" class="btn btn-success w-sm">Update Section</button>
         </div>
     </div>
