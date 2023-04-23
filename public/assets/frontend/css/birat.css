@@ -2428,6 +2428,9 @@ ul {
   justify-content: center;
 }
 
+.welcome-section-video{
+    position: initial;
+}
 .main-slider-two__video-icon {
   position: relative;
   display: -webkit-box;
@@ -2453,6 +2456,15 @@ ul {
   -ms-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
 }
+
+.welcome-section-video-icon{
+    color: var(--insur-white);
+    background-color: var(--insur-base);
+    width: 80px;
+    height: 80px;
+    margin-right: 30px;
+}
+
 
 .main-slider-two__video-icon:hover {
   background-color: var(--insur-primary);
@@ -2589,6 +2601,7 @@ ul {
 }
 
 .main-slider-three__title {
+  width: 65%;
   position: relative;
   font-size: 70px;
   color: var(--insur-white);
@@ -2624,6 +2637,7 @@ ul {
   transition: opacity 2000ms ease, -webkit-transform 2000ms ease;
   transition: transform 2000ms ease, opacity 2000ms ease;
   transition: transform 2000ms ease, opacity 2000ms ease, -webkit-transform 2000ms ease;
+    width:50%;
 }
 
 .main-slider-three .swiper-slide-active .main-slider-three__text {
@@ -7713,9 +7727,13 @@ ul {
 }
 
 .about-three__right .section-title {
-  margin-bottom: 34px;
+  margin-bottom: 10px;
 }
 
+.service-image{
+    width: 22%;
+    margin-left: 20px;
+}
 .about-three__business-start {
   position: relative;
   display: flex;
@@ -7949,7 +7967,7 @@ ul {
   display: block;
   background-color: var(--insur-extra);
   border-radius: var(--insur-bdr-radius);
-  padding: 39px 60px 50px;
+  padding: 54px 60px 50px;
 }
 
 .services-three__get-quote-sub-title {

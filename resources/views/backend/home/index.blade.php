@@ -190,6 +190,11 @@
                                                             Please enter the button link.
                                                         </div>
                                                     </div>
+                                                    <div class="mb-3">
+                                                        <label class="form-label" for="welcome-video-input">Youtube Video Link </label>
+                                                        <input type="text" class="form-control" id="welcome-video-input" name="welcome_video_link" value="{{@$homesettings->welcome_video_link}}"
+                                                               placeholder="Enter video link">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- end card -->
@@ -214,12 +219,14 @@
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="mb-3">
+                                                        <label class="form-label" for="welcome-video-input">Main Image</label>
+
                                                         <img  id="current-img"  src="{{ (@$homesettings->welcome_image !== null) ? asset('images/home/welcome/'.@$homesettings->welcome_image) :  asset('images/default-image.jpg') }}" class="position-relative img-fluid img-thumbnail welcome-feature-image" >
                                                         <input  type="file" accept="image/png, image/jpeg" hidden
                                                             id="profile-foreground-img-file-input" onchange="loadFile(event)" name="welcome_image" {{ (@$homesettings->welcome_image !== null) ? '' :  'required' }}
                                                         class="profile-foreground-img-file-input" >
 
-                                                        <figcaption class="figure-caption">*use image minimum of 570 x 655px </figcaption>
+                                                        <figcaption class="figure-caption">*use image minimum of 500 x 510px </figcaption>
                                                         <div class="invalid-feedback" >
                                                                 Please select a image.
                                                             </div>
@@ -228,9 +235,21 @@
                                                         </label>
                                                     </div>
                                                     <div class="mb-3">
-                                                        <label class="form-label" for="welcome-video-input">Youtube Video Link </label>
-                                                        <input type="text" class="form-control" id="welcome-video-input" name="welcome_video_link" value="{{@$homesettings->welcome_video_link}}"
-                                                               placeholder="Enter video link">
+                                                        <label class="form-label" for="welcome-video-input">Years of Service Image</label>
+                                                        <img  id="current-award-img"  src="{{ (@$homesettings->what_image1 !== null) ? asset('images/home/welcome/'.@$homesettings->what_image1) :  asset('images/default-image.jpg') }}"
+                                                              class="position-relative img-fluid img-thumbnail welcome-feature-image" >
+                                                        <input  type="file" accept="image/png, image/jpeg" hidden
+                                                                id="profile-foreground-img-file-award-input" onchange="loadbasicFile('profile-foreground-img-file-award-input','current-award-img',event)"
+                                                                name="what_image1"
+                                                                class="profile-foreground-img-file-input" >
+
+                                                        <figcaption class="figure-caption">*use image minimum of 500 x 510px for service</figcaption>
+                                                        <div class="invalid-feedback" >
+                                                            Please select a image.
+                                                        </div>
+                                                        <label for="profile-foreground-img-file-award-input" class="profile-photo-edit btn btn-light feature-image-button">
+                                                            <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
+                                                        </label>
                                                     </div>
                                                 </div>
                                                 <!-- end card body -->

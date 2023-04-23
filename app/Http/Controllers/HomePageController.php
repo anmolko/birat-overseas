@@ -69,7 +69,8 @@ class HomePageController extends Controller
             'welcome_video_link'       => $request->input('welcome_video_link'),
             'welcome_button'           => $request->input('welcome_button'),
             'welcome_link'             => $request->input('welcome_link'),
-            'created_by'                => Auth::user()->id,
+            'what_heading1'            => $request->input('what_heading1'),
+            'created_by'               => Auth::user()->id,
         ];
 
         if (!empty($request->file('welcome_image'))){
@@ -84,12 +85,29 @@ class HomePageController extends Controller
             $path    = base_path().'/public/images/home/welcome/';
             $image   = $request->file('welcome_image');
             $name1   = uniqid().'_welcome_'.$image->getClientOriginalName();
-            $moved          = Image::make($image->getRealPath())->fit(570, 655)->orientate()->save($path.$name1);
+            $moved          = Image::make($image->getRealPath())->fit(500, 610)->orientate()->save($path.$name1);
             if ($moved){
                 $data['welcome_image']= $name1;
             }
         }
 
+        if (!empty($request->file('what_image1'))){
+
+            if (!is_dir($this->home_path)) {
+                mkdir($this->home_path, 0777);
+            }
+            if (!is_dir($this->welcome_path)) {
+                mkdir($this->welcome_path, 0777);
+            }
+
+            $path    = base_path().'/public/images/home/welcome/';
+            $image   = $request->file('what_image1');
+            $name1   = uniqid().'_welcome_'.$image->getClientOriginalName();
+            $moved          = Image::make($image->getRealPath())->fit(350, 250)->orientate()->save($path.$name1);
+            if ($moved){
+                $data['what_image1']= $name1;
+            }
+        }
 
         $theme = HomePage::create($data);
         if($theme){
@@ -141,20 +159,36 @@ class HomePageController extends Controller
         $update_theme->welcome_video_link       =  $request->input('welcome_video_link');
         $update_theme->welcome_button           =  $request->input('welcome_button');
         $update_theme->welcome_link             =  $request->input('welcome_link');
+        $update_theme->what_heading1            =  $request->input('what_heading1');
         $update_theme->updated_by               =  Auth::user()->id;
 
         $oldimage                       = $update_theme->welcome_image;
+        $whatimage                       = $update_theme->what_image1;
 
         if (!empty($request->file('welcome_image'))){
             $path    = base_path().'/public/images/home/welcome/';
             $image = $request->file('welcome_image');
             $name1 = uniqid().'_welcome_'.$image->getClientOriginalName();
-            $moved          = Image::make($image->getRealPath())->fit(570, 655)->orientate()->save($path.$name1);
+            $moved          = Image::make($image->getRealPath())->fit(500, 610)->orientate()->save($path.$name1);
 
             if ($moved){
                 $update_theme->welcome_image= $name1;
                 if (!empty($oldimage) && file_exists(public_path().'/images/home/welcome/'.$oldimage)){
                     @unlink(public_path().'/images/home/welcome/'.$oldimage);
+                }
+            }
+
+        }
+        if (!empty($request->file('what_image1'))){
+            $path    = base_path().'/public/images/home/welcome/';
+            $image = $request->file('what_image1');
+            $name1 = uniqid().'_service_'.$image->getClientOriginalName();
+            $moved          = Image::make($image->getRealPath())->fit(350, 250)->orientate()->save($path.$name1);
+
+            if ($moved){
+                $update_theme->what_image1= $name1;
+                if (!empty($whatimage) && file_exists(public_path().'/images/home/welcome/'.$whatimage)){
+                    @unlink(public_path().'/images/home/welcome/'.$whatimage);
                 }
             }
 

@@ -59,7 +59,7 @@
                         <div class="card-body">
                             <div class="form-group mb-3">
                                 <label>Heading <span class="text-muted text-danger">*</span></label>
-                                <input type="text" maxlength="45" class="form-control" name="heading" required>
+                                <input type="text" maxlength="35" class="form-control" name="heading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider heading.
                                 </div>
@@ -67,7 +67,7 @@
 
                             <div class="form-group mb-3">
                                 <label>Sub Heading <span class="text-muted text-danger">*</span></label>
-                                <input type="text" maxlength="30" class="form-control" name="subheading" required>
+                                <input type="text" maxlength="100" class="form-control" name="subheading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider subheading.
                                 </div>
@@ -114,7 +114,7 @@
                                         id="profile-foreground-img-file-input" onchange="loadbasicFile('profile-foreground-img-file-input','current-img',event)" name="image" required
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">*use image minimum of 1920px x 600px </figcaption>
+                                <figcaption class="figure-caption">*use image minimum of 1920px x 680px </figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>
@@ -160,7 +160,6 @@
                                         <tr>
                                             <th>Slider Image</th>
                                             <th>Heading</th>
-                                            <th>Subheading</th>
                                             <th>Button</th>
                                             <th>Link</th>
                                             <th>Status</th>
@@ -175,7 +174,6 @@
                                                         <img src="{{asset('/images/sliders/'.@$slider->image)}}" alt="{{@$slider->slug}}" class="figure-img rounded avatar-lg">
                                                     </td>
                                                     <td>{{$slider->heading}}</td>
-                                                    <td>{{$slider->subheading}}</td>
                                                     <td>{{$slider->button}}</td>
                                                     <td>{{(!empty($slider->link)) ?  $slider->link:"Not Set"}}</td>
                                                     <td>
@@ -246,14 +244,14 @@
 
                             <div class="form-group mb-3">
                                 <label>Heading </label>
-                                <input type="text" maxlength="45" class="form-control" name="heading" id="heading" required>
+                                <input type="text" maxlength="35" class="form-control" name="heading" id="heading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider heading.
                                 </div>
                             </div>
                             <div class="form-group mb-3">
                                 <label>Sub Heading </label>
-                                <input type="text" maxlength="30" class="form-control" name="subheading" id="subheading" required>
+                                <input type="text" maxlength="100" class="form-control" name="subheading" id="subheading" required>
                                 <div class="invalid-feedback">
                                     Please enter the slider subheading.
                                 </div>
@@ -280,7 +278,7 @@
                                         id="profile-foreground-img-file" onchange="loadbasicFile('profile-foreground-img-file','current-edit-img',event)" name="image"
                                         class="profile-foreground-img-file-input" >
 
-                                <figcaption class="figure-caption">*use image minimum of 1920px x 600px </figcaption>
+                                <figcaption class="figure-caption">*use image minimum of 1920px x 680px </figcaption>
                                 <div class="invalid-feedback" >
                                     Please select a image.
                                 </div>

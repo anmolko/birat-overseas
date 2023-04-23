@@ -66,7 +66,7 @@ class SliderController extends Controller
             $image        = $request->file('image');
             $name         = uniqid().'_'.$image->getClientOriginalName();
             $path         = base_path().'/public/images/sliders/';
-            $moved        = Image::make($image->getRealPath())->fit(1620, 600)->orientate()->save($path.$name);
+            $moved        = Image::make($image->getRealPath())->fit(1620, 680)->orientate()->save($path.$name);
             if ($moved){
                 $data['image']= $name;
             }
@@ -131,7 +131,7 @@ class SliderController extends Controller
             $image               =  $request->file('image');
             $name1               = uniqid().'_'.$image->getClientOriginalName();
             $path                = base_path().'/public/images/sliders/';
-            $moved               = Image::make($image->getRealPath())->fit(1920, 600)->orientate()->save($path.$name1);
+            $moved               = Image::make($image->getRealPath())->fit(1920, 680)->orientate()->save($path.$name1);
             if ($moved){
                 $slider->image = $name1;
                 if (!empty($oldimage) && file_exists(public_path().'/images/sliders/'.$oldimage)){

@@ -84,6 +84,7 @@
                                 <input  type="file" accept="image/png, image/jpeg" hidden
                                         id="profile-foreground-img-file-input" onchange="loadbasicFile('profile-foreground-img-file-input','current-img',event)" name="image" required
                                         class="profile-foreground-img-file-input" >
+                                <figcaption class="figure-caption">*use image minimum of 200 x 100px </figcaption>
 
                                 <div class="invalid-feedback" >
                                     Please select a image.

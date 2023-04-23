@@ -11,9 +11,9 @@ var loadbasicFile = function(id1,id2,event) {
 };
 
 $(document).ready(function () {
-    createEditor('ckeditor-classic');
-    createEditor('ckeditor-classic-background');
-    createEditor('ckeditor-classic-direction');
+    // createEditor('ckeditor-classic');
+    // createEditor('ckeditor-classic-background');
+    // createEditor('ckeditor-classic-direction');
 });
 function createEditor(id){
     ClassicEditor.create(document.querySelector("#"+id))

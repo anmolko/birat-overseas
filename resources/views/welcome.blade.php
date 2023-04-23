@@ -3,404 +3,224 @@
 @section('css')
 @endsection
 @section('content')
-    <!--Main Slider Start-->
-    <section class="main-slider-three clearfix">
-        <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
-                "effect": "fade",
-                "pagination": {
-                "el": "#main-slider-pagination",
-                "type": "bullets",
-                "clickable": true
-                },
-                "navigation": {
-                "nextEl": "#main-slider__swiper-button-next",
-                "prevEl": "#main-slider__swiper-button-prev"
-                },
-                "autoplay": {
-                "delay": 50000000
-                }}'>
-            <div class="swiper-wrapper">
+    @if(count($sliders) > 0)
+        <section class="main-slider-three clearfix">
+            <div class="swiper-container thm-swiper__slider" data-swiper-options='{"slidesPerView": 1, "loop": true,
+                    "effect": "fade",
+                    "pagination": {
+                    "el": "#main-slider-pagination",
+                    "type": "bullets",
+                    "clickable": true
+                    },
+                    "navigation": {
+                    "nextEl": "#main-slider__swiper-button-next",
+                    "prevEl": "#main-slider__swiper-button-prev"
+                    },
+                    "autoplay": {
+                    "delay": 50000000
+                    }}'>
+                <div class="swiper-wrapper">
+                    @foreach(@$sliders as $slider)
+                        <div class="swiper-slide">
+                        <div class="image-layer-three"
+                             style="background-image: url({{ asset('/images/sliders/'.$slider->image) }});"></div>
 
-                <div class="swiper-slide">
-                    <div class="image-layer-three"
-                         style="background-image: url(assets/images/backgrounds/main-slider-3-1.jpg);"></div>
-                    <!-- /.image-layer -->
-
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="main-slider-three__content">
-                                    <h2 class="main-slider-three__title">Insur is Protecting <br> Your Future.</h2>
-                                    <p class="main-slider-three__text">Phasellus condimentum laoreet turpis, ut
-                                        tincid sodales <br> in. Integer leo arcu, mollis sit amet tempor.</p>
-                                    <div class="main-slider-three__btn-box">
-                                        <a href="about.html" class="thm-btn main-slider-three__btn">Let’s Get
-                                            Started</a>
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="main-slider-three__content">
+                                        <h2 class="main-slider-three__title">{{@$slider->heading}}</h2>
+                                        <p class="main-slider-three__text">{{@$slider->subheading}}</p>
+                                        @if(@$slider->link)
+                                            <div class="main-slider-three__btn-box">
+                                                <a href="{{@$slider->link}}" class="thm-btn main-slider-three__btn">{{@$slider->button ?? 'Get Started'}}</a>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    @endforeach
                 </div>
-                <div class="swiper-slide">
-                    <div class="image-layer-three"
-                         style="background-image: url(assets/images/backgrounds/main-slider-3-2.jpg);"></div>
-                    <!-- /.image-layer -->
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="main-slider-three__content">
-                                    <h2 class="main-slider-three__title">Insur is Protecting <br> Your Future.</h2>
-                                    <p class="main-slider-three__text">Phasellus condimentum laoreet turpis, ut
-                                        tincid sodales <br> in. Integer leo arcu, mollis sit amet tempor.</p>
-                                    <div class="main-slider-three__btn-box">
-                                        <a href="about.html" class="thm-btn main-slider-three__btn">Let’s Get
-                                            Started</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                <!-- If we need navigation buttons -->
+                <div class="main-slider-three__nav">
+                    <div class="swiper-button-prev" id="main-slider__swiper-button-next">
+                        <i class="icon-right-arrow"></i>
+                    </div>
+                    <div class="swiper-button-next" id="main-slider__swiper-button-prev">
+                        <i class="icon-right-arrow1"></i>
                     </div>
                 </div>
-                <div class="swiper-slide">
-                    <div class="image-layer-three"
-                         style="background-image: url(assets/images/backgrounds/main-slider-3-3.jpg);"></div>
-                    <!-- /.image-layer -->
 
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="main-slider-three__content">
-                                    <h2 class="main-slider-three__title">Insur is Protecting <br> Your Future.</h2>
-                                    <p class="main-slider-three__text">Phasellus condimentum laoreet turpis, ut
-                                        tincid sodales <br> in. Integer leo arcu, mollis sit amet tempor.</p>
-                                    <div class="main-slider-three__btn-box">
-                                        <a href="about.html" class="thm-btn main-slider-three__btn">Let’s Get
-                                            Started</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
+        </section>
+    @endif
 
-            <!-- If we need navigation buttons -->
-            <div class="main-slider-three__nav">
-                <div class="swiper-button-prev" id="main-slider__swiper-button-next">
-                    <i class="icon-right-arrow"></i>
-                </div>
-                <div class="swiper-button-next" id="main-slider__swiper-button-prev">
-                    <i class="icon-right-arrow1"></i>
-                </div>
-            </div>
-
-        </div>
-    </section>
-    <!--Main Slider End-->
-
-    <!--Feature Three Start-->
-    <section class="feature-three">
-        <div class="feature-three-shape float-bob-x">
-            <img src="assets/images/shapes/feature-three-shape.png" alt="">
-        </div>
-        <div class="container">
-            <div class="row">
-                <!--Feature Three Single Start-->
-                <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-delay="100ms">
-                    <div class="feature-three__single">
-                        <div class="feature-three__icon">
-                            <span class="icon-contract"></span>
-                        </div>
-                        <div class="feature-three__content">
-                            <p class="feature-three__sub-title">Lorem ipsum</p>
-                            <h3 class="feature-three__title">Get all claims at <br> anytime</h3>
-                        </div>
-                    </div>
-                </div>
-                <!--Feature Three Single End-->
-                <!--Feature Three Single Start-->
-                <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-delay="200ms">
-                    <div class="feature-three__single">
-                        <div class="feature-three__icon">
-                            <span class="icon-money-back"></span>
-                        </div>
-                        <div class="feature-three__content">
-                            <p class="feature-three__sub-title">Lorem ipsum</p>
-                            <h3 class="feature-three__title">Money back <br> guarantee policy</h3>
-                        </div>
-                    </div>
-                </div>
-                <!--Feature Three Single End-->
-                <!--Feature Three Single Start-->
-                <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-delay="300ms">
-                    <div class="feature-three__single">
-                        <div class="feature-three__icon">
-                            <span class="icon-shield"></span>
-                        </div>
-                        <div class="feature-three__content">
-                            <p class="feature-three__sub-title">Lorem ipsum</p>
-                            <h3 class="feature-three__title">Protect your life <br> with insur</h3>
-                        </div>
-                    </div>
-                </div>
-                <!--Feature Three Single End-->
-            </div>
-        </div>
-    </section>
-    <!--Feature Three End-->
-
-    <!--About Three Start-->
-    <section class="about-three">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="about-three__left">
-                        <div class="about-three__img-box wow slideInLeft" data-wow-delay="100ms"
-                             data-wow-duration="2500ms">
-                            <div class="about-three__img">
-                                <img src="assets/images/resources/about-three-img-1.png" alt="">
-                            </div>
-                            <div class="about-three__shape-1">
-                                <img src="assets/images/shapes/about-three-shape-1.png" alt="">
-                            </div>
-                            <div class="about-three__location">
-                                <div class="about-three__location-bg"
-                                     style="background-image: url(assets/images/shapes/about-three-shape-2.png);">
-                                </div>
-                                <p class="about-three__location-text">Over 60 <br> Locations <br> Worldwide</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="about-three__right">
-                        <div class="section-title text-left">
-                            <div class="section-sub-title-box">
-                                <p class="section-sub-title">about company</p>
-                                <div class="section-title-shape-1">
-                                    <img src="assets/images/shapes/section-title-shape-1.png" alt="">
-                                </div>
-                                <div class="section-title-shape-2">
-                                    <img src="assets/images/shapes/section-title-shape-2.png" alt="">
-                                </div>
-                            </div>
-                            <h2 class="section-title__title">Creating a better future for
-                                your loved once</h2>
-                        </div>
-                        <div class="about-three__business-start">
-                            <div class="about-three__business-start-icon">
-                                <span class="icon-employees"></span>
-                            </div>
-                            <div class="about-three__business-start-text-box">
-                                <p class="about-three__business-start-text"> We’re in this business since
-                                    <span>1987</span> and we provide the best services.</p>
-                            </div>
-                        </div>
-                        <p class="about-three__text">Nullam eu nibh vitae est tempor molestie id sed ex. Quisque
-                            dignissim maximus ipsum, sed rutrum metus tincidunt et. Sed eget tincidunt ipsum. There
-                            are many variations of passages of psum available, but the majority have alteration in
-                            some form, by injected humour, or randomised words look even slightly believable.</p>
-                        <div class="about-three__bottom">
-                            <div class="about-three__founder">
-                                <div class="about-three__founder-img">
-                                    <img src="assets/images/resources/about-three-founder-img.jpg" alt="">
-                                </div>
-                                <div class="about-three__founder-content">
-                                    <h3 class="about-three__founder-name">David Hardson</h3>
-                                    <p class="about-three__founder-sub-title">Founder of insur</p>
-                                </div>
-                            </div>
-                            <div class="about-three__btn-box">
-                                <a href="about.html" class="thm-btn about-three__btn">Let’s Get Started</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--About Three End-->
-
-    <!--Services Three Start-->
-    <section class="services-three">
-        <div class="container">
-            <div class="services-three__inner">
-                <div class="services-three-shape-1">
-                    <img src="assets/images/shapes/services-three-shape-1.png" alt="">
-                </div>
+    @if(!empty($homepage_info->welcome_description))
+        <section class="about-three mt-5">
+            <div class="container">
                 <div class="row">
-                    <!--Services Three Single Start-->
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
-                        <div class="services-three__single">
+                    <div class="col-xl-6">
+                        <div class="about-three__left">
+                            <div class="about-three__img-box wow slideInLeft" data-wow-delay="100ms"
+                                 data-wow-duration="2500ms">
+                                <div class="about-three__img">
+                                    <img src="{{ @$homepage_info->welcome_image ? asset('/images/home/welcome/'.@$homepage_info->welcome_image):''}}" alt="">
+                                </div>
+                                <div class="about-three__location">
+                                    <div class="about-three__location-bg"
+                                         style="background-image: url({{asset('assets/frontend/images/shapes/about-three-shape-2.png')}});">
+                                    </div>
+                                    <div class="about-three__location-text">
+                                        Over 10 <br> Years <br> of service
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="about-three__right">
                             <div class="section-title text-left">
                                 <div class="section-sub-title-box">
-                                    <p class="section-sub-title">Our services</p>
+                                    <p class="section-sub-title">{{$homepage_info->welcome_subheading ?? ''}}</p>
                                     <div class="section-title-shape-1">
-                                        <img src="assets/images/shapes/section-title-shape-1.png" alt="">
+                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                                     </div>
                                     <div class="section-title-shape-2">
-                                        <img src="assets/images/shapes/section-title-shape-2.png" alt="">
+                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                                     </div>
                                 </div>
-                                <h2 class="section-title__title">Covering all insurance fields</h2>
+                                <h2 class="section-title__title">{{$homepage_info->welcome_heading ?? ''}}</h2>
                             </div>
-                        </div>
-                    </div>
-                    <!--Services Three Single End-->
-                    <!--Services Three Single Start-->
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="200ms">
-                        <div class="services-three__single">
-                            <div class="services-three__img">
-                                <img src="assets/images/services/services-3-1.jpg" alt="">
-                                <div class="services-three__content">
-                                    <h3 class="services-three__title"><a href="car-insurance.html">Car <br>
-                                            insurance</a></h3>
+                            <div class="about-three__text">
+                                {{ ucfirst(@$homepage_info->welcome_description) }}
+                            </div>
+                            <div class="about-three__bottom">
+                                @if(@$homepage_info->welcome_video_link)
+                                <div class="main-slider-two__video-link welcome-section-video" style="position: initial;">
+                                    <a href="{{@$homepage_info->welcome_video_link}}" class="video-popup">
+                                        <div class="main-slider-two__video-icon welcome-section-video-icon">
+                                            <span class="fa fa-play"></span>
+                                            <i class="ripple"></i>
+                                        </div>
+                                    </a>
                                 </div>
+                                @endif
+                                 @if(@$homepage_info->welcome_link)
+                                    <div class="about-three__btn-box">
+                                        <a href="{{@$homepage_info->welcome_link}}" class="thm-btn about-three__btn">{{@$homepage_info->welcome_button??'Learn More'}}</a>
+                                    </div>
+                                 @endif
+                                    <img class="service-image" src="{{ (@$homepage_info->what_image1 !== null) ? asset('/images/home/welcome/'.@$homepage_info->what_image1) :''}}" alt="">
+
                             </div>
                         </div>
                     </div>
-                    <!--Services Three Single End-->
-                    <!--Services Three Single Start-->
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                        <div class="services-three__single">
-                            <div class="services-three__img">
-                                <img src="assets/images/services/services-3-2.jpg" alt="">
-                                <div class="services-three__content">
-                                    <h3 class="services-three__title"><a href="life-insurance.html">Life <br>
-                                            insurance</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Services Three Single End-->
-                    <!--Services Three Single Start-->
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                        <div class="services-three__single">
-                            <div class="services-three__img">
-                                <img src="assets/images/services/services-3-3.jpg" alt="">
-                                <div class="services-three__content">
-                                    <h3 class="services-three__title"><a href="home-insurance.html">Home <br>
-                                            insurance</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Services Three Single End-->
-                    <!--Services Three Single Start-->
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="500ms">
-                        <div class="services-three__single">
-                            <div class="services-three__img">
-                                <img src="assets/images/services/services-3-4.jpg" alt="">
-                                <div class="services-three__content">
-                                    <h3 class="services-three__title"><a href="health-insurance.html">Health <br>
-                                            insurance</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Services Three Single End-->
-                    <!--Services Three Single Start-->
-                    <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="600ms">
-                        <div class="services-three__single">
-                            <div class="services-three__img">
-                                <img src="assets/images/services/services-3-5.jpg" alt="">
-                                <div class="services-three__content">
-                                    <h3 class="services-three__title"><a href="business-insurance.html">Business
-                                            <br> insurance</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Services Three Single End-->
-                    <!--Services Three Single Start-->
-                    <div class="col-xl-6 col-lg-7 col-md-9 wow fadeInUp" data-wow-delay="700ms">
-                        <div class="services-three__single">
-                            <div class="services-three__get-quote">
-                                <p class="services-three__get-quote-sub-title">Lorem ipsum text</p>
-                                <h3 class="services-three__get-quote-title">You can compare quotes and get your
-                                    insurance in right way.</h3>
-                                <a href="insurance-01.html" class="thm-btn services-three__get-quote-btn">Get a
-                                    Quote</a>
-                            </div>
-                        </div>
-                    </div>
-                    <!--Services Three Single End-->
                 </div>
             </div>
-        </div>
-    </section>
-    <!--Services Three End-->
+        </section>
+    @endif
 
-    <!--Brand One Start-->
-    <section class="brand-one">
+    @if(count($latestServices) > 0)
+        <section class="services-three">
+            <div class="container">
+                <div class="services-three__inner">
+                    <div class="services-three-shape-1">
+                        <img src="{{asset('assets/frontend/images/shapes/services-three-shape-1.png')}}" alt="">
+                    </div>
+                    <div class="row">
+                        <!--Services Three Single Start-->
+                        <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="100ms">
+                            <div class="services-three__single">
+                                <div class="section-title text-left">
+                                    <div class="section-sub-title-box">
+                                        <p class="section-sub-title">Our services</p>
+                                        <div class="section-title-shape-1">
+                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                        </div>
+                                        <div class="section-title-shape-2">
+                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                        </div>
+                                    </div>
+                                    <h2 class="section-title__title">Covering all important fields</h2>
+                                </div>
+                            </div>
+                        </div>
+                        @foreach(@$latestServices as $index=>$service)
+                            <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($index + 2) * 100 }}ms">
+                            <div class="services-three__single">
+                                <div class="services-three__img">
+                                    <img src="{{asset('/images/service/thumb/thumb_'.@$service->banner_image)}}" alt="">
+                                    <div class="services-three__content">
+                                        <h3 class="services-three__title"><a href="{{route('service.single',$service->slug)}}">
+                                                {{ucwords(@$service->title)}}</a></h3>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+
+
+                        <div class="col-xl-6 col-lg-7 col-md-9 wow fadeInUp" data-wow-delay="700ms">
+                            <div class="services-three__single">
+                                <div class="services-three__get-quote">
+                                    <p class="services-three__get-quote-sub-title">Best services out there</p>
+                                    <h3 class="services-three__get-quote-title">You can reach out and get information regarding our services.</h3>
+                                    <a href="insurance-01.html" class="thm-btn services-three__get-quote-btn">Send us a messgae</a>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Services Three Single End-->
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+    @if(count($clients) > 0)
+        <section class="brand-one">
         <div class="container">
             <div class="row">
                 <div class="col-xl-3">
                     <div class="brand-one__title">
-                        <h2>Trusted and funded by more then 800 companies</h2>
+                        <h2>Trusted by vast pool of clients across the world</h2>
                     </div>
                 </div>
                 <div class="col-xl-9">
                     <div class="brand-one__main-content">
-                        <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 100, "slidesPerView": 5, "autoplay": { "delay": 5000 }, "breakpoints": {
+                        <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 200, "slidesPerView": 4, "breakpoints": {
                         "0": {
-                            "spaceBetween": 30,
+                            "spaceBetween": 60,
                             "slidesPerView": 2
                         },
                         "375": {
-                            "spaceBetween": 30,
+                            "spaceBetween": 60,
                             "slidesPerView": 2
                         },
                         "575": {
-                            "spaceBetween": 30,
+                            "spaceBetween": 60,
                             "slidesPerView": 3
                         },
                         "767": {
-                            "spaceBetween": 50,
+                            "spaceBetween": 60,
                             "slidesPerView": 4
                         },
                         "991": {
-                            "spaceBetween": 50,
+                            "spaceBetween": 60,
                             "slidesPerView": 5
                         },
                         "1199": {
-                            "spaceBetween": 100,
-                            "slidesPerView": 5
+                            "spaceBetween": 55,
+                            "slidesPerView": 4
                         }
                     }}'>
                             <div class="swiper-wrapper">
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/brand-1-1.png" alt="">
-                                </div><!-- /.swiper-slide -->
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/brand-1-2.png" alt="">
-                                </div><!-- /.swiper-slide -->
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/brand-1-3.png" alt="">
-                                </div><!-- /.swiper-slide -->
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/brand-1-4.png" alt="">
-                                </div><!-- /.swiper-slide -->
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/brand-1-5.png" alt="">
-                                </div><!-- /.swiper-slide -->
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/brand-1-1.png" alt="">
-                                </div><!-- /.swiper-slide -->
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/brand-1-2.png" alt="">
-                                </div><!-- /.swiper-slide -->
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/brand-1-3.png" alt="">
-                                </div><!-- /.swiper-slide -->
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/brand-1-4.png" alt="">
-                                </div><!-- /.swiper-slide -->
-                                <div class="swiper-slide">
-                                    <img src="assets/images/brand/brand-1-5.png" alt="">
-                                </div><!-- /.swiper-slide -->
+                                @foreach($clients as $client)
+                                    <div class="swiper-slide" style="margin-right: 130px">
+                                        <a href="{{ $client->link ?? '#' }}" target="{{ ($client->link !== null) ? '_blank':'' }}"><img src="{{asset('/images/clients/'.@$client->image)}}" alt=""></a>
+                                    </div><!-- /.swiper-slide -->
+                                @endforeach
                             </div>
                         </div>
                     </div>
@@ -408,8 +228,7 @@
             </div>
         </div>
     </section>
-    <!--Brand One End-->
-
+    @endif
     <!--Benefits Start-->
     <section class="benefits">
         <div class="benefits-bg" style="background-image: url(assets/images/backgrounds/benefits-bg.png);"></div>
