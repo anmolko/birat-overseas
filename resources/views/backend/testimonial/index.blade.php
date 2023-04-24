@@ -95,7 +95,7 @@
                                                 id="work-foreground-img-file-input" onchange="loadbasicFile('work-foreground-img-file-input','current-work-img',event)" name="image" required
                                                 class="work-foreground-img-file-input" >
 
-                                        <figcaption class="figure-caption">Select your related testimonial image (320 x 280px).</figcaption>
+                                        <figcaption class="figure-caption">Select your related testimonial image (110 x 110px).</figcaption>
                                         <div class="invalid-feedback" >
                                             Please select a image.
                                         </div>

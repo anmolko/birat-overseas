@@ -6259,7 +6259,7 @@ ul {
 }
 
 .cta-two {
-  padding: 120px 0 120px;
+  padding: 20px 0 30px;
 }
 
 /*--------------------------------------------------------------
@@ -8138,6 +8138,10 @@ ul {
   position: relative;
   display: block;
   margin-bottom: 0px;
+}
+
+.testimonials-top{
+    margin-bottom: 100px;
 }
 
 .testimonial-three__left {

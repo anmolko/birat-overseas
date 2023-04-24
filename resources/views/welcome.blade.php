@@ -503,7 +503,7 @@
     @endif
 
     @if(!empty($homepage_info->why_heading))
-        <section class="about-two">
+        <section class="about-two mt-5">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-5">
@@ -594,72 +594,52 @@
         </section>
     @endif
 
-    <section class="benefits">
-        <div class="benefits-bg" style="background-image: url(assets/images/backgrounds/benefits-bg.png);"></div>
-        <div class="benefits-bg-2" style="background-image: url(assets/images/backgrounds/benefits-bg-2.jpg);">
-        </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="benefits__left">
-                        <div class="section-title text-left">
-                            <div class="section-sub-title-box">
-                                <p class="section-sub-title">insur benefits</p>
-                                <div class="section-title-shape-1">
-                                    <img src="assets/images/shapes/section-title-shape-1.png" alt="">
-                                </div>
-                                <div class="section-title-shape-2">
-                                    <img src="assets/images/shapes/section-title-shape-2.png" alt="">
-                                </div>
-                            </div>
-                            <h2 class="section-title__title">We inspire and help our customers</h2>
+    @if(count($latestJobs) > 1)
+        <section class="benefits">
+            <div class="benefits-bg-2" style="background-image: url({{asset('assets/frontend/images/backgrounds/benefits-bg-2.jpg')}});"></div>
+            <div class="container">
+                <div class="section-title text-center">
+                    <div class="section-sub-title-box">
+                        <p class="section-sub-title">Our current demans</p>
+                        <div class="section-title-shape-1">
+                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                         </div>
-                        <p class="benefits__text">Pellentesque habitant morbi tristique senectus netus et <br>
-                            malesuada fames ac turp egestas. Aliquam viverra arcu. Donec <br> aliquet blandit enim
-                            feugiat mattis.</p>
-                        <div class="benefits__point-box">
-                            <ul class="list-unstyled benefits__point">
-                                <li>
-                                    <div class="icon">
-                                        <i class="fa fa-check"></i>
-                                    </div>
-                                    <div class="text">
-                                        <p>Prosper in this volatile</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fa fa-check"></i>
-                                    </div>
-                                    <div class="text">
-                                        <p>Prosper in this volatile</p>
-                                    </div>
-                                </li>
-                            </ul>
-                            <ul class="list-unstyled benefits__point benefits__point-two">
-                                <li>
-                                    <div class="icon">
-                                        <i class="fa fa-check"></i>
-                                    </div>
-                                    <div class="text">
-                                        <p>Embaras hidden inse</p>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <i class="fa fa-check"></i>
-                                    </div>
-                                    <div class="text">
-                                        <p>Embaras hidden inse</p>
-                                    </div>
-                                </li>
-                            </ul>
+                        <div class="section-title-shape-2">
+                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                         </div>
                     </div>
+                    <h2 class="section-title__title">Latest jobs for<br> everyone</h2>
+                </div>
+
+                <div class="row">
+                    @foreach($latestJobs as $index=>$job)
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
+                            <div class="news-three__single">
+                                <div class="news-three-bg" style="background-image: url({{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/birat.png')}});"></div>
+                                <div class="news-three__client-info">
+                                    <div class="news-three__client-content">
+                                        <p><i class="far fa-calendar-alt"></i>Apply date</p>
+                                        <h5> @if(@$job->end_date >= $today)
+                                                {{date('M j, Y',strtotime(@$job->start_date))}} - {{date('M j, Y',strtotime(@$job->end_date))}}
+                                            @else
+                                                Expired
+                                            @endif
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="news-three__content">
+                                    <h3 class="news-three__title"><a href="{{route('job.single',@$job->slug)}}">{{ucfirst($job->name)}}</a></h3>
+                                    <div class="news-three__arrow">
+                                        <a href="{{route('job.single',@$job->slug)}}"><span class="icon-right-arrow1"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    @endif
 
     @if(count($director) > 0)
         <section class="testimonial-three">
@@ -678,7 +658,7 @@
                                             <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                                         </div>
                                     </div>
-                                    <h2 class="section-title__title">Look what our directors are talking about</h2>
+                                    <h2 class="section-title__title">Closely relayed message from our director</h2>
                                 </div>
                             </div>
                         </div>
@@ -752,268 +732,12 @@
         </section>
     @endif
 
-    <!--We Provide Start-->
-    <section class="we-provide">
-        <div class="we-provide-bg" style="background-image: url(assets/images/backgrounds/we-provide-bg.jpg);">
-        </div>
-        <div class="container">
-            <div class="section-title text-center">
-                <div class="section-sub-title-box">
-                    <p class="section-sub-title">award winning company</p>
-                    <div class="section-title-shape-1">
-                        <img src="assets/images/shapes/section-title-shape-1.png" alt="">
-                    </div>
-                    <div class="section-title-shape-2">
-                        <img src="assets/images/shapes/section-title-shape-2.png" alt="">
-                    </div>
-                </div>
-                <h2 class="section-title__title">We provide better insurance <br> for everyone</h2>
-            </div>
-            <div class="we-provide__tab">
-                <div class="we-provide__tab-box tabs-box">
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-3">
-                            <div class="we-provide__tab-btn-box">
-                                <ul class="tab-buttons clearfix list-unstyled">
-                                    <li data-tab="#values" class="tab-btn"><span>Our Values</span></li>
-                                    <li data-tab="#mission" class="tab-btn active-btn"><span>Company Mission</span>
-                                    </li>
-                                    <li data-tab="#goals" class="tab-btn"><span>Our Goals</span></li>
-                                    <li data-tab="#rewards" class="tab-btn"><span>Cash Rewards</span></li>
-                                    <li data-tab="#choose" class="tab-btn"><span>Why Choose Insur</span></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-9 col-lg-9">
-                            <div class="we-provide__tab-main-content">
-                                <div class="tabs-content">
-                                    <!--tab-->
-                                    <div class="tab" id="values">
-                                        <div class="we-provide__tab-main-content-inner">
-                                            <div class="we-provide-shape-1">
-                                                <img src="assets/images/shapes/we-provide-shape-1.png" alt="">
-                                            </div>
-                                            <div class="we-provide__tab-main-content-left">
-                                                <div class="we-provide__tab-main-content-icon">
-                                                    <span class="icon-mission"></span>
-                                                </div>
-                                                <h3 class="we-provide__tab-main-content-title">Our Values</h3>
-                                                <p class="we-provide__tab-main-content-text">Lorem ipsum dolor sit
-                                                    amet consectetur adipiscing elit sed do eiusmod tempor
-                                                    incididunt labore dolore magna aliqua enim ad minim veniam quis
-                                                    nostrud.</p>
-                                                <ul class="list-unstyled we-provide__tab-main-content-points">
-                                                    <li>
-                                                        <div class="icon">
-                                                            <i class="fa fa-check"></i>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p>Pina & Associates Insurance</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="icon">
-                                                            <i class="fa fa-check"></i>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p>Payment at Contingency</p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="we-provide__tab-main-content-right">
-                                                <div class="we-provide__tab-main-content-right-img">
-                                                    <img src="assets/images/resources/we-provide-tab-main-content-right-img.jpg"
-                                                         alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--tab-->
-                                    <div class="tab active-tab" id="mission">
-                                        <div class="we-provide__tab-main-content-inner">
-                                            <div class="we-provide-shape-1">
-                                                <img src="assets/images/shapes/we-provide-shape-1.png" alt="">
-                                            </div>
-                                            <div class="we-provide__tab-main-content-left">
-                                                <div class="we-provide__tab-main-content-icon">
-                                                    <span class="icon-mission"></span>
-                                                </div>
-                                                <h3 class="we-provide__tab-main-content-title">Company Mission</h3>
-                                                <p class="we-provide__tab-main-content-text">Lorem ipsum dolor sit
-                                                    amet consectetur adipiscing elit sed do eiusmod tempor
-                                                    incididunt labore dolore magna aliqua enim ad minim veniam quis
-                                                    nostrud.</p>
-                                                <ul class="list-unstyled we-provide__tab-main-content-points">
-                                                    <li>
-                                                        <div class="icon">
-                                                            <i class="fa fa-check"></i>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p>Pina & Associates Insurance</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="icon">
-                                                            <i class="fa fa-check"></i>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p>Payment at Contingency</p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="we-provide__tab-main-content-right">
-                                                <div class="we-provide__tab-main-content-right-img">
-                                                    <img src="assets/images/resources/we-provide-tab-main-content-right-img-2.jpg"
-                                                         alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--tab-->
-                                    <div class="tab" id="goals">
-                                        <div class="we-provide__tab-main-content-inner">
-                                            <div class="we-provide-shape-1">
-                                                <img src="assets/images/shapes/we-provide-shape-1.png" alt="">
-                                            </div>
-                                            <div class="we-provide__tab-main-content-left">
-                                                <div class="we-provide__tab-main-content-icon">
-                                                    <span class="icon-mission"></span>
-                                                </div>
-                                                <h3 class="we-provide__tab-main-content-title">Our Goals</h3>
-                                                <p class="we-provide__tab-main-content-text">Lorem ipsum dolor sit
-                                                    amet consectetur adipiscing elit sed do eiusmod tempor
-                                                    incididunt labore dolore magna aliqua enim ad minim veniam quis
-                                                    nostrud.</p>
-                                                <ul class="list-unstyled we-provide__tab-main-content-points">
-                                                    <li>
-                                                        <div class="icon">
-                                                            <i class="fa fa-check"></i>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p>Pina & Associates Insurance</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="icon">
-                                                            <i class="fa fa-check"></i>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p>Payment at Contingency</p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="we-provide__tab-main-content-right">
-                                                <div class="we-provide__tab-main-content-right-img">
-                                                    <img src="assets/images/resources/we-provide-tab-main-content-right-img-3.jpg"
-                                                         alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--tab-->
-                                    <div class="tab" id="rewards">
-                                        <div class="we-provide__tab-main-content-inner">
-                                            <div class="we-provide-shape-1">
-                                                <img src="assets/images/shapes/we-provide-shape-1.png" alt="">
-                                            </div>
-                                            <div class="we-provide__tab-main-content-left">
-                                                <div class="we-provide__tab-main-content-icon">
-                                                    <span class="icon-mission"></span>
-                                                </div>
-                                                <h3 class="we-provide__tab-main-content-title">Cash Rewards</h3>
-                                                <p class="we-provide__tab-main-content-text">Lorem ipsum dolor sit
-                                                    amet consectetur adipiscing elit sed do eiusmod tempor
-                                                    incididunt labore dolore magna aliqua enim ad minim veniam quis
-                                                    nostrud.</p>
-                                                <ul class="list-unstyled we-provide__tab-main-content-points">
-                                                    <li>
-                                                        <div class="icon">
-                                                            <i class="fa fa-check"></i>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p>Pina & Associates Insurance</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="icon">
-                                                            <i class="fa fa-check"></i>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p>Payment at Contingency</p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="we-provide__tab-main-content-right">
-                                                <div class="we-provide__tab-main-content-right-img">
-                                                    <img src="assets/images/resources/we-provide-tab-main-content-right-img-4.jpg"
-                                                         alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!--tab-->
-                                    <div class="tab" id="choose">
-                                        <div class="we-provide__tab-main-content-inner">
-                                            <div class="we-provide-shape-1">
-                                                <img src="assets/images/shapes/we-provide-shape-1.png" alt="">
-                                            </div>
-                                            <div class="we-provide__tab-main-content-left">
-                                                <div class="we-provide__tab-main-content-icon">
-                                                    <span class="icon-mission"></span>
-                                                </div>
-                                                <h3 class="we-provide__tab-main-content-title">Why Choose Insur</h3>
-                                                <p class="we-provide__tab-main-content-text">Lorem ipsum dolor sit
-                                                    amet consectetur adipiscing elit sed do eiusmod tempor
-                                                    incididunt labore dolore magna aliqua enim ad minim veniam quis
-                                                    nostrud.</p>
-                                                <ul class="list-unstyled we-provide__tab-main-content-points">
-                                                    <li>
-                                                        <div class="icon">
-                                                            <i class="fa fa-check"></i>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p>Pina & Associates Insurance</p>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="icon">
-                                                            <i class="fa fa-check"></i>
-                                                        </div>
-                                                        <div class="text">
-                                                            <p>Payment at Contingency</p>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="we-provide__tab-main-content-right">
-                                                <div class="we-provide__tab-main-content-right-img">
-                                                    <img src="assets/images/resources/we-provide-tab-main-content-right-img-5.jpg"
-                                                         alt="">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!--We Provide End-->
-
-    <!--CTA One Start-->
     <section class="cta-one cta-two">
         <div class="container">
             <div class="cta-one__content">
                 <div class="cta-one__inner">
                     <div class="cta-one__left">
-                        <h3 class="cta-one__title">Find a local insurance agent</h3>
+                        <h3 class="cta-one__title">Get started with us</h3>
                     </div>
                     <div class="cta-one__right">
                         <div class="cta-one__call">
@@ -1021,22 +745,139 @@
                                 <i class="fas fa-phone"></i>
                             </div>
                             <div class="cta-one__call-number">
-                                <a href="tel:9200368090">+92 (003) 68-090</a>
-                                <p>Call to Our Experts</p>
+                                <a href="tel:{{@$setting_data->phone}}">{{@$setting_data->mobile}}</a>
+                                <p>Reach out via call</p>
                             </div>
                         </div>
                         <div class="cta-one__btn-box">
-                            <a href="contact.html" class="thm-btn cta-one__btn">Get a Quote</a>
+                            <a href="{{route('contact')}}" class="thm-btn cta-one__btn">Send us a Message</a>
                         </div>
                     </div>
                     <div class="cta-one__img">
-                        <img src="assets/images/resources/cta-one-img.png" alt="">
+                        <img src="{{asset('assets/frontend/images/resources/cta-one-img.png')}}" alt="">
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <!--CTA One End-->
+
+    @if(count($testimonials) > 0)
+        <section class="testimonial-three">
+            <div class="container">
+                <div class="testimonial-three__top testimonials-top">
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="testimonial-three__left">
+                                <div class="section-title text-left">
+                                    <div class="section-sub-title-box">
+                                        <p class="section-sub-title">testimonials</p>
+                                        <div class="section-title-shape-1">
+                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                        </div>
+                                        <div class="section-title-shape-2">
+                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                        </div>
+                                    </div>
+                                    <h2 class="section-title__title">What our customers are talking about</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-three__bottom">
+                    <div class="row">
+                        <div class="col-xl-12">
+                            <div class="owl-carousel owl-theme thm-owl__carousel testimonial-three__carousel"
+                                 data-owl-options='{
+                                    "loop": true,
+                                    "autoplay": true,
+                                    "margin": 30,
+                                    "nav": false,
+                                    "dots": true,
+                                    "smartSpeed": 500,
+                                    "autoplayTimeout": 10000,
+                                    "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                                    "responsive": {
+                                        "0": {
+                                            "items": 1
+                                        },
+                                        "768": {
+                                            "items": 2
+                                        },
+                                        "992": {
+                                            "items": 2
+                                        },
+                                        "1200": {
+                                            "items": 3
+                                        }
+                                    }
+                                }'>
+
+                                @foreach($testimonials as $testimonial)
+                                    <div class="item">
+                                        <div class="testimonial-three__single">
+                                            <div class="testimonial-three__client-img-box">
+                                                <div class="testimonial-three__client-img">
+                                                    <img src="{{asset('/images/testimonial/'.@$testimonial->image)}}" alt="">
+                                                </div>
+                                                <div class="testimonial-three__quote">
+                                                    <img src="{{asset('assets/frontend/images/testimonial/testimonial-1-quote.png')}}" alt="">
+                                                </div>
+                                            </div>
+                                            <p class="testimonial-three__text">{{ucfirst($testimonial->description)}}</p>
+                                            <div class="testimonial-three__client">
+                                                <h4 class="testimonial-three__client-name">{{ucfirst($testimonial->name)}}</h4>
+                                                <p class="testimonial-three__client-sub-title">{{ucfirst($testimonial->position)}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
+
+    @if(@$setting_data->grievance_heading)
+        <section class="about-four">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="about-four__left">
+                        <div class="about-four__img-box wow slideInLeft" data-wow-delay="100ms"
+                             data-wow-duration="2500ms">
+                            <iframe src="{{@$setting_data->google_map}}" style="border:0;width: 625px;height: 725px;" allowfullscreen="" loading="lazy"></iframe>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="about-four__right">
+                        <div class="section-title text-left">
+                            <div class="section-sub-title-box">
+                                <p class="section-sub-title">Birat Overseas</p>
+                                <div class="section-title-shape-1">
+                                    <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                </div>
+                                <div class="section-title-shape-2">
+                                    <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                </div>
+                            </div>
+                            <h2 class="section-title__title">{{@$setting_data->grievance_heading}}</h2>
+                        </div>
+                        <p class="about-four__text-2"> {{ ucfirst(@$setting_data->grievance_description) }}</p>
+                        <div class="about-four__founder">
+                            <a href="{{route('contact')}}" class="thm-btn services-three__get-quote-btn">Reach Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    @endif
 
     <!--News Three Start-->
     <section class="news-three">
@@ -1045,92 +886,48 @@
                 <div class="section-sub-title-box">
                     <p class="section-sub-title">recent news feed</p>
                     <div class="section-title-shape-1">
-                        <img src="assets/images/shapes/section-title-shape-1.png" alt="">
+                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                     </div>
                     <div class="section-title-shape-2">
-                        <img src="assets/images/shapes/section-title-shape-2.png" alt="">
+                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                     </div>
                 </div>
                 <h2 class="section-title__title">Latest news & Articles <br> from the blog</h2>
             </div>
             <div class="row">
-                <!--News Three Single Start-->
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="100ms">
-                    <div class="news-three__single">
-                        <div class="news-three-bg" style="background-image: url(assets/images/blog/news-3-1.jpg);">
-                        </div>
-                        <div class="news-three__client-info">
-                            <div class="news-three__client-img">
-                                <img src="assets/images/blog/news-two-client-img-1.jpg" alt="">
+                @foreach(@$latestPosts as $index=>$post)
+                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
+                        <div class="news-one__single">
+                            <div class="news-one__img">
+                                <img src="{{asset('/images/blog/'.@$post->image)}}" alt="">
+                                <div class="news-one__tag">
+                                    <p><i class="far fa-folder"></i>{{ucfirst(@$post->category->name)}}</p>
+                                </div>
+                                <div class="news-one__arrow-box">
+                                    <a href="{{route('blog.single',$post->slug)}}" class="news-one__arrow">
+                                        <span class="icon-right-arrow1"></span>
+                                    </a>
+                                </div>
                             </div>
-                            <div class="news-three__client-content">
-                                <p><i class="far fa-user-circle"></i>by Admin</p>
-                                <h5>15 March, 2022</h5>
-                            </div>
-                        </div>
-                        <div class="news-three__content">
-                            <h3 class="news-three__title"><a href="news-details.html">Which allows you to pay down
-                                    insurance bills</a></h3>
-                            <div class="news-three__arrow">
-                                <a href="news-details.html"><span class="icon-right-arrow1"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--News Three Single End-->
-                <!--News Three Single Start-->
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="200ms">
-                    <div class="news-three__single">
-                        <div class="news-three-bg" style="background-image: url(assets/images/blog/news-3-2.jpg);">
-                        </div>
-                        <div class="news-three__client-info">
-                            <div class="news-three__client-img">
-                                <img src="assets/images/blog/news-two-client-img-2.jpg" alt="">
-                            </div>
-                            <div class="news-three__client-content">
-                                <p><i class="far fa-user-circle"></i>by Admin</p>
-                                <h5>15 March, 2022</h5>
-                            </div>
-                        </div>
-                        <div class="news-three__content">
-                            <h3 class="news-three__title"><a href="news-details.html">Leverage agile frameworks to
-                                    provide</a></h3>
-                            <div class="news-three__arrow">
-                                <a href="news-details.html"><span class="icon-right-arrow1"></span></a>
+                            <div class="news-one__content">
+                                <ul class="list-unstyled news-one__meta">
+                                    <li><a href="{{route('blog.single',$post->slug)}}"><i class="far fa-calendar"></i>{{date('d M Y', strtotime($post->created_at))}} </a>
+                                    </li>
+                                </ul>
+                                <h3 class="news-one__title"><a href="{{route('blog.single',$post->slug)}}">T{{ucfirst($post->title)}}</a></h3>
+                                <p class="news-one__text"> {!! elipsis($post->description) !!}</p>
+                                <div class="news-one__read-more">
+                                    <a href="{{route('blog.single',$post->slug)}}">Read More <i class="fas fa-angle-double-right"></i></a>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <!--News Three Single End-->
-                <!--News Three Single Start-->
-                <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="news-three__single">
-                        <div class="news-three-bg" style="background-image: url(assets/images/blog/news-3-3.jpg);">
-                        </div>
-                        <div class="news-three__client-info">
-                            <div class="news-three__client-img">
-                                <img src="assets/images/blog/news-two-client-img-3.jpg" alt="">
-                            </div>
-                            <div class="news-three__client-content">
-                                <p><i class="far fa-user-circle"></i>by Admin</p>
-                                <h5>15 March, 2022</h5>
-                            </div>
-                        </div>
-                        <div class="news-three__content">
-                            <h3 class="news-three__title"><a href="news-details.html">Bring to the table win-win
-                                    survival strategis insurance bills</a></h3>
-                            <div class="news-three__arrow">
-                                <a href="news-details.html"><span class="icon-right-arrow1"></span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--News Three Single End-->
+                @endforeach
+
             </div>
         </div>
     </section>
     <!--News Three End-->
-
 @endsection
 
 @section('js')

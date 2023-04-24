@@ -500,7 +500,6 @@
     @endif
 
     @if(count($testimonials) > 0)
-
         <section class="testimonial-section pt-5">
             <div class="auto-container">
                 <!--Sec Title-->
@@ -536,7 +535,6 @@
                 </div>
             </div>
         </section>
-
     @endif
 
     @if(@$setting_data->grievance_heading)

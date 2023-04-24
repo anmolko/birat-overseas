@@ -1,52 +1,40 @@
 @extends('frontend.layouts.master')
-@section('title')  Page Not Found @endsection
+@section('title')404 - Page Not Found @endsection
 @section('content')
-
-    <section class="page-title" style="background-image: url({{asset('assets/frontend/images/background/6.jpg')}})">
-        <div class="auto-container">
-            <h1>404 Error</h1>
-            <ul class="page-breadcrumb">
-                <li><a href="/">home</a></li>
-                <li>404 Error</li>
-            </ul>
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
         </div>
-    </section>
-
-    <section class="about-section">
-        <div class="auto-container">
-            <div class="row clearfix">
-
-                <!--Title Column-->
-                <div class="title-column col-lg-5 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <!--Sec Title-->
-                        <div class="sec-title">
-                            <h2>404 ERROR</h2>
-                            <div class="title-text">Oops ! Looks like you took a wrong turn.</div>
-                        </div>
-                        <div class="text">
-                            It seems like we couldn't find what you are looking for. Please try looking for something else or go to another URL.
-                        </div>
-                        <a href="#" class="theme-btn btn-style-five">Homepage</a>
-                    </div>
-                </div>
-
-                <!--Video Column-->
-                <div class="video-column col-lg-7 col-md-12 col-sm-12">
-                    <div class="inner-column wow fadeInRight" data-wow-delay="0ms" data-wow-duration="1500ms">
-
-                        <!--Video Box-->
-                        <div class="video-box">
-                            <figure class="image">
-                                <img src="{{ asset('assets/frontend/images/resource/video-img.jpg') }}" alt="">
-                            </figure>
-                        </div>
-
-                    </div>
-                </div>
-
+        <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+        <div class="container">
+            <div class="page-header__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>404 error</li>
+                </ul>
+                <h2>404 error</h2>
             </div>
         </div>
     </section>
 
+    <section class="error-page">
+        <div class="error-page-shape-1 float-bob-y"
+             style="background-image: url({{asset('assets/frontend/images/shapes/error-page-shape-1.png')}});">
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="error-page__inner">
+                        <div class="error-page__title-box">
+                            <h2 class="error-page__title">404</h2>
+                            <h3 class="error-page__sub-title">Page not found!</h3>
+                        </div>
+                        <p class="error-page__text">Sorry we can't find that page! The page you are looking <br> for
+                            has been moved or doesn't exist.</p>
+                        <a href="/" class="thm-btn error-page__btn">Back to Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 @endsection
