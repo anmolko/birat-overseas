@@ -7,115 +7,137 @@
 </style>
 @endsection
 @section('content')
-    <section class="page-title" style="background-image: url({{asset('assets/frontend/images/background/6.jpg')}})">
-        <div class="auto-container">
-            <h1>Contact us</h1>
-            <ul class="page-breadcrumb">
-                <li><a href="/">home</a></li>
-                <li>Contact us</li>
-            </ul>
+    <!--Page Header Start-->
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
         </div>
-    </section>
-    @if(@$setting_data->google_map)
-        <div class="map-section">
-            <div class="auto-container">
-                <!--Map Outer-->
-                <div class="map-outer">
-                    <!--Map Canvas-->
-                    <iframe
-                        width="100%"
-                        height="600px"
-                        src="{{@$setting_data->google_map}}"
-                    ></iframe>
-                </div>
+        <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+        <div class="container">
+            <div class="page-header__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>Contact</li>
+                </ul>
+                <h2>Contact</h2>
             </div>
         </div>
-    @endif
-    <section class="contact-section">
-        <div class="auto-container">
-            <div class="row clearfix">
+    </section>
 
-                <!--Info Column-->
-                <div class="info-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-column wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                        <div class="content-box">
-                            <h2>Do you want to reach at the next level of Business Success?</h2>
-                            <div class="title">Book a Complimentary Consultation by visiting or calling us!</div>
-                            <ul class="list-style-three">
-                                <li><span class="icon fa fa-map-marker"></span>{{@$setting_data->address}}</li>
-                                <li><span class="icon fa fa-phone"></span>{{@$setting_data->phone}}</li>
-                                <li><span class="icon fa fa-envelope"></span>{{@$setting_data->email}}</li>
-                            </ul>
-                            <!--Social Boxed-->
-                            <ul class="social-boxed">
-                                <ul class="social-icon-one mt-3">
-                                    @if(@$setting_data->facebook)
-                                        <li><a href="{{@$setting_data->facebook}}"><span class="fa-brands fa-facebook"></span></a></li>
-                                    @endif
-                                    @if(@$setting_data->youtube)
-                                        <li><a href="{{@$setting_data->youtube}}"><span class="fa-brands fa-youtube"></span></a></li>
-
-                                    @endif
-                                    @if(@$setting_data->instagram)
-                                        <li><a href="{{@$setting_data->instagram}}"><span class="fa-brands fa-instagram"></span></a></li>
-
-                                    @endif
-                                    @if(@$setting_data->linkedin)
-                                        <li><a href="{{@$setting_data->linkedin}}"><span class="fa-brands fa-linkedin"></span></a></li>
-                                    @endif
-                                    @if(!empty(@$setting_data->ticktock))
-                                        <li><a href="{{@$setting_data->ticktock}}"><span class="fa-brands fa-tiktok"></span></a></li>
-                                    @endif
-                                </ul>
-                            </ul>
+    <section class="contact-page" >
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-4 col-lg-5">
+                    <div class="contact-page__left">
+                        <div class="section-title text-left">
+                            <div class="section-sub-title-box">
+                                <p class="section-sub-title">Contact us</p>
+                                <div class="section-title-shape-1">
+                                    <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                </div>
+                                <div class="section-title-shape-2">
+                                    <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                </div>
+                            </div>
+                            <h2 class="section-title__title">Feel free to get in touch with us</h2>
                         </div>
+                        <div class="contact-page__call-email">
+                            <div class="contact-page__call-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-page__call-email-content">
+                                <h4>
+                                    <a href="tel:{{@$setting_data->phone}}" class="contact-page__call-number">{{@$setting_data->phone}}</a>
+                                    <a href="mailto:{{@$setting_data->email}}"
+                                       class="contact-page__email">{{@$setting_data->email}}</a>
+                                </h4>
+                            </div>
+                        </div>
+                        <p class="contact-page__location-text">{{@$setting_data->address}}</p>
                     </div>
                 </div>
-
-                <!--Form Column-->
-                <div class="form-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner-column">
-                        <h2>Send a Message</h2>
-                        <div class="title">We are working with different companies around to deliver ideas for their business success.</div>
-                        <!-- Contact Form -->
-                        <div class="contact-form ">
-                            <!--Comment Form-->
-                            <form id="contact_form" name="contact" class="" action="{{route('contact.store')}}" method="post">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="contact-page__right">
+                        <div class="contact-page__form">
+                            <form id="contact_form" name="contact" class="comment-one__form contact-form-validated"
+                                  action="{{route('contact.store')}}" method="post" novalidate="novalidate">
                                 @csrf
-                                <div class="form-group">
-                                    <input type="text" name="name" placeholder="Your Name" required>
+                                <div class="row">
+                                    <div class="col-xl-6">
+                                        <div class="comment-form__input-box">
+                                            <input type="text" placeholder="Your name" name="name">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="comment-form__input-box">
+                                            <input type="email" placeholder="Email address" name="email">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="comment-form__input-box">
+                                            <input type="text" placeholder="Phone number" name="phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-6">
+                                        <div class="comment-form__input-box">
+                                            <input type="text" placeholder="Subject" name="subject">
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="email" name="email" placeholder="Email address" required>
+                                <div class="row">
+                                    <div class="col-xl-12">
+                                        <div class="comment-form__input-box text-message-box">
+                                            <textarea name="message" placeholder="Write a message"></textarea>
+                                        </div>
+                                        <div class="comment-form__btn-box">
+                                            <button type="submit" class="thm-btn comment-form__btn">Send a
+                                                Message</button>
+                                        </div>
+                                    </div>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="text" name="phone" placeholder="Phone" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" name="subject" placeholder="Subject" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <textarea name="message" placeholder="Message"></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <button class="theme-btn message-btn" type="submit" name="submit-form">send message</button>
-                                </div>
-
                             </form>
-
                         </div>
-                        <!--End Comment Form -->
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
+
+    <section class="cta-one cta-three">
+        <div class="container">
+            <div class="cta-one__content">
+                <div class="cta-one__inner">
+                    <div class="cta-one__left">
+                        <h3 class="cta-one__title">You can also call us</h3>
+                    </div>
+                    <div class="cta-one__right">
+                        <div class="cta-one__call">
+                            <div class="cta-one__call-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="cta-one__call-number">
+                                <a href="tel:9200368090">+92 (003) 68-090</a>
+                                <p>Reach out to us</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cta-one__img">
+                        <img src="{{asset('assets/frontend/images/resources/cta-one-img.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @if(@$setting_data->google_map)
+
+        <section class="google-map-two">
+            <iframe
+                src="{{@$setting_data->google_map}}"
+                class="google-map__two" allowfullscreen></iframe>
+
+        </section>
+    @endif
 
 
 @endsection
