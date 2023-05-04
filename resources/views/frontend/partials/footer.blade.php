@@ -214,6 +214,7 @@
 <script src="{{ asset('assets/frontend/vendors/circleType/jquery.circleType.js') }}"></script>
 <script src="{{ asset('assets/frontend/vendors/circleType/jquery.lettering.min.js') }}"></script>
 <script src="{{asset('assets/frontend/js/birat.js')}}"></script>
-
+@yield('js')
+@stack('scripts')
 </body>
 </html>

@@ -8820,7 +8820,8 @@ ul {
 .news-three__single {
   position: relative;
   display: block;
-  border: 1px solid var(--insur-bdr-color);
+  border: 1px solid #c6c9cc;
+  /*border: 1px solid var(--insur-bdr-color);*/
   border-radius: var(--insur-bdr-radius);
   padding: 59px 59px 55px;
   overflow: hidden;
@@ -9408,7 +9409,7 @@ ul {
   position: relative;
 }
 
-.sidebar__search-form input[type="search"] {
+.sidebar__search-form input[type="search"], .sidebar__search-form input[type="text"] {
   display: block;
   border: none;
   outline: none;
@@ -21209,4 +21210,85 @@ ul li ul .is-new-menu>a>span {
 ul li ul .is-new-menu>a>span::after {
   right: auto;
   left: 0;
+}
+
+.pagination .page-item{
+    position: relative;
+    height: 43px;
+    width: 43px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--insur-white);
+    font-size: 15px;
+    border-radius: 17px;
+    border: 2px solid var(--insur-base);
+    overflow: hidden;
+    -webkit-transition: all 500ms ease;
+    transition: all 500ms ease;
+    z-index: 1;
+}
+
+.pagination .page-item .page-link{
+    border: transparent;
+}
+
+
+.custom-description{
+    text-align: justify;
+}
+
+.custom-description ul,.custom-description ol {
+    padding-left: 0px;
+    margin: 10px;
+}
+
+.custom-description ul li, .custom-description ol li{
+    position: relative;
+    display: flex;
+    align-items: center;
+
+}
+.custom-description ul li:before, .custom-description ol li:before{
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    position: relative;
+    display: inline-block;
+    font-size: 10px;
+    color: var(--insur-base);
+    font-weight: 900;
+    margin-right: 10px;
+}
+
+.custom-description blockquote{
+    position: relative;
+    display: block;
+    background-color: var(--insur-extra);
+    border-radius: var(--insur-bdr-radius);
+    padding: 39px 60px 50px;
+
+}
+
+.custom-description blockquote:before{
+    font-family:Arial;
+    content: "\201C";
+    color:var(--insur-base);
+    font-size: 5rem;
+    position: absolute;
+    left: 25px;
+    top: 58px;
+
+}
+.custom-description blockquote p{
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    line-height: 33px;
 }
