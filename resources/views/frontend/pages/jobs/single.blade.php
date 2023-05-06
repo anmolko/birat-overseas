@@ -47,6 +47,28 @@
                     <div class="portfolio-details__img">
                         <img src="{{ ($singleJob->image !== null) ? asset('/images/job/'.@$singleJob->image): asset('assets/frontend/images/birat.png')}}" alt="">
                     </div>
+                    <div class="insurance-details__age-box">
+                        @if(@$singleJob->title)
+                            <div class="insurance-details__age-title-box">
+                                <h3 class="insurance-details__age-title">{{@$singleJob->title}}</h3>
+                            </div>
+                        @endif
+                        <ul class="insurance-details__age-list list-unstyled">
+                            @if($singleJob->min_qualification)
+                                <li>
+                                    <p>Min Qualification: <span>{{@$singleJob->min_qualification}}</span></p>
+                                </li>
+                            @endif
+                            <li>
+                                <p>Expires on: <span>{{date('M j, Y',strtotime(@$singleJob->end_date))}}</span></p>
+                            </li>
+                            @if($singleJob->formlink && @$singleJob->end_date >= $today)
+                                <li>
+                                    <p>Apply: <span><a href="{{@$singleJob->formlink}}" target="_blank">Submit response</a></span></p>
+                                </li>
+                            @endif
+                        </ul>
+                    </div>
                 </div>
             </div>
             <div class="portfolio-details__content">
@@ -73,12 +95,6 @@
                                         <h4 class="portfolio-details__name">{{ucwords(@$singleJob->getJobCategories($singleJob->category_ids))}}</h4>
                                     </li>
                                     @endif
-                                     @if($singleJob->min_qualification)
-                                       <li>
-                                            <p class="portfolio-details__client">Min Qualification:</p>
-                                            <h4 class="portfolio-details__name">{{@$singleJob->min_qualification}}</h4>
-                                        </li>
-                                    @endif
                                     @if($singleJob->required_number)
                                        <li>
                                             <p class="portfolio-details__client">Required Number:</p>
@@ -91,10 +107,6 @@
                                             <h4 class="portfolio-details__name">{{@$singleJob->salary}}</h4>
                                         </li>
                                     @endif
-                                    <li>
-                                        <p class="portfolio-details__client">Expires on:</p>
-                                        <h4 class="portfolio-details__name">{{date('M j, Y',strtotime(@$singleJob->end_date))}}</h4>
-                                    </li>
                                     <li>
                                         <div class="portfolio-details__social">
 

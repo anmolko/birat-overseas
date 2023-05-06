@@ -10467,7 +10467,7 @@ ul {
 .portfolio-details__content {
   position: relative;
   display: block;
-  padding-top: 50px;
+  padding-top: 10px;
 }
 
 .portfolio-details__content-left {
@@ -19930,7 +19930,7 @@ body.boxed-wrapper {
   letter-spacing: var(--insur-letter-spacing);
 }
 
-.insurance-details__age-list li p span {
+.insurance-details__age-list li p span, .insurance-details__age-list li p span a {
   font-weight: 700;
   color: var(--insur-base);
 }

@@ -9,157 +9,81 @@
         } */
 
         .rendered-form h1{
-            font-family: 'Kumbh Sans', sans-serif;
-            margin-bottom: 25px;
-            font-weight: 700;
-            color: #293043;
-            line-height: 1.22;
+            margin: 0;
+            color: var(--insur-black);
             font-size: 45px;
+            line-height: 55px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: var(--insur-letter-spacing);
         }
-        .card-title{
-            color: #27aae1;
-            text-decoration: none;
-            font-size: 18px;
+
+        .rendered-form p {
+            font-size: 20px;
+            line-height: 30px;
+            letter-spacing: var(--insur-letter-spacing);
             font-weight: 500;
-            -webkit-box-align: center;
-            -ms-flex-align: center;
-            align-items: center;
-            display: -ms-inline-flexbox;
-            display: inline-flex;
+            padding-bottom: 20px;
         }
 
-        .card-title::before{
-            content: url(/assets/frontend/images/shapes/section-subtitle-line.png);
-            margin: -15px 15px 0 -25px;
-            float: left;
-            line-height: 0;
-            font-size: 40px;
-            font-weight: 300;
-            font-family: 'Font Awesome 5 Pro';
-        }
-        .rendered-form .form-control {
-            background: none;
-            padding-top: 17px;
-            padding-bottom: 17px;
-        }
-
-        input.parsley-success,
-        select.parsley-success,
-        textarea.parsley-success {
-            color: #468847;
-            background-color: #DFF0D8;
-            border: 1px solid #D6E9C6;
-        }
-
-        input.parsley-error,
-        select.parsley-error,
-        textarea.parsley-error {
-            color: #B94A48;
-            background-color: #F2DEDE;
-            border: 1px solid #EED3D7;
-        }
-
-        .parsley-errors-list {
-            margin: 2px 0 3px;
-            padding: 0;
-            list-style-type: none;
-            font-size: 0.9em;
-            line-height: 0.9em;
-            opacity: 0;
-            color: #B94A48;
-
-            transition: all .3s ease-in;
-            -o-transition: all .3s ease-in;
-            -moz-transition: all .3s ease-in;
-            -webkit-transition: all .3s ease-in;
-        }
-
-        .topbar-items .social-icons li a i {
-            line-height: 50px;
-        }
-        .parsley-errors-list.filled {
-            opacity: 1;
-        }
-
-        .rendered-form .fb-radio-group .radio label {
-            display: inline;
-        }
-
-        .rendered-form .fb-radio-group .radio-inline label {
-            display: inline ;
-            margin-bottom: 0;
-        }
-
-        input[type=checkbox], input[type=radio] {
-            box-sizing: border-box;
-            padding: 0;
-        }
-
-        .rendered-form .fb-radio-group .radio input{
-            position: absolute !important;
-            margin-top: 0.3rem !important;
-            margin-left: -1.25rem !important;
-        }
-        .rendered-form .fb-radio-group .radio-inline input {
-            position: static !important;
-            margin-top: 0 !important;
-            margin-right: 0.3125rem !important;
-            margin-left: 0 !important;
-        }
-
-        .rendered-form .fb-radio-group .radio {
-            position: relative;
+        .rendered-form input.form-control,.rendered-form select.form-control {
+            height: 60px;
+            width: 100%;
+            border: none;
+            background-color: var(--insur-extra);
+            padding-left: 30px;
+            padding-right: 30px;
+            outline: none;
+            font-size: 14px;
+            color: var(--insur-gray);
             display: block;
-            padding-left: 1.25rem !important;
+            border-radius: var(--insur-bdr-radius);
+            font-weight: 500;
+            letter-spacing: var(--insur-letter-spacing);
         }
 
-        .rendered-form .fb-radio-group .radio-inline {
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            -ms-flex-align: center;
-            align-items: center;
-            padding-left: 0;
-            margin-right: 0.75rem;
+        .rendered-form label{
+            font-size: 16px!important;
+            color: var(--insur-black) !important;
+            font-weight: 700;
+            line-height: 26px;
+            letter-spacing: 0.1em;
+            margin-bottom: 8px!important;
+        }
+        .rendered-form textarea.form-control {
+            font-size: 14px;
+            color: var(--insur-gray);
+            height: 180px!important;
+            width: 100%;
+            background-color: var(--insur-extra);
+            padding: 15px 30px 30px;
+            border: none;
+            border-radius: var(--insur-bdr-radius);
+            outline: none;
+            margin-bottom: 0px;
+            font-weight: 500;
+        }
+
+        .card-footer button{
+            width: 30%!important;
+            border: none!important;
             position: relative;
-        }
-
-        .rendered-form .fb-checkbox-group .checkbox {
-            position: relative;
-            display: block;
-            padding-left: 1.25rem !important;
-        }
-
-        .rendered-form .fb-checkbox-group .checkbox input {
-            position: absolute !important;
-            margin-top: 0.3rem !important;
-            margin-left: -1.25rem !important;
-        }
-
-        .rendered-form .fb-checkbox-group .checkbox label {
             display: inline-block;
-            margin-bottom: 0;
+            vertical-align: middle;
+            -webkit-appearance: none;
+            appearance: none;
+            outline: none !important;
+            background-color: var(--insur-base);
+            color: var(--insur-white);
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: var(--insur-letter-spacing);
+            border-radius: var(--insur-bdr-radius);
+            padding: 17px 40px 17px;
+            transition: all 0.5s linear;
+            overflow: hidden;
+            z-index: 1;
         }
-
-        .rendered-form .fb-checkbox-group .checkbox-inline {
-            display: -ms-inline-flexbox;
-            display: inline-flex;
-            -ms-flex-align: center;
-            align-items: center;
-            padding-left: 0;
-            margin-right: 0.75rem;
-            position: relative;
-        }
-
-        .rendered-form .fb-checkbox-group .checkbox-inline input {
-            position: static !important;
-            margin-top: 0 !important;
-            margin-right: 0.3125rem !important;
-            margin-left: 0 !important;
-        }
-
-        .rendered-form .fb-checkbox-group .checkbox-inline label {
-            display: inline-block;
-            margin-bottom: 0;
         }
 
         .card {
@@ -199,156 +123,128 @@
             border-top: 0 solid rgba(0,0,0,.125) !important;
         }
 
-        .btn-primary {
-            color: #fff !important;
-            background-color: #405189 !important;
-            border-color: #405189 !important;
-        }
 
-        .btn {
-            display: inline-block !important;
-            font-weight: 400 !important;
-            line-height: 1.5 !important;
-            text-align: center !important;
-            text-decoration: none !important;
-            vertical-align: middle !important;
-            cursor: pointer !important;
-            -webkit-user-select: none !important;
-            -moz-user-select: none !important;
-            -ms-user-select: none !important;
-            user-select: none !important;
-            border: 1px solid transparent !important;
-            padding: 0.5rem 0.9rem !important;
-            font-size: .8125rem !important;
-            border-radius: 0.25rem !important;
-        }
     </style>
 @endsection
 @section('content')
-    <!-- Page Banner Start -->
-    <section class="page-banner-area pt-245 rpt-150 pb-170 rpb-100 rel z-1 bgc-lighter text-center">
+
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
+        </div>
+        <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
         <div class="container">
-            <div class="banner-inner rpt-10">
-                <h1 class="page-title wow fadeInUp delay-0-2s">{{ $pageTitle }}</h1>
-                <nav aria-label="breadcrumb">
-                    <ol class="breadcrumb justify-content-center wow fadeInUp delay-0-4s">
-                        <li class="breadcrumb-item"><a href="/">Home</a></li>
-                        <li class="breadcrumb-item active">{{ $form->name }}  </li>
-                    </ol>
-                </nav>
+            <div class="page-header__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>{{ $form->name }}</li>
+                </ul>
+                <h2>{{ $pageTitle }}</h2>
             </div>
         </div>
-        <div class="banner-shapes">
-            <div class="circle wow zoomInLeft delay-0-2s" data-wow-duration="2s"></div>
-            <img class="shape-one" src="{{asset('assets/frontend/images/shapes/hero-shape1.png')}}" alt="Shape">
-            <img class="shape-two" src="{{asset('assets/frontend/images/shapes/hero-shape2.png')}}" alt="Shape">
-        </div>
     </section>
-    <!-- Page Banner End -->
 
-    <section class="contact-us-page-area py-130">
+    <section class="contact-page" >
         <div class="container">
             <div class="row">
-                <div class="col-md-7">
-                    <div class="card rounded-0">
-                        <div class="card-header">
-                            <h5 class="card-title">{{ ucwords($pageTitle) }}</h5>
+                <div class="col-xl-4 col-lg-5">
+                    <div class="contact-page__left">
+                        <div class="section-title text-left">
+                            <div class="section-sub-title-box">
+                                <p class="section-sub-title">{{ ucwords($pageTitle) }}</p>
+                                <div class="section-title-shape-1">
+                                    <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                </div>
+                                <div class="section-title-shape-2">
+                                    <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                </div>
+                            </div>
+                            <h2 class="section-title__title">Feel free to get in touch with us</h2>
                         </div>
-
-                        <form action="{{ route('formbuilder::form.submit', $form->identifier) }}" method="POST" id="submitForm" enctype="multipart/form-data">
-                            @csrf
-                            @if ($message = Session::get('success'))
-                                <div class="alert alert-success alert-block">
-                                    <strong class="sent-success">{{ $message }}</strong>
-                                </div>
-                            @endif
-                            @if ($message = Session::get('error'))
-                                <div class="alert alert-danger alert-block">
-                                    <strong class="error-sent">{{ $message }}</strong>
-                                </div>
-                            @endif
-                            <div class="card-body">
-                                <div id="fb-render"></div>
+                        <div class="contact-page__call-email">
+                            <div class="contact-page__call-icon">
+                                <i class="fas fa-phone"></i>
                             </div>
-
-
-                            <div class="card-footer">
-                                <button type="submit" class="theme-btn w-100 confirm-form" data-form="submitForm" data-message="Submit your entry for '{{ $form->name }}'?">
-                                    <i class="fa fa-submit"></i> Submit Form
-                                </button>
+                            <div class="contact-page__call-email-content">
+                                <h4>
+                                    <a href="tel:{{@$setting_data->phone}}" class="contact-page__call-number">{{@$setting_data->phone}}</a>
+                                    <a href="mailto:{{@$setting_data->email}}"
+                                       class="contact-page__email">{{@$setting_data->email}}</a>
+                                </h4>
                             </div>
-                        </form>
+                        </div>
+                        <p class="contact-page__location-text">{{@$setting_data->address}}</p>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-5">
-                    <div class="contact-info wow fadeInLeft delay-0-2s">
-                        <div class="contact-info-item style-two">
-                            <div class="icon">
-                                <i class="fal fa-map-marker-alt"></i>
-                            </div>
-                            <div class="content">
-                                <span class="title">Location</span>
-                                <span class="text">
-                                        @if(!empty(@$setting_data->address)) {{@$setting_data->address}} @else Kathmandu, Nepal @endif
-                                    </span>
-                            </div>
-                        </div>
-                        <div class="contact-info-item style-two">
-                            <div class="icon">
-                                <i class="far fa-envelope-open-text"></i>
-                            </div>
-                            <div class="content">
-                                <span class="title">email address</span>
-                                <span class="text">
-                                        <a href="mailto:@if(!empty(@$setting_data->email)) {{@$setting_data->email}} @else example@gmail.com @endif"><span class="__cf_email__" >@if(!empty(@$setting_data->email)) {{@$setting_data->email}} @else example@gmail.com @endif</span></a><br>
-                                    </span>
-                            </div>
-                        </div>
-                        <div class="contact-info-item style-two">
-                            <div class="icon">
-                                <i class="far fa-phone"></i>
-                            </div>
-                            <div class="content">
-                                <span class="title">Phone Number</span>
-                                <span class="text">
-                                        Call <a href="calto:@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif">@if(!empty(@$setting_data->phone)) {{@$setting_data->phone}} @else +9771238798 @endif</a><br>
-                                    </span>
-                            </div>
-                        </div>
-                        <div class="follow-us">
-                            <h4>Follow Us</h4>
-                            <div class="social-style-two">
-
-                                @if(!empty(@$setting_data->facebook))
-                                    <a href="@if(!empty(@$setting_data->facebook)) {{@$setting_data->facebook}} @endif" target="_blank" class="social-fb"
-                                    ><i class="fab fa-facebook-f"></i
-                                        ></a>
+                <div class="col-xl-8 col-lg-7">
+                    <div class="contact-page__right">
+                        <div class="contact-page__form">
+                            <form action="{{ route('formbuilder::form.submit', $form->identifier) }}" method="POST" id="submitForm" enctype="multipart/form-data">
+                                @csrf
+                                @if ($message = Session::get('success'))
+                                    <div class="alert alert-success alert-block">
+                                        <strong class="sent-success">{{ $message }}</strong>
+                                    </div>
                                 @endif
-                                @if(!empty(@$setting_data->youtube))
-
-                                    <a href="@if(!empty(@$setting_data->youtube)) {{@$setting_data->youtube}} @endif" target="_blank" class="social-youtube"
-                                    ><i class="fab fa-youtube"></i
-                                        ></a>
+                                @if ($message = Session::get('error'))
+                                    <div class="alert alert-danger alert-block">
+                                        <strong class="error-sent">{{ $message }}</strong>
+                                    </div>
                                 @endif
-                                @if(!empty(@$setting_data->instagram))
+                                <div class="card-body">
+                                    <div id="fb-render"></div>
+                                </div>
 
-                                    <a href="@if(!empty(@$setting_data->instagram)) {{@$setting_data->instagram}} @endif" target="_blank" class="social-instagram"
-                                    ><i class="fab fa-instagram"></i
-                                        ></a>
-                                @endif
-                                @if(!empty(@$setting_data->linkedin))
 
-                                    <a href="@if(!empty(@$setting_data->linkedin)) {{@$setting_data->linkedin}} @endif" target="_blank" class="social-linkedin"
-                                    ><i class="fab fa-linkedin-in"></i
-                                        ></a>
-                                @endif
-                            </div>
+                                <div class="card-footer">
+                                    <button type="submit" class="theme-btn w-100 confirm-form" data-form="submitForm" data-message="Submit your entry for '{{ $form->name }}'?">
+                                        <i class="fa fa-submit"></i> Submit Form
+                                    </button>
+                                </div>
+                            </form>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <section class="cta-one cta-three">
+        <div class="container">
+            <div class="cta-one__content">
+                <div class="cta-one__inner">
+                    <div class="cta-one__left">
+                        <h3 class="cta-one__title">You can also call us</h3>
+                    </div>
+                    <div class="cta-one__right">
+                        <div class="cta-one__call">
+                            <div class="cta-one__call-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="cta-one__call-number">
+                                <a href="tel:9200368090">+92 (003) 68-090</a>
+                                <p>Reach out to us</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cta-one__img">
+                        <img src="{{asset('assets/frontend/images/resources/cta-one-img.png')}}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @if(@$setting_data->google_map)
+
+        <section class="google-map-two">
+            <iframe
+                src="{{@$setting_data->google_map}}"
+                class="google-map__two" allowfullscreen></iframe>
+
+        </section>
+    @endif
 
 @endsection
 
