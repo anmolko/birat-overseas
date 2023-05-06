@@ -141,7 +141,7 @@
         <span class="mobile-nav__close mobile-nav__toggler"><i class="fa fa-times"></i></span>
 
         <div class="logo-box">
-            <a href="index.html" aria-label="logo image"><img src="assets/images/resources/logo-2.png" width="143"
+            <a href="/" aria-label="logo image"><img src="{{asset('/images/settings/'.@$setting_data->logo)}}" width="143"
                                                               alt=""/></a>
         </div>
         <!-- /.logo-box -->
@@ -151,19 +151,30 @@
         <ul class="mobile-nav__contact list-unstyled">
             <li>
                 <i class="fa fa-envelope"></i>
-                <a href="mailto:needhelp@packageName__.com">needhelp@insur.com</a>
+                <a href="mailto:{{@$setting_data->email ?? ''}}">{{@$setting_data->email ?? ''}}</a>
             </li>
             <li>
                 <i class="fa fa-phone-alt"></i>
-                <a href="tel:666-888-0000">666 888 0000</a>
+                <a href="tel:{{@$setting_data->phone ?? @$setting_data->mobile ?? ''}}">{{@$setting_data->phone ?? @$setting_data->mobile ?? ''}}</a>
             </li>
         </ul><!-- /.mobile-nav__contact -->
         <div class="mobile-nav__top">
             <div class="mobile-nav__social">
-                <a href="#" class="fab fa-twitter"></a>
-                <a href="#" class="fab fa-facebook-square"></a>
-                <a href="#" class="fab fa-pinterest-p"></a>
-                <a href="#" class="fab fa-instagram"></a>
+                @if(@$setting_data->facebook)
+                    <a href="{{$setting_data->facebook}}"><i class="fab fa-facebook"></i></a>
+                @endif
+                @if(@$setting_data->instagram)
+                    <a href="{{$setting_data->instagram}}"><i class="fab fa-instagram"></i></a>
+                @endif
+                @if(@$setting_data->youtube)
+                    <a href="{{$setting_data->youtube}}"><i class="fab fa-youtube"></i></a>
+                @endif
+                @if(@$setting_data->linkedin)
+                    <a href="{{$setting_data->linkedin}}"><i class="fab fa-linkedin"></i></a>
+                @endif
+                @if(!empty(@$setting_data->ticktock))
+                    <a href="{{$setting_data->ticktock}}"><i class="fab fa-tiktok"></i></a>
+                @endif
             </div><!-- /.mobile-nav__social -->
         </div><!-- /.mobile-nav__top -->
 
@@ -177,9 +188,11 @@
     <div class="search-popup__overlay search-toggler"></div>
     <!-- /.search-popup__overlay -->
     <div class="search-popup__content">
-        <form action="#">
-            <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
-            <input type="text" id="search" placeholder="Search Here..."/>
+        <form method="get" id="searchform" action="{{route('searchJob')}}">
+        <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
+            <input  type="text"
+                    id="s"
+                    name="s" placeholder="Search jobs..." oninvalid="this.setCustomValidity('Type a keyword')" oninput="this.setCustomValidity('')" required/>
             <button type="submit" aria-label="search submit" class="thm-btn">
                 <i class="icon-magnifying-glass"></i>
             </button>

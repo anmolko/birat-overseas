@@ -11850,7 +11850,7 @@ ul {
 .error-page-shape-1 {
   position: absolute;
   position: absolute;
-  top: 0;
+  top: 120px;
   left: 0;
   right: 0;
   bottom: 0;
@@ -11923,6 +11923,7 @@ ul {
   line-height: 30px;
   letter-spacing: var(--insur-letter-spacing);
   text-align: center;
+  padding-bottom: 40px;
 }
 
 .error-page__form {

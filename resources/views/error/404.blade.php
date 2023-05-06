@@ -30,7 +30,7 @@
                             <h3 class="error-page__sub-title">Page not found!</h3>
                         </div>
                         <p class="error-page__text">Sorry we can't find that page! The page you are looking <br> for
-                            has been moved or doesn't exist.</p>
+                            was either moved or doesn't exist.</p>
                         <a href="/" class="thm-btn error-page__btn">Back to Home</a>
                     </div>
                 </div>

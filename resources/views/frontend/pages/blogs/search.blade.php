@@ -28,6 +28,7 @@
                 </div>
                 <div class="col-xl-8 col-lg-7">
                     <div class="news-sideabr__left">
+                        @if(count($alljobs)>0)
                         <div class="row">
                             @foreach($allPosts as $index=>$post)
                                 <div class="col-xl-6 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
@@ -59,6 +60,21 @@
                             @endforeach
                             {{ $allPosts->links('vendor.pagination.default') }}
                         </div>
+                        @else
+                            <div class="row">
+                                <div class="col-xl-12">
+                                    <div class="error-page__inner">
+                                        <div class="error-page__title-box" style="margin-bottom: 40px;">
+                                            <h2 class="error-page__title">404</h2>
+                                            <h3 class="error-page__sub-title">Blog not found!</h3>
+                                        </div>
+                                        <p class="error-page__text">Sorry we can't find the blogs you are looking for ! It could have been <br>
+                                            moved or doesn't exist.</p>
+                                        <a href="/" class="thm-btn error-page__btn">Back to Home</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>

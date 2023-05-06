@@ -130,19 +130,19 @@
                         <div class="main-header__top-social-box">
                             <div class="main-header__top-social">
                                 @if(@$setting_data->facebook)
-                                    <a href="#"><i class="fab fa-facebook"></i></a>
+                                    <a href="{{$setting_data->facebook}}"><i class="fab fa-facebook"></i></a>
                                 @endif
                                 @if(@$setting_data->instagram)
-                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                    <a href="{{$setting_data->instagram}}"><i class="fab fa-instagram"></i></a>
                                 @endif
                                 @if(@$setting_data->youtube)
-                                    <a href="#"><i class="fab fa-youtube"></i></a>
+                                    <a href="{{$setting_data->youtube}}"><i class="fab fa-youtube"></i></a>
                                 @endif
                                 @if(@$setting_data->linkedin)
-                                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                                    <a href="{{$setting_data->linkedin}}"><i class="fab fa-linkedin"></i></a>
                                 @endif
                                 @if(!empty(@$setting_data->ticktock))
-                                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                                    <a href="{{$setting_data->ticktock}}"><i class="fab fa-tiktok"></i></a>
                                 @endif
                             </div>
                         </div>
