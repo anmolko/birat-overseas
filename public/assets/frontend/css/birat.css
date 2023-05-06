@@ -7805,6 +7805,7 @@ ul {
 }
 
 .about-three__text {
+    text-align: justify;
   font-size: 18px;
   line-height: 34px;
   letter-spacing: var(--insur-letter-spacing);

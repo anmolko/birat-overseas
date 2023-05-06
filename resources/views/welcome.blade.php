@@ -72,7 +72,7 @@
                                     </div>
                                     <div class="feature-one__count"></div>
                                     <div class="feature-one__shape">
-                                        <img src="{{asset('assets/frontend/images/shapes/feature-one-shape-1.png')}}" alt="">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/feature-one-shape-1.png')}}" alt="">
                                     </div>
                                     <h3 class="feature-one__title"><a>Our Mission</a></h3>
                                     <p class="feature-one__text">{{ ucfirst(@$homepage_info->mission) }}</p>
@@ -88,7 +88,7 @@
                                     </div>
                                     <div class="feature-one__count"></div>
                                     <div class="feature-one__shape">
-                                        <img src="{{asset('assets/frontend/images/shapes/feature-one-shape-1.png')}}" alt="">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/feature-one-shape-1.png')}}" alt="">
                                     </div>
                                     <h3 class="feature-one__title"><a>Our Vision</a></h3>
                                     <p class="feature-one__text">{{ ucfirst(@$homepage_info->vision) }}</p>
@@ -104,7 +104,7 @@
                                     </div>
                                     <div class="feature-one__count"></div>
                                     <div class="feature-one__shape">
-                                        <img src="{{asset('assets/frontend/images/shapes/feature-one-shape-1.png')}}" alt="">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/feature-one-shape-1.png')}}" alt="">
                                     </div>
                                     <h3 class="feature-one__title"><a>Our Goal</a></h3>
                                     <p class="feature-one__text">{{ ucfirst(@$homepage_info->value) }}</p>
@@ -127,7 +127,7 @@
                             <div class="about-three__img-box wow slideInLeft" data-wow-delay="100ms"
                                  data-wow-duration="2500ms">
                                 <div class="about-three__img">
-                                    <img src="{{ @$homepage_info->welcome_image ? asset('/images/home/welcome/'.@$homepage_info->welcome_image):''}}" alt="">
+                                    <img class="lazy" data-src="{{ @$homepage_info->welcome_image ? asset('/images/home/welcome/'.@$homepage_info->welcome_image):''}}" alt="">
                                 </div>
                                 <div class="about-three__location">
                                     <div class="about-three__location-bg"
@@ -146,10 +146,10 @@
                                 <div class="section-sub-title-box">
                                     <p class="section-sub-title">{{$homepage_info->welcome_subheading ?? ''}}</p>
                                     <div class="section-title-shape-1">
-                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                                     </div>
                                     <div class="section-title-shape-2">
-                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                                     </div>
                                 </div>
                                 <h2 class="section-title__title">{{$homepage_info->welcome_heading ?? ''}}</h2>
@@ -173,7 +173,7 @@
                                         <a href="{{@$homepage_info->welcome_link}}" class="thm-btn about-three__btn">{{@$homepage_info->welcome_button??'Learn More'}}</a>
                                     </div>
                                  @endif
-                                    <img class="service-image" src="{{ (@$homepage_info->what_image1 !== null) ? asset('/images/home/welcome/'.@$homepage_info->what_image1) :''}}" alt="">
+                                    <img class="service-image lazy" data-src="{{ (@$homepage_info->what_image1 !== null) ? asset('/images/home/welcome/'.@$homepage_info->what_image1) :''}}" alt="">
 
                             </div>
                         </div>
@@ -188,7 +188,7 @@
             <div class="container">
                 <div class="services-three__inner">
                     <div class="services-three-shape-1">
-                        <img src="{{asset('assets/frontend/images/shapes/services-three-shape-1.png')}}" alt="">
+                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/services-three-shape-1.png')}}" alt="">
                     </div>
                     <div class="row">
                         <!--Services Three Single Start-->
@@ -198,10 +198,10 @@
                                     <div class="section-sub-title-box">
                                         <p class="section-sub-title">Our services</p>
                                         <div class="section-title-shape-1">
-                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                                         </div>
                                         <div class="section-title-shape-2">
-                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                                         </div>
                                     </div>
                                     <h2 class="section-title__title">Covering all important fields</h2>
@@ -212,7 +212,7 @@
                             <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($index + 2) * 100 }}ms">
                             <div class="services-three__single">
                                 <div class="services-three__img">
-                                    <img src="{{asset('/images/service/thumb/thumb_'.@$service->banner_image)}}" alt="">
+                                    <img class="lazy" data-src="{{asset('/images/service/thumb/thumb_'.@$service->banner_image)}}" alt="">
                                     <div class="services-three__content">
                                         <h3 class="services-three__title"><a href="{{route('service.single',$service->slug)}}">
                                                 {{ucwords(@$service->title)}}</a></h3>
@@ -250,10 +250,10 @@
                                 <div class="section-sub-title-box">
                                     <p class="section-sub-title">{{ucfirst(@$homepage_info->core_main_description)}}</p>
                                     <div class="section-title-shape-1">
-                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                                     </div>
                                     <div class="section-title-shape-2">
-                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                                     </div>
                                 </div>
                                 <h2 class="section-title__title">{{ucfirst(@$homepage_info->core_main_heading)}}</h2>
@@ -394,7 +394,7 @@
                             <div class="swiper-wrapper">
                                 @foreach($clients as $client)
                                     <div class="swiper-slide" style="margin-right: 130px">
-                                        <a href="{{ $client->link ?? '#' }}" target="{{ ($client->link !== null) ? '_blank':'' }}"><img src="{{asset('/images/clients/'.@$client->image)}}" alt=""></a>
+                                        <a href="{{ $client->link ?? '#' }}" target="{{ ($client->link !== null) ? '_blank':'' }}"><img class="lazy" data-src="{{asset('/images/clients/'.@$client->image)}}" alt=""></a>
                                     </div><!-- /.swiper-slide -->
                                 @endforeach
                             </div>
@@ -410,10 +410,10 @@
         <section class="download">
             <div class="download-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/download-bg.png')}});"></div>
             <div class="download-shape-1 float-bob-y">
-                <img src="{{asset('assets/frontend/images/shapes/download-shape-1.png')}}" alt="">
+                <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/download-shape-1.png')}}" alt="">
             </div>
             <div class="download-shape-2 float-bob-x">
-                <img src="{{asset('assets/frontend/images/shapes/download-shape-2.png')}}" alt="">
+                <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/download-shape-2.png')}}" alt="">
             </div>
             <div class="container">
                 <div class="row">
@@ -450,21 +450,21 @@
                     <div class="section-sub-title-box">
                         <p class="section-sub-title">work process</p>
                         <div class="section-title-shape-1">
-                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                         </div>
                         <div class="section-title-shape-2">
-                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                         </div>
                     </div>
                     <h2 class="section-title__title">Our easy work process <br> in 4 steps</h2>
                 </div>
                 <div class="process__inner">
                     <div class="process-shape-1">
-                        <img src="{{asset('assets/frontend/images/shapes/process-shape-1.png')}}" alt="">
+                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/process-shape-1.png')}}" alt="">
                     </div>
                     @if(count($recruitments)>4)
                         <div class="process-shape-2">
-                            <img src="{{asset('assets/frontend/images/shapes/process-shape-1.png')}}" alt="">
+                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/process-shape-1.png')}}" alt="">
                         </div>
                     @endif
                     <div class="row">
@@ -512,10 +512,10 @@
                                 <div class="section-sub-title-box">
                                     <p class="section-sub-title">Why choose us</p>
                                     <div class="section-title-shape-1">
-                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                                     </div>
                                     <div class="section-title-shape-2">
-                                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                                     </div>
                                 </div>
                                 <h2 class="section-title__title">{{@$homepage_info->why_heading}}</h2>
@@ -537,10 +537,10 @@
                         <div class="about-two__middle">
                             <div class="about-two__img-box">
                                 <div class="about-two__img">
-                                    <img src="{{asset('/images/home/welcome/'.@$homepage_info->what_image5)}}" alt="">
+                                    <img class="lazy" data-src="{{asset('/images/home/welcome/'.@$homepage_info->what_image5)}}" alt="">
                                 </div>
                                 <div class="about-two__dots float-bob-y">
-                                    <img src="{{asset('assets/frontend/images/shapes/about-two-dots.png')}}" alt="">
+                                    <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/about-two-dots.png')}}" alt="">
                                 </div>
                             </div>
                         </div>
@@ -602,10 +602,10 @@
                     <div class="section-sub-title-box">
                         <p class="section-sub-title">Our current demans</p>
                         <div class="section-title-shape-1">
-                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                         </div>
                         <div class="section-title-shape-2">
-                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                         </div>
                     </div>
                     <h2 class="section-title__title">Latest jobs for<br> everyone</h2>
@@ -652,10 +652,10 @@
                                     <div class="section-sub-title-box">
                                         <p class="section-sub-title">Up close</p>
                                         <div class="section-title-shape-1">
-                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                                         </div>
                                         <div class="section-title-shape-2">
-                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                                         </div>
                                     </div>
                                     <h2 class="section-title__title">Closely relayed message from our director</h2>
@@ -701,7 +701,7 @@
                                                         <div class="col-xl-6 col-lg-6">
                                                             <div class="team-details__top-left">
                                                                 <div class="team-details__top-img">
-                                                                    <img src="{{asset('/images/director/'.@$managing->image)}}" alt="">
+                                                                    <img class="lazy" data-src="{{asset('/images/director/'.@$managing->image)}}" alt="">
                                                                     <div class="team-details__big-text">director</div>
                                                                 </div>
                                                             </div>
@@ -754,7 +754,7 @@
                         </div>
                     </div>
                     <div class="cta-one__img">
-                        <img src="{{asset('assets/frontend/images/resources/cta-one-img.png')}}" alt="">
+                        <img class="lazy" data-src="{{asset('assets/frontend/images/resources/cta-one-img.png')}}" alt="">
                     </div>
                 </div>
             </div>
@@ -772,10 +772,10 @@
                                     <div class="section-sub-title-box">
                                         <p class="section-sub-title">testimonials</p>
                                         <div class="section-title-shape-1">
-                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                                         </div>
                                         <div class="section-title-shape-2">
-                                            <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                                         </div>
                                     </div>
                                     <h2 class="section-title__title">What our customers are talking about</h2>
@@ -818,10 +818,10 @@
                                         <div class="testimonial-three__single">
                                             <div class="testimonial-three__client-img-box">
                                                 <div class="testimonial-three__client-img">
-                                                    <img src="{{asset('/images/testimonial/'.@$testimonial->image)}}" alt="">
+                                                    <img class="lazy" src="{{asset('/images/testimonial/'.@$testimonial->image)}}" data-src="{{asset('/images/testimonial/'.@$testimonial->image)}}" alt="">
                                                 </div>
                                                 <div class="testimonial-three__quote">
-                                                    <img src="{{asset('assets/frontend/images/testimonial/testimonial-1-quote.png')}}" alt="">
+                                                    <img class="lazy" data-src="{{asset('assets/frontend/images/testimonial/testimonial-1-quote.png')}}" alt="">
                                                 </div>
                                             </div>
                                             <p class="testimonial-three__text">{{ucfirst($testimonial->description)}}</p>
@@ -860,10 +860,10 @@
                             <div class="section-sub-title-box">
                                 <p class="section-sub-title">Birat Overseas</p>
                                 <div class="section-title-shape-1">
-                                    <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                    <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                                 </div>
                                 <div class="section-title-shape-2">
-                                    <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                    <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                                 </div>
                             </div>
                             <h2 class="section-title__title">{{@$setting_data->grievance_heading}}</h2>
@@ -886,10 +886,10 @@
                 <div class="section-sub-title-box">
                     <p class="section-sub-title">recent news feed</p>
                     <div class="section-title-shape-1">
-                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                     </div>
                     <div class="section-title-shape-2">
-                        <img src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                     </div>
                 </div>
                 <h2 class="section-title__title">Latest news & Articles <br> from the blog</h2>
@@ -899,7 +899,7 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
                         <div class="news-one__single">
                             <div class="news-one__img">
-                                <img src="{{asset('/images/blog/'.@$post->image)}}" alt="">
+                                <img class="lazy" data-src="{{asset('/images/blog/'.@$post->image)}}" alt="">
                                 <div class="news-one__tag">
                                     <p><i class="far fa-folder"></i>{{ucfirst(@$post->category->name)}}</p>
                                 </div>
@@ -931,5 +931,4 @@
 @endsection
 
 @section('js')
-    <script src="{{asset('assets/frontend/js/lightbox.min.js')}}"></script>
 @endsection

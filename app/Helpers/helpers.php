@@ -181,11 +181,11 @@ if (!function_exists('get_icons')) {
     function get_icons($index){
         $icon   = '';
         if($index == 0){
-            $icon = 'flaticon-graph';
+            $icon = 'icon-mission';
         }else if($index == 1){
-            $icon = 'flaticon-analysis';
+            $icon = 'icon-insurance-2';
         }else if($index == 2){
-            $icon = 'flaticon-sports-and-competition';
+            $icon = 'icon-house';
         }else{
             $icon = 'icon-happy';
         }

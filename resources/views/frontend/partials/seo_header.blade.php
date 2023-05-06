@@ -142,7 +142,7 @@
                                 <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                 <ul class="main-menu__list">
                                     <li
-                                        class="current megamenu megamenu-clickable megamenu-clickable--toggler">
+                                        class="current">
                                         <a href="/">Home</a>
                                     </li>
                                     @if(!empty($top_nav_data))
