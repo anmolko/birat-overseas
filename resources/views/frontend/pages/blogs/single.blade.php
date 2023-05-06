@@ -49,7 +49,7 @@
                                 <li><a><i class="far fa-calendar"></i>  {{date('j M, Y',strtotime(@$singleBlog->created_at))}} </a>
                                 </li>
                             </ul>
-                            <h3 class="news-details__title">{{@$singleBlog->category->name }}</h3>
+                            <h3 class="news-details__title">{{@$singleBlog->title }}</h3>
                             <div class="news-details__text-1 custom-description">
                                 {!! $singleBlog->description !!}
                             </div>

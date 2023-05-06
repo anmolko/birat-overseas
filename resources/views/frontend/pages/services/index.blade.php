@@ -11,54 +11,42 @@
 @endsection
 @section('content')
 
-    <section class="page-title" style="background-image: url({{asset('assets/frontend/images/background/6.jpg')}})">
-        <div class="auto-container">
-            <h1>Our Services</h1>
-            <ul class="page-breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li>Service List</li>
-            </ul>
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
+        </div>
+        <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+        <div class="container">
+            <div class="page-header__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>Service List</li>
+                </ul>
+                <h2>Services</h2>
+            </div>
         </div>
     </section>
 
-    <!--Sidebar Page Container-->
-    <div class="sidebar-page-container">
-        <div class="auto-container">
-            <div class="sticky-container row clearfix">
-
-                <!--Sidebar Side-->
-                <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
-                    @include('frontend.pages.services.sidebar')
-                </div>
-
-                <!--Content Side-->
-                <div class="content-side col-lg-8 col-md-12 col-sm-12">
-                    <div class="row clearfix">
-                        @foreach(@$allservices as $index=>$service)
-                            <div class="news-block-five style-two col-lg-6 col-md-6 col-sm-12">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <a href="{{route('service.single',$service->slug)}}">
-                                            <img src="{{asset('/images/service/thumb/thumb_'.@$service->banner_image)}}" alt="" /></a>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h2><a href="{{route('service.single',$service->slug)}}">{{ucwords(@$service->title)}}</a></h2>
-                                        <a class="read-more" href="{{route('service.single',$service->slug)}}">Read more</a>
-                                    </div>
-                                </div>
+    <section class="insurance-page-one">
+        <div class="services-one__container">
+            <div class="row">
+                @foreach(@$allservices as $index=>$service)
+                      <div class="col-xl-3 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($index+1)*100}}ms">
+                    <div class="services-one__single">
+                        <div class="service-one__img">
+                            <img src="{{asset('/images/service/thumb/thumb_'.@$service->banner_image)}}" alt="">
+                        </div>
+                        <div class="service-one__content">
+                            <div class="services-one__icon">
+                                <span class="icon-fire"></span>
                             </div>
-                        @endforeach
+                            <h2 class="service-one__title"><a href="{{route('service.single',$service->slug)}}">{{ucwords(@$service->title)}}</a></h2>
+                        </div>
                     </div>
-
-                    <!--Styled Pagination-->
-                    <div class="styled-pagination text-center">
-                        {{ $allservices->links('vendor.pagination.default') }}
-
-                    </div>
-                    <!--End Styled Pagination-->
-
                 </div>
+                @endforeach
+                {{ $allservices->links('vendor.pagination.default') }}
             </div>
         </div>
-    </div>
+    </section>
 @endsection
