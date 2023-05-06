@@ -16,56 +16,69 @@
     </style>
 @endsection
 @section('content')
-    <div class="sc-breadcrumb-style sc-pt-135 sc-pb-110">
-        <div class="container position-relative">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="sc-slider-content p-z-idex">
-                        <div class="sc-slider-subtitle">Home - Testimonial</div>
-                        <h1 class="slider-title white-color sc-mb-25 sc-sm-mb-15">Client Testimonials</h1>
-                    </div>
-                </div>
-            </div>
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
         </div>
-    </div>
-
-    <div class="sc-testimonial-section-three sc-pb-90" style="margin-top: 0px; padding-top:100px">
+        <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-6 col-md-8">
-                    <div class="sc-heading-area sc-mb-35 p-z-idex">
-                        <span class="sub-title"><i class="icon-line"></i> Our Testimonials</span>
-                        <h2 class="title">Happy Customer Feedback About Our Service</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                @foreach($testimonials as $testimonial)
-                    <div class="col-lg-4">
-                        <div class="sc-test-item" style="background: #ffffff;">
-                                <div class="sc-testimonial-text">
-                                    <a><img src="{{asset('assets/frontend/images/icons/quote.png')}}" alt="Blog" /></a>
-                                    <p class="des">
-                                        {{@$testimonial->description }}
-                                    </p>
-                                </div>
-                                <div class="sc-auother-text d-flex align-items-center">
-                                    <div class="sc-auother-image sc-mr-15">
-                                        <img src="{{asset('/images/testimonial/'.@$testimonial->image)}}" alt="Icon" />
-                                    </div>
-                                    <div class="sc-auother-header">
-                                        <h5>{{ucwords($testimonial->name)}}</h5>
-                                        <span class="sub-title">{{ucwords($testimonial->position)}}</span>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
-                @endforeach
-            </div>
-
+            <div class="page-header__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>Client Feedback</li>
+                </ul>
+                <h2>Testimonials</h2>
             </div>
         </div>
-    </div>
+    </section>
+
+    <section class="testimonial-page">
+        <div class="container">
+            @if(count($testimonials) > 0)
+                <div class="row">
+                    @foreach($testimonials as $testimonial)
+                        <div class="col-xl-6 col-lg-6">
+                        <div class="testimonial-one__single">
+                            <div class="testimonial-one__single-inner">
+                                <div class="testimonial-one__shape-1">
+                                    <img src="{{asset('assets/frontend/images/shapes/testimonial-one-shape-1.png')}}" alt="">
+                                </div>
+                                <div class="testimonial-one__client-info">
+                                    <div class="testimonial-one__client-img-box">
+                                        <img src="{{asset('/images/testimonial/'.@$testimonial->image)}}" alt="">
+                                        <div class="testimonial-one__quote">
+                                            <img src="{{asset('assets/frontend/images/testimonial/testimonial-1-quote.png')}}" alt="">
+                                        </div>
+                                    </div>
+                                    <div class="testimonial-one__client-content">
+                                        <div class="testimonial-one__client-details">
+                                            <h3 class="testimonial-one__client-name">{{ucwords($testimonial->name)}}</h3>
+                                            <p class="testimonial-one__client-sub-title">{{ucwords($testimonial->position)}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="testimonial-one__text">{{@$testimonial->description }}</div>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="error-page__inner">
+                            <div class="error-page__title-box" style="margin-bottom: 40px;">
+                                <h3 class="error-page__sub-title">Testimonials not found!</h3>
+                            </div>
+                            <p class="error-page__text">Sorry we can't find the any clients feedback currently ! It could have been <br>
+                                moved or doesn't exist.</p>
+                            <a href="/" class="thm-btn error-page__btn">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
+            @endif
+        </div>
+    </section>
 
 @endsection
 @section('js')

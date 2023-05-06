@@ -3,59 +3,67 @@
 @section('css')
     <style>
         .img-wrapper {
+            height: 110px;
             object-fit: cover;
         }
     </style>
 @endsection
 @section('content')
-    <section class="page-title" style="background-image: url({{asset('assets/frontend/images/background/6.jpg')}})">
-        <div class="auto-container">
-            <h1>Our Clients</h1>
-            <ul class="page-breadcrumb">
-                <li><a href="/">home</a></li>
-                <li>Clients</li>
-            </ul>
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
+        </div>
+        <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+        <div class="container">
+            <div class="page-header__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>Clients</li>
+                </ul>
+                <h2>Our Clients</h2>
+            </div>
         </div>
     </section>
 
-    <section class="portfolio-page-section">
-        <div class="auto-container">
+    <section class="portfolio">
+        <div class="container">
             @if(count(@$clients) > 0)
-                <div class="mixitup-gallery">
-                    <div class="row clearfix">
-                        @foreach($clients as $client)
-                            <div class="gallery-block col-lg-4 col-md-4 col-sm-12">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img class="img-wrapper" src="{{asset('/images/clients/'.@$client->image)}}" alt="" />
-                                        <!--Overlay Box-->
-                                        <div class="overlay-box">
-                                            <div class="overlay-inner">
-                                                <div class="content">
-                                                    <a href="{{asset('/images/clients/'.@$client->image)}}" data-fancybox="gallery-images-1" data-caption="" class="link">
-                                                        <span class="icon fa fa-search"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="lower-content">
-                                        <h3><a href="{{ $client->link ?? '#' }}" target="{{ ($client->link !== null) ? '_blank':'' }}">
-                                                {{@$client->name ?? ''}}
-                                            </a></h3>
-                                        <div class="designation">
-                                            {{ get_country($client->country) }}
-                                        </div>
+                <div class="row">
+                    @foreach($clients as $client)
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <div class="portfolio__single">
+                                <div class="portfolio__img">
+                                    <img class="img-wrapper" style="width: 200px;" src="{{asset('/images/clients/'.@$client->image)}}" alt="">
+                                    <div class="portfolio__plus">
+                                        <a href="{{asset('/images/clients/'.@$client->image)}}" class="img-popup"><span
+                                                class="icon-plus"></span></a>
                                     </div>
                                 </div>
+                                <div class="team-one__content">
+                                    <p class="team-one__sub-title">   {{ get_country($client->country) }}</p>
+                                    <h3 class="team-one__name"><a href="{{ $client->link ?? '#' }}" target="{{ ($client->link !== null) ? '_blank':'' }}">
+                                            {{@$client->name ?? ''}}</a></h3>
+                                </div>
                             </div>
-                        @endforeach
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="error-page__inner">
+                            <div class="error-page__title-box" style="margin-bottom: 40px;">
+                                <h3 class="error-page__sub-title">Clients not found!</h3>
+                            </div>
+                            <p class="error-page__text">Sorry we can't find the any clients currently ! It could have been <br>
+                                moved or doesn't exist.</p>
+                            <a href="/" class="thm-btn error-page__btn">Back to Home</a>
+                        </div>
                     </div>
                 </div>
             @endif
         </div>
     </section>
-
-
 
 @endsection
 @section('js')
