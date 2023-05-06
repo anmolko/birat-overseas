@@ -29,7 +29,7 @@
                             <div class="portfolio__img">
                                 <img src="{{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/birat_thumb.png')}}" alt="">
                                 <div class="portfolio__plus">
-                                    <a href="{{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/birat_thumb.png')}}" class="img-popup"><span
+                                    <a href="{{ ($job->image !== null) ? asset('/images/job/'.@$job->image): asset('assets/frontend/images/birat_thumb.png')}}" class="img-popup"><span
                                             class="icon-plus"></span></a>
                                 </div>
                                 <div class="portfolio__content">

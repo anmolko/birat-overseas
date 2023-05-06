@@ -3,56 +3,51 @@
 @section('css')
 @endsection
 
-
 @section('content')
 
-    <section class="page-title" style="background-image: url({{asset('/images/background/6.jpg')}})">
-        <div class="auto-container">
-            <h1>Page details</h1>
-            <ul class="page-breadcrumb">
-                <li><a href="/">Home</a></li>
-                <li><a href="{{route('page',$singleSlider->section->page->slug)}}">{{ucwords(@$singleSlider->section->page->name)}}</a></li>
-                <li>{{ucwords(@$singleSlider->list_header)}}</li>
-            </ul>
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
+        </div>
+        <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+        <div class="container">
+            <div class="page-header__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li><span>/</span></li>
+                    <li><a href="{{route('page',$singleSlider->section->page->slug)}}">{{ucwords(@$singleSlider->section->page->name)}}</a></li>
+                    <li><span>/</span></li>
+                    <li>List Detail</li>
+                </ul>
+                <h2>{{ucwords(@$singleSlider->list_header)}}</h2>
+            </div>
         </div>
     </section>
 
-    <div class="sidebar-page-container">
-        <div class="auto-container">
-            <div class="row clearfix">
-
-                <!--Sidebar Side-->
-                <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
-                    @include('frontend.pages.sliderlist.sidebar')
-                </div>
-
-                <!--Content Side-->
-                <div class="content-side col-lg-8 col-md-12 col-sm-12">
-                    <div class="blog-single">
-                        <div class="inner-box">
-                            <div class="image">
-                                <img src="{{ asset('/images/section_elements/list_1/'.$singleSlider->list_image) }}" alt="" />
-                            </div>
-                            <div class="lower-content">
-                                <div class="clearfix">
-                                    <div class="pull-left">
-                                        <ul class="post-meta clearfix">
-                                            <li><span class="icon fa fa-calendar"></span> {{date('j M, Y',strtotime(@$singleSlider->created_at))}}</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <h2>{{ucwords(@$singleSlider->list_header)}}}</h2>
-                                <div class="text">
-                                    {!! @$singleSlider->list_description !!}
-                                </div>
+    <section class="news-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-8 col-lg-7">
+                    <div class="news-details__left">
+                        <div class="news-details__img">
+                            <img src="{{ asset('/images/section_elements/list_1/'.$singleSlider->list_image) }}" alt="">
+                        </div>
+                        <div class="news-details__content">
+                            <ul class="list-unstyled news-details__meta">
+                                <li><a><i class="far fa-calendar"></i> {{date('j M, Y',strtotime(@$singleSlider->created_at))}} </a>
+                                </li>
+                            </ul>
+                            <h3 class="news-details__title">{{ucwords(@$singleSlider->list_header)}}}</h3>
+                            <div class="news-details__text-1 custom-description">
+                                {!! @$singleSlider->list_description !!}
                             </div>
 
                         </div>
-
                     </div>
                 </div>
-
+                <div class="col-xl-4 col-lg-5">
+                    @include('frontend.pages.sliderlist.sidebar')
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 @endsection

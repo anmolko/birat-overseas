@@ -2,49 +2,60 @@
 @section('title') {{ucwords(@$singleAlbum->name)}} | Album @endsection
 @section('css')
     <style>
-
         .img-wrapper {
             height: 270px;
             object-fit: cover;
         }
     </style>
-    <link rel="stylesheet" href="{{asset('assets/frontend/css/lightbox.css')}}">
-
 @endsection
 @section('content')
-    <section class="page-title" style="background-image: url({{asset('assets/frontend/images/background/6.jpg')}})">
-        <div class="auto-container">
-            <h1>Album Gallery</h1>
-            <ul class="page-breadcrumb">
-                <li><a href="/">home</a></li>
-                <li>{{ucwords(@$singleAlbum->name)}}</li>
-            </ul>
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
+        </div>
+        <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+        <div class="container">
+            <div class="page-header__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li><span>/</span></li>
+                    <li><a href="{{route('album')}}">Albums</a></li>
+                    <li><span>/</span></li>
+                    <li>Album Gallery</li>
+                </ul>
+                <h2>{{ucwords(@$singleAlbum->name)}}</h2>
+            </div>
         </div>
     </section>
 
-    <section class="portfolio-page-section">
-        <div class="auto-container">
+    <section class="portfolio">
+        <div class="container">
             @if(count(@$singleAlbum->gallery) > 0)
-                <div class="mixitup-gallery">
-                    <div class="row clearfix">
-                        @foreach($singleAlbum->gallery as $gallery)
-                            <div class="gallery-block col-lg-4 col-md-4 col-sm-12">
-                                <div class="inner-box">
-                                    <div class="image">
-                                        <img class="img-wrapper" src="{{asset('/images/albums/gallery/'.@$gallery->filename)}}" alt="" />
-                                        <!--Overlay Box-->
-                                        <div class="overlay-box">
-                                            <div class="overlay-inner">
-                                                <div class="content">
-                                                    <a href="{{asset('/images/albums/gallery/'.@$gallery->filename)}}" data-fancybox="gallery-images-1" data-caption="" class="link">
-                                                        <span class="icon fa fa-search" style="margin-top: 15px;"></span></a>
-                                                </div>
-                                            </div>
-                                        </div>
+                <div class="row">
+                    @foreach($singleAlbum->gallery as $gallery)
+                        <div class="col-xl-4 col-lg-6 col-md-6">
+                            <div class="portfolio__single">
+                                <div class="portfolio__img">
+                                    <img class="img-wrapper" src="{{asset('/images/albums/gallery/'.@$gallery->filename)}}" alt="">
+                                    <div class="portfolio__plus">
+                                        <a href="{{asset('/images/albums/gallery/'.@$gallery->filename)}}" class="img-popup"><span
+                                                class="icon-plus"></span></a>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="error-page__inner">
+                            <div class="error-page__title-box" style="margin-bottom: 40px;">
+                                <h3 class="error-page__sub-title">Gallery Images not found!</h3>
+                            </div>
+                            <p class="error-page__text">Sorry we can't find the any images in {{ucwords(@$singleAlbum->name)}} album  ! It could have been <br>
+                                moved or doesn't exist.</p>
+                            <a href="/" class="thm-btn error-page__btn">Back to Home</a>
+                        </div>
                     </div>
                 </div>
             @endif
@@ -53,5 +64,4 @@
 
 @endsection
 @section('js')
-    <script src="{{asset('assets/frontend/js/lightbox.min.js')}}"></script>
 @endsection

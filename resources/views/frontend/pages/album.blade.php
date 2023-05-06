@@ -3,50 +3,57 @@
 @section('styles')
 @endsection
 @section('content')
-    <section class="page-title" style="background-image: url({{asset('assets/frontend/images/background/6.jpg')}})">
-        <div class="auto-container">
-            <h1>Our Albums</h1>
-            <ul class="page-breadcrumb">
-                <li><a href="/">home</a></li>
-                <li>Album</li>
-            </ul>
+    <section class="page-header">
+        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
+        </div>
+        <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+        <div class="container">
+            <div class="page-header__inner">
+                <ul class="thm-breadcrumb list-unstyled">
+                    <li><a href="/">Home</a></li>
+                    <li><span>/</span></li>
+                    <li>Our album</li>
+                </ul>
+                <h2>Album</h2>
+            </div>
         </div>
     </section>
 
-    <section class="portfolio-page-section">
-        <div class="auto-container">
+    <section class="portfolio">
+        <div class="container">
             @if(count(@$albums) > 0)
-                <div class="mixitup-gallery">
-                <div class="row clearfix">
+                <div class="row">
                     @foreach($albums as $album)
-                        <div class="gallery-block col-lg-4 col-md-4 col-sm-12">
-                            <div class="inner-box">
-                                <div class="image">
-                                    <img src="{{asset('/images/albums/'.@$album->cover_image)}}" alt="" />
-                                    <!--Overlay Box-->
-                                    <div class="overlay-box">
-                                        <div class="overlay-inner">
-                                            <div class="content">
-                                                <a href="{{route('album.gallery',$album->slug)}}" class="link">
-                                                    <span class="icon fa fa-link" style="margin-top: 15px;"></span>
-                                                </a>
-                                                <a href="{{asset('/images/albums/'.@$album->cover_image)}}" data-fancybox="gallery-images-1" data-caption="" class="link">
-                                                    <span class="icon fa fa-search" style="margin-top: 15px;"></span></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="lower-content">
-                                    <h3><a href="{{route('album.gallery',$album->slug)}}">{{ucwords(@$album->name)}}</a></h3>
-                                    <div class="designation">
-                                        Images: ({{count(@$album->gallery)}})
-                                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="portfolio__single">
+                            <div class="portfolio__img">
+                                <img src="{{asset('/images/albums/'.@$album->cover_image)}}" alt="">
+                                <div class="portfolio__plus">
+                                    <a href="{{asset('/images/albums/'.@$album->cover_image)}}" class="img-popup"><span
+                                            class="icon-plus"></span></a>
                                 </div>
                             </div>
+                            <div class="team-one__content">
+                                <p class="team-one__sub-title">Images: ({{count(@$album->gallery)}})</p>
+                                <h3 class="team-one__name"><a href="{{route('album.gallery',$album->slug)}}">{{ucwords(@$album->name)}}</a></h3>
+                            </div>
                         </div>
-                    @endforeach
-                </div>
+                    </div>
+                @endforeach
             </div>
+            @else
+                <div class="row">
+                    <div class="col-xl-12">
+                        <div class="error-page__inner">
+                            <div class="error-page__title-box" style="margin-bottom: 40px;">
+                                <h3 class="error-page__sub-title">Albums not found!</h3>
+                            </div>
+                            <p class="error-page__text">Sorry we can't find the albums you are looking for ! It could have been <br>
+                                moved or doesn't exist.</p>
+                            <a href="/" class="thm-btn error-page__btn">Back to Home</a>
+                        </div>
+                    </div>
+                </div>
             @endif
         </div>
     </section>
