@@ -11,7 +11,7 @@
 
 @endsection
 @section('content')
-    <section class="page-header">
+    <section class="page-header mb-5">
         <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
         </div>
         <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
@@ -30,7 +30,7 @@
     @foreach($sections as $key=>$value)
 
         @if($value == "basic_section")
-            <section class="about-three mt-5" style="padding: 70px 0 80px;">
+            <section class="about-three mt-5" style="padding: 70px 0 10px;">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-6">
@@ -187,118 +187,133 @@
         @endif
 
         @if($value == "simple_header_and_description")
-            <div class="page-container header-description ">
+            <section class="news-details" style="padding: 10px 0 80px;">
                 <div class="container">
                     @if($header_descp_elements->heading)
-                        <div class="sec-title centered mt-5" style="margin-bottom: 25px;">
-                            <div class="title-text">{{@$header_descp_elements->subheading ?? ''}}</div>
-                            <h2>{{@$header_descp_elements->heading}}</h2>
+                        <div class="section-title text-center">
+                            <div class="section-sub-title-box">
+                                <p class="section-sub-title">{{@$header_descp_elements->subheading ?? ''}}</p>
+                                <div class="section-title-shape-1">
+                                    <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                </div>
+                                <div class="section-title-shape-2">
+                                    <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                </div>
+                            </div>
+                            <h2 class="section-title__title">{{@$header_descp_elements->heading}}</h2>
                         </div>
                     @endif
-                    <div class="row clearfix content-section">
-                        <div class="col-lg-12 col-md-12 col-sm-12">
-                            <div class="text">
-                                {!! @$header_descp_elements->description !!}
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-7">
+                            <div class="news-details__left">
+                                <div class="news-details__content custom-description">
+                                    <div class="news-details__text-1">{!! @$header_descp_elements->description !!}</div>
+                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
-            </div>
+            </section>
         @endif
 
         @if($value == "map_and_description")
-            <section class="fluid-section-two">
-                <div class="outer-container clearfix">
+            <section class="about-four">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <div class="about-four__right">
+                                <div class="section-title text-left">
+                                    <div class="section-sub-title-box">
+                                        <p class="section-sub-title">{{@$map_descp->subheading ?? 'Birat Overseas'}} </p>
+                                        <div class="section-title-shape-1">
+                                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                        </div>
+                                        <div class="section-title-shape-2">
+                                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                        </div>
+                                    </div>
+                                    <h2 class="section-title__title">{{@$map_descp->heading ?? ''}}</h2>
+                                </div>
+                                <div class="about-four__text-2">{!! ucfirst(@$map_descp->description) !!}</div>
+                                @if(@$map_descp->button_link)
+                                    <div class="about-four__founder">
+                                        <a href="{{@$map_descp->button_link}}" class="thm-btn services-three__get-quote-btn">{{ucwords(@$map_descp->button ?? 'Reach out')}}</a>
+                                    </div>
+                                @endif
+                            </div>
 
-                    @if(@$setting_data->google_map)
-                        <!--Image Column-->
-                        <div class="image-column" style="">
-                            <iframe src="{{@$setting_data->google_map}}" style="border:0;width: 100%;height: 100%;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
-                    @endif
-
-                    <!--Content Column-->
-                    <div class="content-column">
-                        <div class="inner-column">
-                            <!--Sec Title-->
-                            <div class="sec-title light" style="margin-bottom: 25px;">
-                                <div class="title-text">BIRAT OVERSEAS PVT. LTD</div>
-                                <h2>{{@$map_descp->heading}}</h2>
-                            </div>
-
-                            <!-- Support Form -->
-                            <div class="support-form light-description mb-3">
-                                {!! ucfirst(@$map_descp->description) !!}
-                            </div>
-                            @if(@$map_descp->button_link)
-                                <a href="{{@$map_descp->button_link}}" class="theme-btn btn-style-five mt-2">{{ucwords(@$map_descp->button ?? 'Reach out')}}</a>
+                        <div class="col-xl-6">
+                            @if(@$setting_data->google_map)
+                                <div class="about-four__left">
+                                    <div class="about-four__img-box wow slideInRight" data-wow-delay="100ms"
+                                         data-wow-duration="2500ms">
+                                        <iframe src="{{@$setting_data->google_map}}" style="border:0;width: 625px;height: 725px;" allowfullscreen="" loading="lazy"></iframe>
+                                    </div>
+                                </div>
                             @endif
                         </div>
                     </div>
-
                 </div>
             </section>
         @endif
 
         @if($value == "small_box_description")
-            <section class="services-section-three">
-                <div class="auto-container">
-                    <div class="sec-title centered mt-5" style="margin-bottom: 25px;">
-                        <div class="title-text"> {{ ucfirst($process_elements[0]->subheading ?? 'Advance Solutions')}}</div>
-                        <h2>{{@$process_elements[0]->heading}}</h2>
-                    </div>
-
-
-                    <div class="row clearfix">
-                    @for ($i = 1; $i <=@$process_num; $i++)
-                        <div class="feature-block alternate col-lg-4 col-md-6 col-sm-12">
-                            <div class="inner-box wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
-                                <div class="icon-box">
-                                    <span class="icon {{get_solution_icons($i-1)}}"></span>
+            <section class="feature-four">
+                <div class="container">
+                    <div class="feature-four__bottom" style="padding: 80px 0 80px;">
+                        <div class="row">
+                            @for ($i = 1; $i <=@$process_num; $i++)
+                                <div class="col-xl-4 col-lg-4">
+                                    <div class="feature-four__single">
+                                        <div class="feature-four__single-top">
+                                            <div class="feature-four__icon">
+                                                <span class="{{get_solution_icons($i-1)}}"></span>
+                                            </div>
+                                            <h4 class="feature-four__title">{{ucwords(@$process_elements[$i-1]->list_header ??'')}}</h4>
+                                        </div>
+                                        <p class="feature-four__text">{{ucfirst(@$process_elements[$i-1]->list_description)}}</p>
+                                    </div>
                                 </div>
-                                <h3><a>{{ucwords(@$process_elements[$i-1]->list_header ??'')}}</a></h3>
-                                <div class="text"> {{ucfirst(@$process_elements[$i-1]->list_description)}}</div>
-                            </div>
+                            @endfor
                         </div>
-                    @endfor
-
                     </div>
                 </div>
             </section>
         @endif
 
         @if($value == "gallery_section")
-            <section class="portfolio-page-section">
-                <div class="auto-container">
+            <section class="portfolio" style="padding: 70px 0 80px;">
+                <div class="container">
                     @if($heading!==null)
-                        <div class="sec-title centered" style="margin-bottom: 25px;">
-                            <div class="title-text">{{$subheading ?? ''}}</div>
-                            <h2>{{@$heading}}</h2>
+                        <div class="section-title text-center">
+                            <div class="section-sub-title-box">
+                                <p class="section-sub-title">{{$subheading ?? ''}}</p>
+                                <div class="section-title-shape-1">
+                                    <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                </div>
+                                <div class="section-title-shape-2">
+                                    <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                </div>
+                            </div>
+                            <h2 class="section-title__title">{{@$heading}}</h2>
                         </div>
                     @endif
                     @if(count(@$gallery_elements) > 0)
-                        <div class="mixitup-gallery">
-                            <div class="row clearfix">
-                                @foreach(@$gallery_elements as $gallery_element)
-                                    <div class="gallery-block col-lg-4 col-md-4 col-sm-12">
-                                        <div class="inner-box">
-                                            <div class="image">
-                                                <img class="img-wrapper" src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="" />
-                                                <!--Overlay Box-->
-                                                <div class="overlay-box">
-                                                    <div class="overlay-inner">
-                                                        <div class="content">
-                                                            <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" data-fancybox="gallery-images-1" data-caption="" class="link">
-                                                                <span class="icon fa fa-search" style="margin-top: 15px;"></span></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                        <div class="row">
+                            @foreach(@$gallery_elements as $gallery_element)
+                                <div class="col-xl-4 col-lg-6 col-md-6">
+                                    <div class="portfolio__single">
+                                        <div class="portfolio__img">
+                                            <img class="{{ @$page_detail->slug=='legal-document' || @$page_detail->slug=='legal-documents' ? '':'img-wrapper' }} lazy" data-src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="">
+                                            <div class="portfolio__plus">
+                                                <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-popup"><span
+                                                        class="icon-plus"></span></a>
                                             </div>
                                         </div>
                                     </div>
-                                @endforeach
-                            </div>
+                                </div>
+                            @endforeach
                         </div>
                     @endif
                 </div>
@@ -306,46 +321,62 @@
         @endif
 
         @if($value == "slider_list")
-            <section class="stories-section" style="background-image: url({{asset('assets/frontend/images/background/4.jpg')}})">
-                <div class="auto-container">
-                    <div class="row clearfix">
-
-                        <!--Title Column-->
-                        <div class="title-column col-lg-4 col-md-12 col-sm-12">
-                            <div class="inner-column">
-                                <div class="sec-title light">
-                                    <h2>{{ucwords(@$slider_list_elements[0]->heading)}}</h2>
-                                </div>
-                                <div class="text">
-                                    {{ucwords(@$slider_list_elements[0]->description)}}
-                                </div>
+            <section class="benefits">
+                <div class="benefits-bg-2" style="background-image: url({{asset('assets/frontend/images/backgrounds/benefits-bg-2.jpg')}});"></div>
+                <div class="container">
+                    <div class="section-title text-center">
+                        <div class="section-sub-title-box">
+                            <p class="section-sub-title"> {{ucwords(@$slider_list_elements[0]->description)}}</p>
+                            <div class="section-title-shape-1">
+                                <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                            </div>
+                            <div class="section-title-shape-2">
+                                <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                             </div>
                         </div>
+                        <h2 class="section-title__title">{{ucwords(@$slider_list_elements[0]->heading)}}</h2>
+                    </div>
+                    <div class="row">
+                        <div class="thm-owl__carousel owl-theme owl-carousel news-carousel carousel-dot-style"
+                             data-owl-options='{
+                        "items": 3,
+                        "margin": 30,
+                        "smartSpeed": 700,
+                        "loop":true,
+                        "autoplay": 6000,
+                        "nav":false,
+                        "dots":true,
+                        "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                        "responsive":{
+                            "0":{
+                                "items":1
+                            },
+                            "768":{
+                                "items":2
+                            },
+                            "992":{
+                                "items": 3
+                            }
+                        }
+                    }'>
+                        @for ($i = 1; $i <=@$list_3; $i++)
 
-                        <!--Blocks Column-->
-                        <div class="blocks-column col-lg-8 col-md-12 col-sm-12">
-                            <div class="inner-column">
-                                <div class="two-item-carousel owl-carousel owl-theme">
-
-                                    @for ($i = 1; $i <=@$list_3; $i++)
-                                        <div class="story-block">
-                                            <div class="inner-box">
-                                                <div class="image">
-                                                    <a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}"><img src="{{ asset('/images/section_elements/list_1/thumb/thumb_'.$slider_list_elements[$i-1]->list_image) }}" alt="" /></a>
-                                                </div>
-                                                <div class="lower-content">
-                                                    <h3><a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}"> {{ucwords(@$slider_list_elements[$i-1]->list_header)}}</a></h3>
-                                                    <a class="read-more" href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">
-                                                        <span class="fa fa-angle-right"></span> Read more</a>
-                                                </div>
-                                            </div>
+                            <div class="item wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
+                                <div class="news-three__single" style="height: 300px;">
+                                    <div class="news-three-bg" style="background-image: url({{ asset('/images/section_elements/list_1/thumb/thumb_'.$slider_list_elements[$i-1]->list_image) }});"></div>
+                                    <div class="news-three__content">
+                                        <h3 class="news-three__title"><a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}">
+                                                {{ucwords(@$slider_list_elements[$i-1]->list_header)}}</a></h3>
+                                        <div class="news-three__arrow">
+                                            <a href="{{route('slider.single',@$slider_list_elements[$i-1]->subheading)}}"><span class="icon-right-arrow1"></span></a>
                                         </div>
-                                    @endfor
+                                    </div>
                                 </div>
-
                             </div>
-                        </div>
 
+                        @endfor
+
+                        </div>
                     </div>
                 </div>
             </section>
@@ -358,9 +389,9 @@
 @section('js')
   <script>
       $( document ).ready(function() {
-          let selector = $('.content-section').find('table').length;
+          let selector = $('.custom-description').find('table').length;
           if(selector>0){
-              $('.content-section').find('table').addClass('table table-bordered');
+              $('.custom-description').find('table').addClass('table table-bordered');
           }
       });
   </script>

@@ -203,23 +203,23 @@ if (!function_exists('get_solution_icons')) {
     function get_solution_icons($index){
         $icon   = '';
         if($index == 0){
-            $icon = 'flaticon-worker';
+            $icon = 'icon-computer';
         }else if($index == 1){
-            $icon = 'flaticon-diamond';
+            $icon = 'icon-file';
         }else if($index == 2){
-            $icon = 'flaticon-mission';
+            $icon = 'icon-shield';
         }else if($index == 3){
-            $icon = 'flaticon-analytics';
+            $icon = 'icon-mission';
         }else if($index == 4){
-            $icon = 'flaticon-pie-graphic';
+            $icon = 'icon-agreement';
         }else if($index == 5){
-            $icon = 'flaticon-line-graph';
+            $icon = 'icon-insurance-2';
         }else if($index == 6){
-            $icon = 'flaticon-sports-and-competition';
+            $icon = 'icon-insurance-1';
         }else if($index == 7){
-            $icon = 'flaticon-analysis';
+            $icon = 'icon-contract';
         }else{
-            $icon = 'flaticon-graph-1';
+            $icon = 'icon-fire';
         }
 
         return $icon;

@@ -843,91 +843,93 @@
 
     @if(@$setting_data->grievance_heading)
         <section class="about-four">
-        <div class="container">
-            <div class="row">
-                <div class="col-xl-6">
-                    <div class="about-four__left">
-                        <div class="about-four__img-box wow slideInLeft" data-wow-delay="100ms"
-                             data-wow-duration="2500ms">
-                            <iframe src="{{@$setting_data->google_map}}" style="border:0;width: 625px;height: 725px;" allowfullscreen="" loading="lazy"></iframe>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="about-four__left">
+                            <div class="about-four__img-box wow slideInLeft" data-wow-delay="100ms"
+                                 data-wow-duration="2500ms">
+                                <iframe src="{{@$setting_data->google_map}}" style="border:0;width: 625px;height: 725px;" allowfullscreen="" loading="lazy"></iframe>
 
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xl-6">
-                    <div class="about-four__right">
-                        <div class="section-title text-left">
-                            <div class="section-sub-title-box">
-                                <p class="section-sub-title">Birat Overseas</p>
-                                <div class="section-title-shape-1">
-                                    <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                    <div class="col-xl-6">
+                        <div class="about-four__right">
+                            <div class="section-title text-left">
+                                <div class="section-sub-title-box">
+                                    <p class="section-sub-title">Birat Overseas</p>
+                                    <div class="section-title-shape-1">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                    </div>
+                                    <div class="section-title-shape-2">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                    </div>
                                 </div>
-                                <div class="section-title-shape-2">
-                                    <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
-                                </div>
+                                <h2 class="section-title__title">{{@$setting_data->grievance_heading}}</h2>
                             </div>
-                            <h2 class="section-title__title">{{@$setting_data->grievance_heading}}</h2>
-                        </div>
-                        <p class="about-four__text-2"> {{ ucfirst(@$setting_data->grievance_description) }}</p>
-                        <div class="about-four__founder">
-                            <a href="{{route('contact')}}" class="thm-btn services-three__get-quote-btn">Reach Out</a>
+                            <p class="about-four__text-2"> {{ ucfirst(@$setting_data->grievance_description) }}</p>
+                            <div class="about-four__founder">
+                                <a href="{{route('contact')}}" class="thm-btn services-three__get-quote-btn">Reach Out</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
     @endif
 
-    <!--News Three Start-->
-    <section class="news-three">
-        <div class="container">
-            <div class="section-title text-center">
-                <div class="section-sub-title-box">
-                    <p class="section-sub-title">recent news feed</p>
-                    <div class="section-title-shape-1">
-                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+    @if(count($latestPosts)>0)
+        <!--News Three Start-->
+        <section class="news-three">
+            <div class="container">
+                <div class="section-title text-center">
+                    <div class="section-sub-title-box">
+                        <p class="section-sub-title">recent news feed</p>
+                        <div class="section-title-shape-1">
+                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                        </div>
+                        <div class="section-title-shape-2">
+                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                        </div>
                     </div>
-                    <div class="section-title-shape-2">
-                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
-                    </div>
+                    <h2 class="section-title__title">Latest news & Articles <br> from the blog</h2>
                 </div>
-                <h2 class="section-title__title">Latest news & Articles <br> from the blog</h2>
-            </div>
-            <div class="row">
-                @foreach(@$latestPosts as $index=>$post)
-                    <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
-                        <div class="news-one__single">
-                            <div class="news-one__img">
-                                <img class="lazy" data-src="{{asset('/images/blog/'.@$post->image)}}" alt="">
-                                <div class="news-one__tag">
-                                    <p><i class="far fa-folder"></i>{{ucfirst(@$post->category->name)}}</p>
+                <div class="row">
+                    @foreach(@$latestPosts as $index=>$post)
+                        <div class="col-xl-4 col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
+                            <div class="news-one__single">
+                                <div class="news-one__img">
+                                    <img class="lazy" data-src="{{asset('/images/blog/'.@$post->image)}}" alt="">
+                                    <div class="news-one__tag">
+                                        <p><i class="far fa-folder"></i>{{ucfirst(@$post->category->name)}}</p>
+                                    </div>
+                                    <div class="news-one__arrow-box">
+                                        <a href="{{route('blog.single',$post->slug)}}" class="news-one__arrow">
+                                            <span class="icon-right-arrow1"></span>
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="news-one__arrow-box">
-                                    <a href="{{route('blog.single',$post->slug)}}" class="news-one__arrow">
-                                        <span class="icon-right-arrow1"></span>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="news-one__content">
-                                <ul class="list-unstyled news-one__meta">
-                                    <li><a href="{{route('blog.single',$post->slug)}}"><i class="far fa-calendar"></i>{{date('d M Y', strtotime($post->created_at))}} </a>
-                                    </li>
-                                </ul>
-                                <h3 class="news-one__title"><a href="{{route('blog.single',$post->slug)}}">T{{ucfirst($post->title)}}</a></h3>
-                                <p class="news-one__text"> {!! elipsis($post->description) !!}</p>
-                                <div class="news-one__read-more">
-                                    <a href="{{route('blog.single',$post->slug)}}">Read More <i class="fas fa-angle-double-right"></i></a>
+                                <div class="news-one__content">
+                                    <ul class="list-unstyled news-one__meta">
+                                        <li><a href="{{route('blog.single',$post->slug)}}"><i class="far fa-calendar"></i>{{date('d M Y', strtotime($post->created_at))}} </a>
+                                        </li>
+                                    </ul>
+                                    <h3 class="news-one__title"><a href="{{route('blog.single',$post->slug)}}">T{{ucfirst($post->title)}}</a></h3>
+                                    <p class="news-one__text"> {!! elipsis($post->description) !!}</p>
+                                    <div class="news-one__read-more">
+                                        <a href="{{route('blog.single',$post->slug)}}">Read More <i class="fas fa-angle-double-right"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
 
+                </div>
             </div>
-        </div>
-    </section>
-    <!--News Three End-->
+        </section>
+        <!--News Three End-->
+    @endif
 @endsection
 
 @section('js')

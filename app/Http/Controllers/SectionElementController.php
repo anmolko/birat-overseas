@@ -287,7 +287,7 @@ class SectionElementController extends Controller
                     $path         = base_path().'/public/images/section_elements/list_1/';
                     $thumb_path   = base_path().'/public/images/section_elements/list_1/thumb/';
                     $moved        = Image::make($image->getRealPath())->fit(850, 450)->orientate()->save($path.$name);
-                    $thumb        = Image::make($image->getRealPath())->fit(280, 280)->orientate()->save($thumb_path.$thumb);
+                    $thumb        = Image::make($image->getRealPath())->fit(370, 350)->orientate()->save($thumb_path.$thumb);
                     if ($moved && $thumb){
                         $data['list_image']= $name;
                     }
@@ -298,11 +298,7 @@ class SectionElementController extends Controller
         elseif ($section_name == 'small_box_description'){
             $process_num   = $request->input('list_number_3_process_num');
             for ($i=0;$i<$process_num;$i++){
-                $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
-                $subheading  =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
                 $data=[
-                    'heading'               => $heading,
-                    'subheading'            => $subheading,
                     'list_header'           => $request->input('list_header')[$i],
                     'page_section_id'       => $section_id,
                     'list_description'      => $request->input('list_description')[$i],
@@ -558,7 +554,7 @@ class SectionElementController extends Controller
                         $path         = base_path().'/public/images/section_elements/list_1/';
                         $thumb_path   = base_path().'/public/images/section_elements/list_1/thumb/';
                         $moved        = Image::make($image->getRealPath())->fit(850, 450)->orientate()->save($path.$name);
-                        $thumb        = Image::make($image->getRealPath())->fit(280, 280)->orientate()->save($thumb_path.$thumb);
+                        $thumb        = Image::make($image->getRealPath())->fit(370, 350)->orientate()->save($thumb_path.$thumb);
                         if ($moved && $thumb){
                             $data['list_image']= $name;
                         }
@@ -619,12 +615,8 @@ class SectionElementController extends Controller
             $db_elements     = json_decode($request->input('process_list_elements'),true);
             $db_elements_id  = array_map(function($item){ return $item['id']; }, $db_elements);
             for ($i=0;$i<$process_num;$i++) {
-                $heading     =  (array_key_exists($i, $request->input('heading')) ?  $request->input('heading')[$i]: Null);
-                $subheading  =  (array_key_exists($i, $request->input('subheading')) ?  $request->input('subheading')[$i]: Null);
                 if($request->input('id')[$i] == null){
                     $data=[
-                        'heading'               => $heading,
-                        'subheading'            => $subheading,
                         'list_header'           => $request->input('list_header')[$i],
                         'page_section_id'       => $section_id,
                         'list_description'      => $request->input('list_description')[$i],
@@ -634,8 +626,6 @@ class SectionElementController extends Controller
                 }
                 else{
                     $process                      = SectionElement::find($request->input('id')[$i]);
-                    $process->heading             = $heading;
-                    $process->subheading          = $subheading;
                     $process->list_header         = $request->input('list_header')[$i];
                     $process->page_section_id     = $section_id;
                     $process->list_description    = $request->input('list_description')[$i];

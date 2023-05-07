@@ -180,7 +180,7 @@
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label>Description <span class="text-muted text-danger">* write 800 characters only</span></label>
-                                                    <textarea class="form-control" maxlength="800" rows="14" name="description" id="basic_editor" required>{!! @$basic_elements->description !!}</textarea>
+                                                    <textarea class="form-control" maxlength="900" rows="14" name="description" id="basic_editor" required>{!! @$basic_elements->description !!}</textarea>
                                                     <div class="invalid-feedback">
                                                         Please write the small summary for basic section.
                                                     </div>
@@ -266,7 +266,7 @@
                                              <div class="card-body">
                                                  <div class="form-group mb-3">
                                                      <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                     <input type="text" class="form-control" name="heading" value="{{@$map_descp->heading}}" maxlength="45" required>
+                                                     <input type="text" class="form-control" name="heading" value="{{@$map_descp->heading}}" maxlength="30" required>
                                                      <input type="hidden" class="form-control" value="{{$key}}" name="page_section_id" required>
                                                      <input type="hidden" class="form-control" value="{{$value}}" name="section_name" required>
                                                      <div class="invalid-feedback">
@@ -276,7 +276,7 @@
 
                                                  <div class="form-group mb-3">
                                                      <label>Subheading</label>
-                                                     <input type="text" maxlength="35" class="form-control" value="{{@$map_descp->subheading}}" name="subheading">
+                                                     <input type="text" maxlength="25" class="form-control" value="{{@$map_descp->subheading}}" name="subheading">
                                                      <div class="invalid-feedback">
                                                          Please enter the sub heading.
                                                      </div>
@@ -614,14 +614,14 @@
                                              <div class="card-body">
                                                  <div class="form-group mb-3">
                                                      <label>Heading </label>
-                                                     <input type="text" maxlength="45" class="form-control" value="{{@$header_descp_elements->heading}}" name="heading">
+                                                     <input type="text" maxlength="30" class="form-control" value="{{@$header_descp_elements->heading}}" name="heading">
                                                      <div class="invalid-feedback">
                                                          Please enter the heading.
                                                      </div>
                                                  </div>
                                                  <div class="form-group mb-3">
                                                      <label>Subheading</label>
-                                                     <input type="text" maxlength="35" class="form-control" value="{{@$header_descp_elements->subheading}}" name="subheading">
+                                                     <input type="text" maxlength="25" class="form-control" value="{{@$header_descp_elements->subheading}}" name="subheading">
                                                      <div class="invalid-feedback">
                                                          Please enter the sub heading.
                                                      </div>
@@ -660,7 +660,7 @@
                                              <div class="card ctm-border-radius shadow-sm flex-fill">
                                                  <div class="card-header">
                                                      <h4 class="card-title mb-0">
-                                                         Genera details
+                                                         General details
                                                      </h4>
                                                  </div>
                                                  <div class="card-body">
@@ -762,14 +762,14 @@
                                                  <div class="card-body">
                                                      <div class="form-group mb-3">
                                                          <label>Heading <span class="text-muted text-danger">*</span></label>
-                                                         <input type="text" class="form-control" maxlength="25" name="heading[]" value="{{@$slider_list_elements[0]->heading}}" required>
+                                                         <input type="text" class="form-control" maxlength="30" name="heading[]" value="{{@$slider_list_elements[0]->heading}}" required>
                                                          <div class="invalid-feedback">
                                                              Please enter the heading.
                                                          </div>
                                                      </div>
                                                      <div class="form-group mb-3">
-                                                         <label>Small Description <span class="text-muted text-danger">*</span></label>
-                                                         <input type="text" maxlength="250" class="form-control" name="description[]" value="{{@$slider_list_elements[0]->description}}" required>
+                                                         <label>Subheading <span class="text-muted text-danger">*</span></label>
+                                                         <input type="text" maxlength="20" class="form-control" name="description[]" value="{{@$slider_list_elements[0]->description}}" required>
                                                          <div class="invalid-feedback">
                                                              Please enter the sub heading.
                                                          </div>
@@ -800,7 +800,7 @@
                                                                      <input type="hidden" class="form-control" value="{{$value}}"  name="section_name" required>
                                                                      <input type="hidden" class="form-control" value="{{$list_3}}" name="list_number_3" required>
                                                                      <input type="hidden" class="form-control" value="{{@$slider_list_elements[$i-1]->id}}" name="id[]">
-                                                                     <input type="text" class="form-control" maxlength="45" name="list_header[]" id="slider_title_{{$i-1}}" onclick="slugMaker('slider_title_{{$i-1}}','slider_slug_{{$i-1}}')" value="{{@$slider_list_elements[$i-1]->list_header}}"  required>
+                                                                     <input type="text" maxlength="50" class="form-control" maxlength="45" name="list_header[]" id="slider_title_{{$i-1}}" onclick="slugMaker('slider_title_{{$i-1}}','slider_slug_{{$i-1}}')" value="{{@$slider_list_elements[$i-1]->list_header}}"  required>
                                                                      <div class="invalid-feedback">
                                                                          Please enter the heading.
                                                                      </div>
@@ -863,7 +863,7 @@
                                                  <h4 class="card-title mb-0">
                                                      Add image to gallery section
                                                  </h4>
-                                                 <p class="text-danger">Note* Please add the images in the multiplication of 4 (like 4, 8, 12) for perfect design  </p>
+                                                 <p class="text-danger">Note* Please add the images in the multiplication of 4 (like 3, 6, 9) for perfect design  </p>
                                              </div>
                                              <div class="card-body">
                                                  <h2 class="page-heading">Upload your Images <span id="counter"></span></h2>
@@ -943,33 +943,6 @@
                                         {!! Form::open(['route' => 'section-elements.store','method'=>'post','class'=>'needs-validation','id'=>'process-form','novalidate'=>'','enctype'=>'multipart/form-data']) !!}
                                     @endif
                                     <div id="process-form-ajax">
-                                        <div class="row">
-                                            <div class="col-md-12">
-                                                <div class="card ctm-border-radius shadow-sm flex-fill">
-                                                    <div class="card-header">
-                                                        <h4 class="card-title mb-0">
-                                                            General Details
-                                                        </h4>
-                                                    </div>
-                                                    <div class="card-body">
-                                                        <div class="form-group mb-3">
-                                                            <label>Heading <span class="text-danger">*</span></label>
-                                                            <input type="text" class="form-control" maxlength="45" name="heading[]" value="{{@$process_elements[0]->heading}}" required>
-                                                            <div class="invalid-feedback">
-                                                                Please enter the heading.
-                                                            </div>
-                                                        </div>
-                                                        <div class="form-group mb-3">
-                                                            <label>SubHeading </label>
-                                                            <input type="text" class="form-control" maxlength="35" name="subheading[]" value="{{@$process_elements[0]->subheading}}">
-                                                            <div class="invalid-feedback">
-                                                                Please enter the heading.
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="accordion custom-accordionwithicon custom-accordion-border accordion-border-box accordion-success" id="accordionBordered">
                                             <input type="hidden" class="form-control" value="{{@$process_elements}}" name="process_list_elements">
 
@@ -1034,7 +1007,7 @@
 @endsection
 
 @section('js')
-{{--    <!-- <script src="{{asset('assets/backend/plugins/ckeditor/ckeditor.js')}}"></script> -->--}}
+    <script src="{{asset('assets/backend/plugins/ckeditor/ckeditor.js')}}"></script>
 {{--    @include('backend.ckeditor')--}}
     <script src="{{asset('assets/backend/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
     <script src="{{asset('assets/backend/plugins/dropzone/dropzone.js')}}"></script>
@@ -1211,9 +1184,12 @@
 
 
         $(document).ready(function () {
-            if(section_list.includes("simple_header_and_description")){
-                createEditor('task-textarea');
-            }
+            CKEDITOR.replace('task-textarea',{
+                allowedContent: true
+            });
+            // if(section_list.includes("simple_header_and_description")){
+            //     createEditor('task-textarea');
+            // }
             if(section_list.includes("map_and_description")){
                 createEditor('mapeditor');
             }
@@ -1308,6 +1284,8 @@
             $("#header-descp-form").submit(function(event){
                 event.preventDefault(); //prevent default action
                 if (!this.checkValidity()) { return false;}
+                var editor_data = CKEDITOR.instances['task-textarea'].getData();
+                $('#task-textarea').text(editor_data);
 
                 var post_url       = $(this).attr("action"); //get form action url
                 var request_method = $(this).attr("method"); //get form GET/POST method

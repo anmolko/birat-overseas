@@ -36,7 +36,7 @@
                                 <li><a><i class="far fa-calendar"></i> {{date('j M, Y',strtotime(@$singleSlider->created_at))}} </a>
                                 </li>
                             </ul>
-                            <h3 class="news-details__title">{{ucwords(@$singleSlider->list_header)}}}</h3>
+                            <h3 class="news-details__title">{{ucwords(@$singleSlider->list_header)}}</h3>
                             <div class="news-details__text-1 custom-description">
                                 {!! @$singleSlider->list_description !!}
                             </div>
