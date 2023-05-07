@@ -678,20 +678,6 @@
                                                              Please enter the sub heading.
                                                          </div>
                                                      </div>
-                                                     <div class="col-md-4">
-                                                         <img  id="current-faq-img"  src="<?php if(!empty(@$accordian2_elements[0]->image)){ echo '/images/section_elements/basic_section/'.@$accordian2_elements[0]->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
-                                                         <input  type="file" accept="image/png, image/jpeg" hidden
-                                                                 id="faq-image" onchange="loadbasicFile('faq-image','current-faq-img',event)" name="image[]"
-                                                                 class="profile-foreground-img-file-input" >
-
-                                                         <figcaption class="figure-caption">Side image. (SIZE: 650 × 730px)</figcaption>
-                                                         <div class="invalid-feedback" >
-                                                             Please select a image.
-                                                         </div>
-                                                         <label for="faq-image" class="profile-photo-edit btn btn-light feature-image-button">
-                                                             <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
-                                                         </label>
-                                                     </div>
                                                  </div>
                                              </div>
                                          </div>

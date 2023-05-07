@@ -9,7 +9,7 @@ class Page extends Model
 {
     use HasFactory;
     protected $table ='pages';
-    protected $fillable =['id','name','slug','status','created_by','updated_by'];
+    protected $fillable =['id','name','slug','status','image','created_by','updated_by'];
 
     public function sections()
     {

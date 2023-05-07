@@ -11,6 +11,7 @@ use App\Models\SectionGallery;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 
 class PageController extends Controller
 {
@@ -20,15 +21,17 @@ class PageController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+    private $path;
     public function __construct()
     {
         $this->middleware('auth');
+        $this->path   = public_path('/images/dynamic_page');
     }
 
     public function index()
     {
         $pages = Page::latest('created_at')->get();
-        return view('backend.pages.index',compact('pages'));
+        return view('backend.pages.index', compact('pages'));
     }
 
     /**
@@ -44,22 +47,39 @@ class PageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        $slug       = Page::where('slug',$request->input('slug'))->first();
-        if(!empty($slug)) {
+        $slug = Page::where('slug', $request->input('slug'))->first();
+        if (!empty($slug)) {
             $status = 'warning';
             return response()->json(['status' => $status, 'message' => 'The page slug is already in use ! Create a new Page.']);
-        }else{
+        } else {
             $data = [
                 'name' => $request->input('name'),
                 'slug' => $request->input('slug'),
                 'status' => $request->input('status'),
                 'created_by' => Auth::user()->id,
             ];
+
+            if(!empty($request->file('banner_image'))){
+                $image          = $request->file('banner_image');
+                $name           = uniqid().'_'.$image->getClientOriginalName();
+
+                if (!is_dir($this->path)) {
+                    mkdir($this->path, 0777);
+                }
+
+                $path           = base_path().'/public/images/dynamic_page/';
+                $moved          = Image::make($image->getRealPath())->fit(1221, 310)->orientate()->save($path.$name);
+                if ($moved){
+                    $data['image']=$name;
+                }
+            }
+
+
             $status = Page::create($data);
             $sections = $request->input('sorted_sections');
             $pos = $request->position;
@@ -67,13 +87,13 @@ class PageController extends Controller
             $listval2 = ($request->input('list_number_2') == null) ? 2 : $request->input('list_number_2');
             $listval3 = ($request->input('list_number_3') == null) ? 3 : $request->input('list_number_3');
             $process_sel = ($request->input('list_number_3_process_sel') == null) ? 3 : $request->input('list_number_3_process_sel');
-            $gallery_heading     = $request->input('gallery_heading');
-            $gallery_subheading  = $request->input('gallery_subheading');
+            $gallery_heading = $request->input('gallery_heading');
+            $gallery_subheading = $request->input('gallery_subheading');
 
             if ($sections !== null) {
                 foreach ($sections as $key => $value) {
                     $section_name = str_replace("_", " ", $value);
-                 if ($value == 'accordion_section_2') {
+                    if ($value == 'accordion_section_2') {
                         $section_status = PageSection::create([
                             'section_name' => $section_name,
                             'section_slug' => $value,
@@ -101,17 +121,17 @@ class PageController extends Controller
                             'page_id' => $page->id,
                             'created_by' => Auth::user()->id,
                         ]);
-                    } elseif($value == 'gallery_section'){
-                     $section_status = PageSection::create([
-                         'section_name'                  => $section_name,
-                         'section_slug'                  => $value,
-                         'gallery_heading'               => $gallery_heading,
-                         'gallery_subheading'            => $gallery_subheading,
-                         'position'                      => $pos[$key],
-                         'page_id'                       => $page->id,
-                         'created_by'                    => Auth::user()->id,
-                     ]);
-                 }else {
+                    } elseif ($value == 'gallery_section') {
+                        $section_status = PageSection::create([
+                            'section_name' => $section_name,
+                            'section_slug' => $value,
+                            'gallery_heading' => $gallery_heading,
+                            'gallery_subheading' => $gallery_subheading,
+                            'position' => $pos[$key],
+                            'page_id' => $page->id,
+                            'created_by' => Auth::user()->id,
+                        ]);
+                    } else {
                         $section_status = PageSection::create([
                             'section_name' => $section_name,
                             'section_slug' => $value,
@@ -143,7 +163,7 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -154,92 +174,91 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
-        $page               = Page::find($id);
-        $sections           = array();
-        $ordered_sections   = array();
-        $list1              = "";
-        $list1_id           = "";
-        $list2              = "";
-        $list2_id           = "";
-        $list3              = "";
-        $list3_id           = "";
-        $list4              = "";
-        $list4_id           = "";
-        $slider_type        = "";
-        $process_number     = "";
-        $process_id         = "";
-        $heading            = "";
-        $subheading         = "";
-        foreach ($page->sections as $section){
+        $page = Page::find($id);
+        $sections = array();
+        $ordered_sections = array();
+        $list1 = "";
+        $list1_id = "";
+        $list2 = "";
+        $list2_id = "";
+        $list3 = "";
+        $list3_id = "";
+        $list4 = "";
+        $list4_id = "";
+        $slider_type = "";
+        $process_number = "";
+        $process_id = "";
+        $heading = "";
+        $subheading = "";
+        foreach ($page->sections as $section) {
             $sections[$section->id] = $section->section_slug;
-            if( $section->section_slug == 'accordion_section_1'){
+            if ($section->section_slug == 'accordion_section_1') {
                 $ordered_sections[$section->section_slug] = 'simple_accordian_tab.png';
-                $list1      = $section->list_number_1;
-                $list1_id   = $section->id;
-            }elseif ($section->section_slug == 'accordion_section_2'){
+                $list1 = $section->list_number_1;
+                $list1_id = $section->id;
+            } elseif ($section->section_slug == 'accordion_section_2') {
                 $ordered_sections[$section->section_slug] = 'simple_accordian_tab2.png';
-                $list2      = $section->list_number_2;
-                $list2_id   = $section->id;
-            }elseif ($section->section_slug == 'slider_list'){
+                $list2 = $section->list_number_2;
+                $list2_id = $section->id;
+            } elseif ($section->section_slug == 'slider_list') {
                 $ordered_sections[$section->section_slug] = 'list_option_1.png';
-                $list3       = $section->list_number_3;
-                $list3_id    = $section->id;
+                $list3 = $section->list_number_3;
+                $list3_id = $section->id;
                 $slider_type = $section->list_number_1;
-            }elseif ($section->section_slug == 'icon_and_title'){
+            } elseif ($section->section_slug == 'icon_and_title') {
                 $ordered_sections[$section->section_slug] = 'icon_and_title.png';
-                $list4      = $section->list_number_4;
-                $list4_id   = $section->id;
-            } elseif ($section->section_slug == 'small_box_description'){
-                $process_number     = $section->list_number_3;
-                $process_id         = $section->id;
+                $list4 = $section->list_number_4;
+                $list4_id = $section->id;
+            } elseif ($section->section_slug == 'small_box_description') {
+                $process_number = $section->list_number_3;
+                $process_id = $section->id;
                 $ordered_sections[$section->section_slug] = 'small_box_description.png';
-            } elseif ($section->section_slug == 'contact_information'){
+            } elseif ($section->section_slug == 'contact_information') {
                 $ordered_sections[$section->section_slug] = 'contact_information.png';
-            } elseif ($section->section_slug == 'gallery_section'){
+            } elseif ($section->section_slug == 'gallery_section') {
                 $ordered_sections[$section->section_slug] = 'gallery_section.png';
-                $heading =$section->gallery_heading;
+                $heading = $section->gallery_heading;
                 $subheading = $section->gallery_subheading;
-            } elseif ($section->section_slug == 'gallery_section_2'){
+            } elseif ($section->section_slug == 'gallery_section_2') {
                 $ordered_sections[$section->section_slug] = 'gallery_section_2.png';
-            } elseif ($section->section_slug == 'simple_header_and_description'){
+            } elseif ($section->section_slug == 'simple_header_and_description') {
                 $ordered_sections[$section->section_slug] = 'simple_header_descp.png';
-            } elseif ($section->section_slug == 'flash_cards'){
+            } elseif ($section->section_slug == 'flash_cards') {
                 $ordered_sections[$section->section_slug] = 'mission_vision.png';
-            } elseif ($section->section_slug == 'background_image_section'){
+            } elseif ($section->section_slug == 'background_image_section') {
                 $ordered_sections[$section->section_slug] = 'background_image_section.png';
-            } elseif ($section->section_slug == 'call_to_action_2'){
+            } elseif ($section->section_slug == 'call_to_action_2') {
                 $ordered_sections[$section->section_slug] = 'calltoaction2.png';
-            } elseif ($section->section_slug == 'call_to_action_1'){
+            } elseif ($section->section_slug == 'call_to_action_1') {
                 $ordered_sections[$section->section_slug] = 'calltoaction.png';
-            }  elseif ($section->section_slug == 'basic_section'){
+            } elseif ($section->section_slug == 'basic_section') {
                 $ordered_sections[$section->section_slug] = 'basic_section.png';
             }
         }
 
-        return view('backend.pages.edit',compact('page','heading','subheading','process_number','process_id','ordered_sections','slider_type','sections','list1','list2','list3','list1_id','list2_id','list3_id','list4','list4_id'));
+        return view('backend.pages.edit', compact('page', 'heading', 'subheading', 'process_number', 'process_id', 'ordered_sections', 'slider_type', 'sections', 'list1', 'list2', 'list3', 'list1_id', 'list2_id', 'list3_id', 'list4', 'list4_id'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $check      = Page::find($id);
-        $slug       = Page::where('slug',$request->input('slug'))->first();
-        if(!empty($slug) && $slug->slug !== $check->slug) {
+        $check = Page::find($id);
+        $slug = Page::where('slug', $request->input('slug'))->first();
+        if (!empty($slug) && $slug->slug !== $check->slug) {
             $status = 'warning';
             return response()->json(['status' => $status, 'message' => 'The page slug is already in use !']);
-        }
-        else {
+        } else {
             $incoming_sections = $request->input('sorted_sections');
             $section = PageSection::where('page_id', $id)->get()->toArray();
             $db_section_slug = array_map(function ($item) {
@@ -251,6 +270,23 @@ class PageController extends Controller
             $page->slug = $request->input('slug');
             $page->status = $request->input('status');
             $pos = $request->position;
+            $oldimage = $page->image;
+            if (!empty($request->file('banner_image'))){
+                $image       = $request->file('banner_image');
+                $name1       = uniqid().'_'.$image->getClientOriginalName();
+                if (!is_dir($this->path)) {
+                    mkdir($this->path, 0777);
+                }
+                $path        = base_path().'/public/images/dynamic_page/';
+                $moved       = Image::make($image->getRealPath())->fit(1221, 310)->orientate()->save($path.$name1);
+
+                if ($moved){
+                    $page->image= $name1;
+                    if (!empty($oldimage) && file_exists(public_path().'/images/dynamic_page/'.$oldimage)){
+                        @unlink(public_path().'/images/dynamic_page/'.$oldimage);
+                    }
+                }
+            }
 
 
             $status = $page->update();
@@ -261,8 +297,8 @@ class PageController extends Controller
             $listval4 = ($request->input('list_number_4') == null) ? 3 : $request->input('list_number_4');
             $slider_type = ($request->input('list_number_1_slider') == null) ? 'slider_list' : $request->input('list_number_1_slider');
             $process_sel = ($request->input('list_number_3_process_sel') == null) ? 3 : $request->input('list_number_3_process_sel');
-            $gallery_heading        = $request->input('gallery_heading');
-            $gallery_subheading     = $request->input('gallery_subheading');
+            $gallery_heading = $request->input('gallery_heading');
+            $gallery_subheading = $request->input('gallery_subheading');
 
             if ($incoming_sections !== null) {
                 foreach ($incoming_sections as $key => $value) {
@@ -297,18 +333,17 @@ class PageController extends Controller
                                 'page_id' => $page->id,
                                 'created_by' => Auth::user()->id,
                             ]);
-                        } elseif($value == 'gallery_section'){
+                        } elseif ($value == 'gallery_section') {
                             $section_status = PageSection::create([
-                                'section_name'                  => $section_name,
-                                'section_slug'                  => $value,
-                                'gallery_heading'               => $gallery_heading,
-                                'gallery_subheading'            => $gallery_subheading,
-                                'position'                      => $pos[$key],
-                                'page_id'                       => $page->id,
-                                'created_by'                    => Auth::user()->id,
+                                'section_name' => $section_name,
+                                'section_slug' => $value,
+                                'gallery_heading' => $gallery_heading,
+                                'gallery_subheading' => $gallery_subheading,
+                                'position' => $pos[$key],
+                                'page_id' => $page->id,
+                                'created_by' => Auth::user()->id,
                             ]);
-                        }
-                        elseif ($value == 'slider_list') {
+                        } elseif ($value == 'slider_list') {
                             $data = [
                                 'section_name' => $section_name,
                                 'section_slug' => $value,
@@ -366,13 +401,13 @@ class PageController extends Controller
                             $section_element->list_number_4 = $request->input('list_number_4');
                             $section_element->position = $pos[$key];
                             $section_status = $section_element->update();
-                        } elseif($value == 'gallery_section'){
-                            $section_element                  = PageSection::where('page_id',$id)->where('section_slug',$value)->first();
-                            $section_element->gallery_heading   =  $gallery_heading;
-                            $section_element->gallery_subheading  = $gallery_subheading;
-                            $section_element->position        = $pos[$key];
-                            $section_status                   = $section_element->update();
-                        }else {
+                        } elseif ($value == 'gallery_section') {
+                            $section_element = PageSection::where('page_id', $id)->where('section_slug', $value)->first();
+                            $section_element->gallery_heading = $gallery_heading;
+                            $section_element->gallery_subheading = $gallery_subheading;
+                            $section_element->position = $pos[$key];
+                            $section_status = $section_element->update();
+                        } else {
                             $update_section = PageSection::where('page_id', $id)->where('section_slug', $value)->first();
                             $update_section->position = $pos[$key];
                             $section_status = $update_section->update();
@@ -480,111 +515,111 @@ class PageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
-        $delete             = Page::with('sections')->find($id);
-        $pageid             = $delete->id;
-        $menuitems          = MenuItem::where('page_id',$pageid)->get();
-        $menuname           = [];
+        $delete = Page::with('sections')->find($id);
+        $pageid = $delete->id;
+        $menuitems = MenuItem::where('page_id', $pageid)->get();
+        $menuname = [];
 
-        if(count($menuitems)>0){
-            foreach ($menuitems as $items){
-                $menu  = Menu::find($items->menu_id);
-                array_push($menuname,ucwords($menu->name));
+        if (count($menuitems) > 0) {
+            foreach ($menuitems as $items) {
+                $menu = Menu::find($items->menu_id);
+                array_push($menuname, ucwords($menu->name));
             }
             $status = 'Warning';
-            return response()->json(['status'=>$status,'message'=>'This page is attached to menu(s). Please remove menu item first to delete this page.','name'=>$menuname]);
+            return response()->json(['status' => $status, 'message' => 'This page is attached to menu(s). Please remove menu item first to delete this page.', 'name' => $menuname]);
         }
 
 
-        foreach ($delete->sections as $section){
-            if($section->section_slug == 'basic_section'){
+        foreach ($delete->sections as $section) {
+            if ($section->section_slug == 'basic_section') {
                 $basic_element = SectionElement::where('page_section_id', $section->id)
                     ->first();
-                if (!empty($basic_element->image) && file_exists(public_path().'/images/section_elements/basic_section/'.$basic_element->image)){
-                    @unlink(public_path().'/images/section_elements/basic_section/'.$basic_element->image);
+                if (!empty($basic_element->image) && file_exists(public_path() . '/images/section_elements/basic_section/' . $basic_element->image)) {
+                    @unlink(public_path() . '/images/section_elements/basic_section/' . $basic_element->image);
                 }
             }
-            if($section->section_slug == 'background_image_section'){
+            if ($section->section_slug == 'background_image_section') {
                 $bgimage_element = SectionElement::where('page_section_id', $section->id)
                     ->first();
-                if (!empty($bgimage_element->image) && file_exists(public_path().'/images/section_elements/bgimage_section/'.$bgimage_element->image)){
-                    @unlink(public_path().'/images/section_elements/bgimage_section/'.$bgimage_element->image);
+                if (!empty($bgimage_element->image) && file_exists(public_path() . '/images/section_elements/bgimage_section/' . $bgimage_element->image)) {
+                    @unlink(public_path() . '/images/section_elements/bgimage_section/' . $bgimage_element->image);
                 }
             }
-            if($section->section_slug == 'small_box_description'){
+            if ($section->section_slug == 'small_box_description') {
                 $process = SectionElement::where('page_section_id', $section->id)
                     ->get();
-                foreach ($process as $elements){
-                    if (!empty($elements->list_image) && file_exists(public_path().'/images/section_elements/list_1/'.$elements->list_image)){
-                        @unlink(public_path().'/images/section_elements/list_1/'.$elements->list_image);
+                foreach ($process as $elements) {
+                    if (!empty($elements->list_image) && file_exists(public_path() . '/images/section_elements/list_1/' . $elements->list_image)) {
+                        @unlink(public_path() . '/images/section_elements/list_1/' . $elements->list_image);
                     }
                 }
             }
-            if($section->section_slug == 'slider_list'){
+            if ($section->section_slug == 'slider_list') {
                 $list1_element = SectionElement::where('page_section_id', $section->id)
                     ->get();
-                foreach ($list1_element as $elements){
-                    if (!empty($elements->list_image) && file_exists(public_path().'/images/section_elements/list_1/'.$elements->list_image)){
-                        @unlink(public_path().'/images/section_elements/list_1/'.$elements->list_image);
+                foreach ($list1_element as $elements) {
+                    if (!empty($elements->list_image) && file_exists(public_path() . '/images/section_elements/list_1/' . $elements->list_image)) {
+                        @unlink(public_path() . '/images/section_elements/list_1/' . $elements->list_image);
                     }
-                    if (!empty('thumb_'.$elements->list_image) && file_exists(public_path().'/images/section_elements/list_1/thumb/thumb_'.$elements->list_image)){
-                        @unlink(public_path().'/images/section_elements/list_1/thumb/thumb_'.$elements->list_image);
+                    if (!empty('thumb_' . $elements->list_image) && file_exists(public_path() . '/images/section_elements/list_1/thumb/thumb_' . $elements->list_image)) {
+                        @unlink(public_path() . '/images/section_elements/list_1/thumb/thumb_' . $elements->list_image);
                     }
                 }
             }
-            if($section->section_slug == 'gallery_section'){
+            if ($section->section_slug == 'gallery_section') {
                 $gallery_element = SectionGallery::where('page_section_id', $section->id)
                     ->get();
-                foreach ($gallery_element as $elements){
-                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path().'/images/section_elements/gallery/'.$elements->filename) && file_exists(public_path().'/images/section_elements/gallery/'.$elements->resized_name)){
-                        @unlink(public_path().'/images/section_elements/gallery/'.$elements->filename);
-                        @unlink(public_path().'/images/section_elements/gallery/'.$elements->resized_name);
+                foreach ($gallery_element as $elements) {
+                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path() . '/images/section_elements/gallery/' . $elements->filename) && file_exists(public_path() . '/images/section_elements/gallery/' . $elements->resized_name)) {
+                        @unlink(public_path() . '/images/section_elements/gallery/' . $elements->filename);
+                        @unlink(public_path() . '/images/section_elements/gallery/' . $elements->resized_name);
                     }
                 }
             }
-            if($section->section_slug == 'icon_and_title'){
+            if ($section->section_slug == 'icon_and_title') {
                 $icon = SectionElement::where('page_section_id', $section->id)
                     ->get();
-                foreach ($icon as $elements){
-                    if (!empty($elements->list_image) && file_exists(public_path().'/images/section_elements/list_1/'.$elements->list_image)){
-                        @unlink(public_path().'/images/section_elements/list_1/'.$elements->list_image);
+                foreach ($icon as $elements) {
+                    if (!empty($elements->list_image) && file_exists(public_path() . '/images/section_elements/list_1/' . $elements->list_image)) {
+                        @unlink(public_path() . '/images/section_elements/list_1/' . $elements->list_image);
                     }
                 }
             }
-            if($section->section_slug == 'gallery_section_2'){
+            if ($section->section_slug == 'gallery_section_2') {
                 $gallery_element_2 = SectionGallery::where('page_section_id', $section->id)
                     ->get();
-                foreach ($gallery_element_2 as $elements){
-                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path().'/images/section_elements/gallery_2/'.$elements->filename) && file_exists(public_path().'/images/section_elements/gallery_2/'.$elements->resized_name)){
-                        @unlink(public_path().'/images/section_elements/gallery_2/'.$elements->filename);
-                        @unlink(public_path().'/images/section_elements/gallery_2/'.$elements->resized_name);
+                foreach ($gallery_element_2 as $elements) {
+                    if (!empty($elements->filename) && !empty($elements->resized_name) && file_exists(public_path() . '/images/section_elements/gallery_2/' . $elements->filename) && file_exists(public_path() . '/images/section_elements/gallery_2/' . $elements->resized_name)) {
+                        @unlink(public_path() . '/images/section_elements/gallery_2/' . $elements->filename);
+                        @unlink(public_path() . '/images/section_elements/gallery_2/' . $elements->resized_name);
                     }
                 }
             }
         }
 
-        $remove          = $delete->delete();
-        if($remove){
-            $status ='success';
-            return response()->json(['status'=>$status,'message'=>'Page has been removed successfully!']);
-        } else{
-            $status ='error';
-            return response()->json(['status'=>$status,'message'=>'Page could not be removed. Try Again later !']);
+        $remove = $delete->delete();
+        if ($remove) {
+            $status = 'success';
+            return response()->json(['status' => $status, 'message' => 'Page has been removed successfully!']);
+        } else {
+            $status = 'error';
+            return response()->json(['status' => $status, 'message' => 'Page could not be removed. Try Again later !']);
         }
     }
 
-    public function updateStatus(Request $request, $id){
-        $page          = Page::find($id);
-        $page->status  = $request->status;
-        $status        = $page->update();
-        if($status){
+    public function updateStatus(Request $request, $id)
+    {
+        $page = Page::find($id);
+        $page->status = $request->status;
+        $status = $page->update();
+        if ($status) {
             $confirmed = "yes";
-        }
-        else{
+        } else {
             $confirmed = "no";
         }
         return response()->json($confirmed);

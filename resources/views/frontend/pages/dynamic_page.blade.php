@@ -12,9 +12,11 @@
 @endsection
 @section('content')
     <section class="page-header mb-5">
-        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
+        <div class="page-header-bg" style="background-image: url( {{ @$page_detail->image ? asset('/images/dynamic_page/'.@$page_detail->image):asset('assets/frontend/images/backgrounds/background_action.jpeg') }})">
         </div>
-        <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
+        <div class="page-header-shape-1">
+            <img src="{{ asset('assets/frontend/images/shapes/page-header-shape-1.png') }}" alt="">
+        </div>
         <div class="container">
             <div class="page-header__inner">
                 <ul class="thm-breadcrumb list-unstyled">
@@ -381,6 +383,46 @@
                 </div>
             </section>
         @endif
+
+        @if($value == "accordion_section_2")
+            <section class="faq-one">
+                <div class="container">
+                    <div class="section-title text-center">
+                        <div class="section-sub-title-box">
+                            <p class="section-sub-title">{{ucwords(@$accordian2_elements[0]->subheading ?? 'We always help')}}</p>
+                            <div class="section-title-shape-1">
+                                <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                            </div>
+                            <div class="section-title-shape-2">
+                                <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                            </div>
+                        </div>
+                        <h2 class="section-title__title">{{ucwords(@$accordian2_elements[0]->heading ?? '')}}</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="faq-one__single">
+                                <div class="accrodion-grp faq-one-accrodion" data-grp-name="faq-one-accrodion-1">
+                                    @foreach(@$accordian2_elements as $index=>$accordian2_element)
+                                        <div class="accrodion {{$index==0? 'active':''}}">
+                                        <div class="accrodion-title">
+                                            <h4><span>?</span> {{@$accordian2_element->list_header}}</h4>
+                                        </div>
+                                        <div class="accrodion-content">
+                                            <div class="inner">
+                                                <p>{{@$accordian2_element->list_description}}</p>
+                                            </div><!-- /.inner -->
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        @endif
+
 
     @endforeach
 

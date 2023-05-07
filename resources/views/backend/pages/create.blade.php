@@ -123,11 +123,30 @@
                                     Please enter the page Name.
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-4">
                                 <label>Slug <span class="text-muted text-danger">*</span></label>
                                 <input type="text" class="form-control" name="slug" id="slug" required>
                                 <div class="invalid-feedback">
                                     Please enter the Page Slug.
+                                </div>
+                            </div>
+
+                            <label>Page banner Image </label>
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <img  id="current-backgroundss-img"  src=" {{ asset('/images/default-image.jpg') }}" class="position-relative img-fluid img-thumbnail blog-feature-image" >
+                                    <input  type="file" accept="image/png, image/jpeg" hidden
+                                            id="background-image" onchange="loadbasicFile('background-image','current-backgroundss-img',event)" name="banner_image"
+                                            class="profile-foreground-img-file-input" >
+
+                                    <figcaption class="figure-caption">Banner image for current page. (SIZE: 1221 x 310px)</figcaption>
+                                    <div class="invalid-feedback" >
+                                        Please select a image.
+                                    </div>
+                                    <label for="background-image" class="profile-photo-edit btn btn-light feature-image-button">
+                                        <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -245,43 +264,43 @@
 
                                 </div>
                             </div>
-{{--                            <div class="card shadow-none">--}}
-{{--                                <div class="card-header">--}}
-{{--                                    <h5 class="card-title text-primary mb-0">Simple Accordion Tab  </h5>--}}
-{{--                                </div>--}}
-{{--                                <div class="card-body">--}}
-{{--                                    <div class="row">--}}
+                            <div class="card shadow-none">
+                                <div class="card-header">
+                                    <h5 class="card-title text-primary mb-0">Simple Accordion Tab  </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
 
-{{--                                        <div class="col-md-12 mb-2">--}}
-{{--                                            <div class="col-md-12">--}}
-{{--                                                <div class="form-group">--}}
-{{--                                                    <label>Select number of Tab List <span class="text-muted text-danger">*</span></label>--}}
-{{--                                                    <select class="form-control select" name="list_number_2" id="list_number_2">--}}
-{{--                                                        <option disabled>Select Number of Tab List</option>--}}
-{{--                                                        <option value="2" selected>Two</option>--}}
-{{--                                                        <option value="4">Four</option>--}}
-{{--                                                        <option value="6">Six</option>--}}
-{{--                                                        <option value="8">Eight</option>--}}
-{{--                                                        <option value="10">Ten</option>--}}
-{{--                                                    </select>--}}
-{{--                                                    <div class="invalid-feedback">--}}
-{{--                                                        Please enter the Accordion tab number.--}}
-{{--                                                    </div>--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-md-12">--}}
-{{--                                            <label class="image-checkbox">--}}
-{{--                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/simple_accordian_tab2.png')}}" width="100%" />--}}
-{{--                                                <input type="checkbox" name="section[]" value="accordion_section_2" id="simple_accordian_tab2.png"/>--}}
-{{--                                                <i class="ri ri-check-line hidden"></i>--}}
-{{--                                            </label>--}}
-{{--                                            <span class="ctm-text-sm text-warning">* Can be used for multiple Q & A section such as FAQs.</span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                                        <div class="col-md-12 mb-2">
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>Select number of Tab List <span class="text-muted text-danger">*</span></label>
+                                                    <select class="form-control select" name="list_number_2" id="list_number_2">
+                                                        <option disabled>Select Number of Tab List</option>
+                                                        <option value="2" selected>Two</option>
+                                                        <option value="4">Four</option>
+                                                        <option value="6">Six</option>
+                                                        <option value="8">Eight</option>
+                                                        <option value="10">Ten</option>
+                                                    </select>
+                                                    <div class="invalid-feedback">
+                                                        Please enter the Accordion tab number.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="image-checkbox">
+                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/simple_accordian_tab2.png')}}" width="100%" />
+                                                <input type="checkbox" name="section[]" value="accordion_section_2" id="simple_accordian_tab2.png"/>
+                                                <i class="ri ri-check-line hidden"></i>
+                                            </label>
+                                            <span class="ctm-text-sm text-warning">* Can be used for multiple Q & A section such as FAQs.</span>
+                                        </div>
+                                    </div>
 
-{{--                                </div>--}}
-{{--                            </div>--}}
+                                </div>
+                            </div>
 
                             <div class="card shadow-none">
                                 <div class="card-header">
@@ -420,6 +439,11 @@
     <script src="{{asset('assets/backend/js/jquery-sortable.js')}}"></script>
 
     <script type="text/javascript">
+        var loadbasicFile = function(id1,id2,event) {
+            var image       = document.getElementById(id1);
+            var replacement = document.getElementById(id2);
+            replacement.src = URL.createObjectURL(event.target.files[0]);
+        };
 
         //settings for sortable JS
         $("#sortable").sortable({

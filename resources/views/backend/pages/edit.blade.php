@@ -105,16 +105,34 @@
                         <div class="card-body">
                             <div class="form-group mb-3">
                                 <label>Page Name <span class="text-muted text-danger">*</span></label>
-                                <input type="text" class="form-control" name="name" id="name" value="{{$page->name}}" required>
+                                <input type="text" class="form-control" name="name" id="name" value="{{@$page->name}}" required>
                                 <div class="invalid-feedback">
                                     Please enter the page Name.
                                 </div>
                             </div>
-                            <div class="form-group">
+                            <div class="form-group mb-3">
                                 <label>Slug <span class="text-muted text-danger">*</span></label>
-                                <input type="text" class="form-control" name="slug" id="slug" value="{{$page->slug}}" required>
+                                <input type="text" class="form-control" name="slug" id="slug" value="{{@$page->slug}}" required>
                                 <div class="invalid-feedback">
                                     Please enter the Page Slug.
+                                </div>
+                            </div>
+                            <label>Page banner Image </label>
+
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <img  id="current-backgroundss-img"  src="<?php if(!empty(@$page->image)){ echo '/images/dynamic_page/'.@$page->image; } else{  echo '/images/default-image.jpg'; } ?>" class="position-relative img-fluid img-thumbnail blog-feature-image" >
+                                    <input  type="file" accept="image/png, image/jpeg" hidden
+                                            id="background-image" onchange="loadbasicFile('background-image','current-backgroundss-img',event)" name="banner_image"
+                                            class="profile-foreground-img-file-input" >
+
+                                    <figcaption class="figure-caption">Banner image for current background section. (SIZE: 510 x 510px)</figcaption>
+                                    <div class="invalid-feedback" >
+                                        Please select a image.
+                                    </div>
+                                    <label for="background-image" class="profile-photo-edit btn btn-light feature-image-button">
+                                        <i class="ri-image-edit-line align-bottom me-1"></i> Add Image
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -233,41 +251,41 @@
                                 </div>
                             </div>
 
-{{--                            <div class="card shadow-none">--}}
-{{--                                <div class="card-header">--}}
-{{--                                    <h5 class="card-title text-primary mb-0">Simple Accordion Tab </h5>--}}
-{{--                                </div>--}}
-{{--                                <div class="card-body">--}}
-{{--                                    <div class="row">--}}
-{{--                                        <div class="col-md-12 mb-4">--}}
-{{--                                            <div class="form-group">--}}
-{{--                                                <label>Select number of Tab List <span class="text-muted text-danger">*</span></label>--}}
-{{--                                                <select class="form-control select" name="list_number_2" id="list_number_2">--}}
-{{--                                                    <option  {{($list2 == null) ? "disabled selected":"disabled"}}>Select Number of Tab List</option>--}}
-{{--                                                    <option value="2" {{($list2 =="2") ? "selected":""}}>Two</option>--}}
-{{--                                                    <option value="4" {{($list2 =="4") ? "selected":""}}>Four</option>--}}
-{{--                                                    <option value="6" {{($list2 =="6") ? "selected":""}}>Six</option>--}}
-{{--                                                    <option value="8" {{($list2 =="8") ? "selected":""}}>Eight</option>--}}
-{{--                                                    <option value="10" {{($list2 =="10") ? "selected":""}}>Ten</option>--}}
-{{--                                                </select>--}}
-{{--                                                <input type="hidden" name="list_2_id" value="{{$list2_id}}">--}}
-{{--                                                <div class="invalid-feedback">--}}
-{{--                                                    Please enter the Accordion Tab number.--}}
-{{--                                                </div>--}}
-{{--                                            </div>--}}
-{{--                                        </div>--}}
-{{--                                        <div class="col-md-12">--}}
-{{--                                            <label class="image-checkbox {{(in_array('accordion_section_2', $sections) ? "image-checkbox-checked":"")}}">--}}
-{{--                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/simple_accordian_tab2.png')}}" width="100%"/>--}}
-{{--                                                <input type="checkbox" name="section[]" id="simple_accordian_tab2.png" value="accordion_section_2" {{(in_array('accordion_section_2', $sections) ? "checked":"")}} />--}}
-{{--                                                <i class="ri ri-check-line hidden"></i>--}}
-{{--                                            </label>--}}
-{{--                                            <span class="ctm-text-sm text-warning">* Can be used for multiple Q & A section such as FAQs.</span>--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
+                            <div class="card shadow-none">
+                                <div class="card-header">
+                                    <h5 class="card-title text-primary mb-0">Simple Accordion Tab </h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 mb-4">
+                                            <div class="form-group">
+                                                <label>Select number of Tab List <span class="text-muted text-danger">*</span></label>
+                                                <select class="form-control select" name="list_number_2" id="list_number_2">
+                                                    <option  {{($list2 == null) ? "disabled selected":"disabled"}}>Select Number of Tab List</option>
+                                                    <option value="2" {{($list2 =="2") ? "selected":""}}>Two</option>
+                                                    <option value="4" {{($list2 =="4") ? "selected":""}}>Four</option>
+                                                    <option value="6" {{($list2 =="6") ? "selected":""}}>Six</option>
+                                                    <option value="8" {{($list2 =="8") ? "selected":""}}>Eight</option>
+                                                    <option value="10" {{($list2 =="10") ? "selected":""}}>Ten</option>
+                                                </select>
+                                                <input type="hidden" name="list_2_id" value="{{$list2_id}}">
+                                                <div class="invalid-feedback">
+                                                    Please enter the Accordion Tab number.
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label class="image-checkbox {{(in_array('accordion_section_2', $sections) ? "image-checkbox-checked":"")}}">
+                                                <img class="img-responsive" src="{{asset('assets/backend/img/page_sections/simple_accordian_tab2.png')}}" width="100%"/>
+                                                <input type="checkbox" name="section[]" id="simple_accordian_tab2.png" value="accordion_section_2" {{(in_array('accordion_section_2', $sections) ? "checked":"")}} />
+                                                <i class="ri ri-check-line hidden"></i>
+                                            </label>
+                                            <span class="ctm-text-sm text-warning">* Can be used for multiple Q & A section such as FAQs.</span>
+                                        </div>
+                                    </div>
 
-{{--                                </div>--}}
-{{--                            </div>--}}
+                                </div>
+                            </div>
 
                             <div class="card shadow-none">
                                 <div class="card-header">
@@ -415,6 +433,13 @@
 @section('js')
     <script src="{{asset('assets/backend/js/jquery-sortable.js')}}"></script>
     <script type="text/javascript">
+        var loadbasicFile = function(id1,id2,event) {
+            var image       = document.getElementById(id1);
+            var replacement = document.getElementById(id2);
+            replacement.src = URL.createObjectURL(event.target.files[0]);
+        };
+
+
         var section_list = new Array();
         var section_names = new Array();
         <?php foreach($ordered_sections as $key=>$value){ ?>

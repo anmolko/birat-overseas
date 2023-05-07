@@ -250,19 +250,6 @@ class SectionElementController extends Controller
                         'list_description'      => $request->input('list_description')[$i],
                         'created_by'            => Auth::user()->id,
                     ];
-
-                    if($request->hasFile('image')){
-                        if (array_key_exists($i,$request->file('image'))) {
-                            $image = $request->file('image')[$i];
-                            $name = uniqid() . '_faq_' . $image->getClientOriginalName();
-                            $path = base_path() . '/public/images/section_elements/basic_section/';
-                            $moved = Image::make($image->getRealPath())->fit(650 ,730)->orientate()->save($path . $name);
-                            if ($moved) {
-                                $data['image']  = $name;
-                            }
-                        }
-                    }
-
                     $status = SectionElement::create($data);
                 }
         }
@@ -500,22 +487,6 @@ class SectionElementController extends Controller
                     $accordian2->list_description    = $request->input('list_description')[$i];
                     $accordian2->updated_by          = Auth::user()->id;
                     $oldimage                        = $accordian2->image;
-
-                    if($request->hasFile('image')){
-                        if (array_key_exists($i,$request->file('image'))) {
-                            $image = $request->file('image')[$i];
-                            $name = uniqid() . '_faq_' . $image->getClientOriginalName();
-                            $path = base_path() . '/public/images/section_elements/basic_section/';
-                            $moved = Image::make($image->getRealPath())->fit(650 ,730)->orientate()->save($path . $name);
-                            if ($moved) {
-                                $accordian2->image  = $name;
-                                if (!empty($oldimage) && file_exists(public_path() . '/images/section_elements/basic_section/' . $oldimage)) {
-                                    @unlink(public_path() . '/images/section_elements/basic_section/' . $oldimage);
-                                }
-                            }
-                        }
-                    }
-
 
                     $status  = $accordian2->update();
                 }
