@@ -7,6 +7,11 @@
           height: 270px;
         object-fit: cover;
       }
+
+    .custom-description img{
+        margin: 5px!important;
+        padding: 5px;
+    }
     </style>
 
 @endsection
@@ -290,7 +295,7 @@
                     @if($heading!==null)
                         <div class="section-title text-center">
                             <div class="section-sub-title-box">
-                                <p class="section-sub-title">{{$subheading ?? ''}}</p>
+                                <p class="section-sub-title">{{ ucfirst($subheading ?? '')}}</p>
                                 <div class="section-title-shape-1">
                                     <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                                 </div>
@@ -298,7 +303,7 @@
                                     <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                                 </div>
                             </div>
-                            <h2 class="section-title__title">{{@$heading}}</h2>
+                            <h2 class="section-title__title">{{ ucfirst(@$heading) }}</h2>
                         </div>
                     @endif
                     @if(count(@$gallery_elements) > 0)

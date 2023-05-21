@@ -122,9 +122,10 @@
                     <div class="main-header__top-right">
                         <div class="main-header__top-menu-box">
                             <ul class="list-unstyled main-header__top-menu">
-                                <li><a href="#">Make a claim</a></li>
-                                <li><a href="#"> FAQs</a></li>
-                                <li><a href="#">About</a></li>
+                                <li><a href="{{ route('client.frontend') }}">Our clients</a></li>
+                                <li><a href="{{ route('album') }}">Album</a></li>
+                                <li><a href="{{ route('testimonial') }}">Testimonial</a></li>
+
                             </ul>
                         </div>
                         <div class="main-header__top-social-box">

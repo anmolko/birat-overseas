@@ -446,9 +446,9 @@
     @if(@$recruitments[0]->heading)
         <section class="process">
             <div class="container">
-                <div class="section-title text-center">
+                <div class="section-title text-center mb-3">
                     <div class="section-sub-title-box">
-                        <p class="section-sub-title">work process</p>
+                        <p class="section-sub-title">{{@$recruitments[0]->description ?? 'The Work Flow'}}</p>
                         <div class="section-title-shape-1">
                             <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                         </div>
@@ -456,7 +456,7 @@
                             <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
                         </div>
                     </div>
-                    <h2 class="section-title__title">Our easy work process <br> in 4 steps</h2>
+                    <h2 class="section-title__title">{{@$recruitments[0]->heading}}</h2>
                 </div>
                 <div class="process__inner">
                     <div class="process-shape-1">
@@ -492,7 +492,7 @@
                             <div class="process__contact">
                                 <div class="process__input-box">
                                     <input type="text" placeholder="Like our process? Feel free to contact us.">
-                                    <a type="submit" class="process__btn">Get Started</a>
+                                    <a type="submit" href="{{route('contact')}}" class="process__btn">Get Started</a>
                                 </div>
                             </div>
                         </div>
@@ -821,7 +821,7 @@
                                                     <img class="lazy" src="{{asset('/images/testimonial/'.@$testimonial->image)}}" data-src="{{asset('/images/testimonial/'.@$testimonial->image)}}" alt="">
                                                 </div>
                                                 <div class="testimonial-three__quote">
-                                                    <img class="lazy" data-src="{{asset('assets/frontend/images/testimonial/testimonial-1-quote.png')}}" alt="">
+                                                    <img src="{{asset('assets/frontend/images/testimonial/testimonial-1-quote.png')}}" alt="">
                                                 </div>
                                             </div>
                                             <p class="testimonial-three__text">{{ucfirst($testimonial->description)}}</p>

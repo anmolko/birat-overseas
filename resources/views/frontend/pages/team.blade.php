@@ -9,7 +9,7 @@
 @endsection
 @section('content')
     <section class="page-header">
-        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/page-header-bg.jpg')}})">
+        <div class="page-header-bg" style="background-image: url({{asset('assets/frontend/images/backgrounds/background_action.jpeg')}})">
         </div>
         <div class="page-header-shape-1"><img src="{{asset('assets/frontend/images/shapes/page-header-shape-1.png')}}" alt=""></div>
         <div class="container">

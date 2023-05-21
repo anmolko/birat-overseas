@@ -5,6 +5,10 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-body">
+                    <figure class="figure">
+                        <img src="{{asset('images/grievance.png')}}" class="figure-img img-fluid rounded" alt="...">
+                        <figcaption class="figure-caption">Output Sample.</figcaption>
+                    </figure>
                     <div class="mb-3">
                         <label class="form-label" for="website-name-input">Heading</label>
                         <input type="text" class="form-control" id="website-name-input" name="grievance_heading" value="{{@$settings->grievance_heading}}"

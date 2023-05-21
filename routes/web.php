@@ -109,10 +109,6 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::put('/homepage-setting/grievance/{settings}', 'App\Http\Controllers\HomePageController@grievance')->name('homepage.grievance');
 
 
-    Route::get('/contact', 'App\Http\Controllers\ContactController@index')->name('contact.index');
-    Route::delete('/contact/{id}', 'App\Http\Controllers\ContactController@destroy')->name('contact.destroy');
-    Route::get('/contact/edit/{slug}', 'App\Http\Controllers\ContactController@edit')->name('contact.edit');
-
     //Blog categories
     Route::get('/blog-category', 'App\Http\Controllers\BlogCategoryController@index')->name('blogcategory.index');
     Route::get('/blog-category/create', 'App\Http\Controllers\BlogCategoryController@create')->name('blogcategory.create');

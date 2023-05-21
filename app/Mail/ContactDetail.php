@@ -30,6 +30,6 @@ class ContactDetail extends Mailable
      */
     public function build()
     {
-        return $this->subject('New Customer Enquiry - Life International Overseas')->view('frontend.template.email_template');
+        return $this->subject('New Customer Enquiry - Birat Overseas International Pvt Ltd')->view('frontend.template.email_template');
     }
 }
