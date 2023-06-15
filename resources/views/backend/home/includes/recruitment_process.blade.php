@@ -65,7 +65,7 @@
                                         <div class="row mb-3 attribute-values" id="addValues">
                                             <div class="col-md-12 col-6 mt-4">
                                                 <label for="icon_description" class="text-heading">Small Description </label>
-                                                <input type="text" class="form-control" id="icon_description" maxlength="100" name="icon_description[]" value="{{$value->icon_description}}"/>
+                                                <textarea class="form-control" id="icon_description" maxlength="600" name="icon_description[]">{{$value->icon_description}}</textarea>
                                                 <div class="invalid-feedback">
                                                     Please enter a icon description.
                                                 </div>
@@ -90,7 +90,7 @@
                                     <div class="row mb-3 attribute-values" id="addValues">
                                         <div class="col-md-12 col-6">
                                             <label for="icon_description" class="text-heading">Small Description<span class="text-muted text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="icon_description" name="icon_description[]"/>
+                                            <textarea class="form-control" id="icon_description" maxlength="600" name="icon_description[]"></textarea>
                                             <div class="invalid-feedback">
                                                 Please enter a small description.
                                             </div>

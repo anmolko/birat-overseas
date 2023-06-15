@@ -803,7 +803,7 @@ ul {
 
 .main-menu .main-menu__list>li+li,
 .stricky-header .main-menu__list>li+li {
-  margin-left: 40px;
+  margin-left: 30px;
 }
 
 .main-menu .main-menu__list>li>a,
@@ -1845,8 +1845,8 @@ ul {
 
 .main-menu-three__logo {
   display: block;
-  float: left;
-    padding: 10px 70px 10px 0;
+    float: left;
+    padding: 10px 15px 10px 0;
 }
 .home-logo{
     width: 75%;
@@ -1903,7 +1903,7 @@ ul {
 
 .main-menu-three__get-quote-btn {
   font-size: 14px;
-  padding: 12px 30px 12px;
+  padding: 12px 15px 12px;
 }
 
 .main-menu-three .main-menu__list>li,
@@ -1930,7 +1930,7 @@ ul {
 }
 
 .sticky-header__content .main-menu-three .main-menu__list>li+li, .stricky-header.main-menu-three .main-menu__list>li+li{
-    margin-left: 45px;
+    margin-left: 30px;
 }
 
 .footer-logo{
@@ -13943,7 +13943,7 @@ body.boxed-wrapper {
 
 .main-menu .main-menu__list>li+li,
 .stricky-header .main-menu__list>li+li {
-  margin-left: 35px;
+  margin-left: 25px;
 }
 
 

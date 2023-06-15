@@ -30,21 +30,21 @@
                     <div class="card-body">
                         <div class="position-relative mb-3">
                             <label class="form-label">Mission Description <span class="text-muted text-danger">*</span></label>
-                            <textarea class="form-control" maxlength="250" name="mission" placeholder="Enter mission description" rows="4" required>{{@$homesettings->mission}}</textarea>
+                            <textarea class="form-control" maxlength="600" name="mission" placeholder="Enter mission description" rows="4" required>{{@$homesettings->mission}}</textarea>
                             <div class="invalid-tooltip">
                                 Please enter the  description.
                             </div>
                         </div>
                         <div class="position-relative mb-3">
                             <label class="form-label">Vision Description <span class="text-muted text-danger">*</span></label>
-                            <textarea class="form-control" maxlength="250" name="vision" placeholder="Enter vision description" rows="4" required>{{@$homesettings->vision}}</textarea>
+                            <textarea class="form-control" maxlength="600" name="vision" placeholder="Enter vision description" rows="4" required>{{@$homesettings->vision}}</textarea>
                             <div class="invalid-tooltip">
                                 Please enter the  description.
                             </div>
                         </div>
                         <div class="position-relative mb-3">
                             <label class="form-label">Value Description <span class="text-muted text-danger">*</span></label>
-                            <textarea class="form-control" maxlength="250" name="value" placeholder="Enter value description" rows="4" required>{{@$homesettings->value}}</textarea>
+                            <textarea class="form-control" maxlength="600" name="value" placeholder="Enter value description" rows="4" required>{{@$homesettings->value}}</textarea>
                             <div class="invalid-tooltip">
                                 Please enter the  description.
                             </div>

@@ -24,7 +24,7 @@
                         </div>
                         <div class="position-relative mb-3">
                             <label class="form-label">Small Description</label>
-                            <textarea class="form-control" maxlength="400"
+                            <textarea class="form-control" maxlength="600"
                                       name="why_description"
                                       rows="6" required>{{@$homesettings->why_description}}</textarea>
                             <div class="invalid-feedback">
