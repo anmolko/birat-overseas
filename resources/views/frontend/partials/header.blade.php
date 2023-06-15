@@ -173,9 +173,18 @@
                                                     <a href="#">{{ @$nav->name ?? @$nav->title }}</a>
                                                     <ul>
                                                         @foreach($nav->children[0] as $childNav)
-                                                        <li>
+                                                        <li class="{{ !empty($childNav->children[0]) ? 'sub-dropdown':''}}">
                                                             <a href="{{get_menu_url($childNav->type, $childNav)}}" target="{{@$childNav->target ? '_blank':''}}">
                                                                 {{ @$childNav->name ?? @$childNav->title ??''}}</a>
+                                                            @if(!empty($childNav->children[0]))
+                                                                <ul style="top: 0%; left: 110%">
+                                                                    @foreach($childNav->children[0] as $key => $lastchild)
+                                                                        <li><a href="{{get_menu_url($lastchild->type, $lastchild)}}" target="{{@$lastchild->target ? '_blank':''}}">
+                                                                                {{ @$lastchild->name ?? @$lastchild->title ?? ''}}</a>
+                                                                        </li>
+                                                                    @endforeach
+                                                                </ul>
+                                                            @endif
                                                         </li>
                                                         @endforeach
                                                     </ul>
@@ -188,12 +197,6 @@
                                                 </li>
                                             @endif
                                         @endforeach
-                                    @else
-                                        <li>
-                                            <a href="{{get_menu_url($nav->type, $nav)}}" target="{{@$nav->target ? '_blank':''}}">
-                                                {{ @$nav->name ?? @$nav->title ??''}}
-                                            </a>
-                                        </li>
                                     @endif
                                 </ul>
                             </div>

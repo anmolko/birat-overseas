@@ -539,7 +539,7 @@
             isValidTarget: function ($item, container) {
                 //for limiting the depth of the UL child
                 var depth = 1, // Start with a depth of one (the element itself)
-                    maxDepth = 2,
+                    maxDepth = 3,
                     children = $item.find('ul').first().find('li');
 
 
