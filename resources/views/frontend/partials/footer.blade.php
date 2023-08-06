@@ -91,26 +91,28 @@
                                 <span class="icon-telephone"></span>
                             </div>
                             <div class="footer-widget__phone-text">
-                                <a href="tel:9200368090">+92 (003) 68-090</a>
+                                <a href="tel:9200368090">{{@$setting_data->phone ?? @$setting_data->mobile ?? ''}}</a>
                                 <p>Call to Our Experts</p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
-                    <div class="footer-widget__column footer-widget-three__contact clearfix">
-                        <h3 class="footer-widget-three-contact__title">{{$footer_nav_title1 ?? 'Quick Links'}}</h3>
-                        <ul class="footer-widget-three__contact-list list-unstyled clearfix">
-                            @foreach($footer_nav_data1 as $nav)
-                                @if(empty($nav->children[0]))
-                                    <li><a href="{{get_menu_url($nav->type, $nav)}}" target="{{@$nav->target ? '_blank':''}}">
-                                            {{ @$nav->name ?? @$nav->title ?? ''}}
-                                        </a>
-                                    </li>
-                                @endif
-                            @endforeach
-                        </ul>
-                    </div>
+                    @if(@$footer_nav_data1)
+                        <div class="footer-widget__column footer-widget-three__contact clearfix">
+                            <h3 class="footer-widget-three-contact__title">{{$footer_nav_title1 ?? 'Quick Links'}}</h3>
+                            <ul class="footer-widget-three__contact-list list-unstyled clearfix">
+                                @foreach(@$footer_nav_data1 as $nav)
+                                    @if(empty($nav->children[0]))
+                                        <li><a href="{{get_menu_url($nav->type, $nav)}}" target="{{@$nav->target ? '_blank':''}}">
+                                                {{ @$nav->name ?? @$nav->title ?? ''}}
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>
@@ -119,7 +121,7 @@
                 <div class="col-xl-12">
                     <div class="site-footer__bottom-inner">
                         <p class="site-footer__bottom-text">© All Copyright {{date("Y")}} by
-                            <a href="#">{{$setting_data->website_name ?? 'BIRAT OVERSEAS PVT. LTD'}}</a>
+                            <a href="#">{{@$setting_data->website_name ?? 'BIRAT OVERSEAS PVT. LTD'}}</a>
                             developed by <a href="https://www.canosoft.com.np/" target="_blank">Canosoft Techonology</a>
                         </p>
                     </div>
@@ -142,7 +144,7 @@
 
         <div class="logo-box">
             <a href="/" aria-label="logo image"><img src="{{asset('/images/settings/'.@$setting_data->logo)}}" width="143"
-                                                              alt=""/></a>
+                                                     alt=""/></a>
         </div>
         <!-- /.logo-box -->
         <div class="mobile-nav__container"></div>
@@ -189,7 +191,7 @@
     <!-- /.search-popup__overlay -->
     <div class="search-popup__content">
         <form method="get" id="searchform" action="{{route('searchJob')}}">
-        <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
+            <label for="search" class="sr-only">search here</label><!-- /.sr-only -->
             <input  type="text"
                     id="s"
                     name="s" placeholder="Search jobs..." oninvalid="this.setCustomValidity('Type a keyword')" oninput="this.setCustomValidity('')" required/>

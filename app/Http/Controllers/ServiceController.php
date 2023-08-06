@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Menu;
 use App\Models\MenuItem;
 use App\Models\Service;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
@@ -25,14 +28,14 @@ class ServiceController extends Controller
 
     public function index()
     {
-        $services   = Service::get();
+        $services   = Service::orderBy('order', 'asc')->get();
         return view('backend.service.index',compact('services'));
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View|\Illuminate\Foundation\Application
      */
     public function create()
     {
@@ -215,4 +218,19 @@ class ServiceController extends Controller
             return response()->json(['status'=>$status,'count'=>$count,'message'=>'Service could not be removed. Try Again later !']);
         }
     }
+
+    public function orderUpdateService(Request $request)
+    {
+        $director = Service::all();
+        foreach ($director as $direct) {
+            foreach ($request->order as $order) {
+                if ($order['id'] == $direct->id) {
+                    $direct->order =  $order['position'];
+                    $direct->update();
+                }
+            }
+        }
+        return response()->json(['message' =>'Service order updated Successfully.','status' => '200']);
+    }
+
 }

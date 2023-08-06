@@ -160,6 +160,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::put('/services/{service}', 'App\Http\Controllers\ServiceController@update')->name('services.update');
     Route::delete('/services/{service}', 'App\Http\Controllers\ServiceController@destroy')->name('services.destroy');
     Route::get('/services/{service}/edit', 'App\Http\Controllers\ServiceController@edit')->name('services.edit');
+    Route::post('/services-sortable','App\Http\Controllers\ServiceController@orderUpdateService')->name('services.order');
 
     //pages
 

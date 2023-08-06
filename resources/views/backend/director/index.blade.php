@@ -294,7 +294,7 @@
                 paging: true,
                 searching: true,
                 ordering: true,
-                lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                lengthMenu: [[ 15, 25, 50, -1], [15, 25, 50, "All"]],
             });
 
             $(document).on('click', '.action-edit', function (e) {
@@ -453,7 +453,6 @@
                 success: function(response) {
                     if (response.status == "200") {
                         Swal.fire({
-                            imageUrl: "/assets/backend/images/canosoft-logo.png",
                             imageHeight: 60,
                             html: '<div class="mt-2">' +
                                 '<lord-icon src="https://cdn.lordicon.com/lupuorrc.json"' +

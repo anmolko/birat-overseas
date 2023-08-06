@@ -7746,7 +7746,7 @@ ul {
 }
 
 .service-image{
-    width: 22%;
+    width: 40%;
     margin-left: 20px;
 }
 .about-three__business-start {
@@ -7817,7 +7817,7 @@ ul {
   position: relative;
   display: flex;
   align-items: center;
-  margin-top: 41px;
+  margin-top: 0px;
 }
 
 .about-three__founder {
@@ -21297,3 +21297,9 @@ ul li ul .is-new-menu>a>span::after {
     letter-spacing: 0.1em;
     line-height: 33px;
 }
+
+.page-item.active{
+    z-index: 3;
+    color: #fff;
+    background-color: #0d6efd;
+    border-color: #0d6efd;

@@ -89,9 +89,9 @@
 <div class="custom-cursor__cursor"></div>
 <div class="custom-cursor__cursor-two"></div>
 
-<div class="preloader">
-    <div class="preloader__image"></div>
-</div>
+{{--<div class="preloader">--}}
+{{--    <div class="preloader__image"></div>--}}
+{{--</div>--}}
 <!-- /.preloader -->
 
 <div class="page-wrapper">

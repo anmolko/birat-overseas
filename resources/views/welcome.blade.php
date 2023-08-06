@@ -228,7 +228,7 @@
                                 <div class="services-three__get-quote">
                                     <p class="services-three__get-quote-sub-title">Best services out there</p>
                                     <h3 class="services-three__get-quote-title">You can reach out and get information regarding our services.</h3>
-                                    <a href="insurance-01.html" class="thm-btn services-three__get-quote-btn">Send us a messgae</a>
+                                    <a href="{{ route('service.frontend') }}" class="thm-btn services-three__get-quote-btn">View All Service</a>
                                 </div>
                             </div>
                         </div>
