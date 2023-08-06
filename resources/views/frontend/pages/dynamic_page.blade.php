@@ -177,7 +177,7 @@
                         <div class="feature-one__inner">
                             <div class="row">
                                 @foreach(@$flash_elements as $index=>$flash_element)
-                                    <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="{{ ($index+1)*100 }}ms">
+                                    <div class="col-xl-4 col-lg-4 wow fadeInUp d-flex align-items-stretch" data-wow-delay="{{ ($index+1)*100 }}ms">
                                         <div class="feature-one__single">
                                             <div class="feature-one__single-inner">
                                                 <div class="feature-one__icon">
@@ -282,7 +282,7 @@
                         <div class="feature-four__bottom" style="padding: 80px 0 80px;">
                             <div class="row">
                                 @for ($i = 1; $i <=@$process_num; $i++)
-                                    <div class="col-xl-4 col-lg-4">
+                                    <div class="col-xl-4 col-lg-4 d-flex align-items-stretch">
                                         <div class="feature-four__single">
                                             <div class="feature-four__single-top">
                                                 <div class="feature-four__icon">
@@ -382,7 +382,7 @@
                     }'>
                                 @for ($i = 1; $i <=@$list_3; $i++)
 
-                                    <div class="item wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
+                                    <div class="item wow fadeInUp" data-wow-delay="{{ ($i+1) * 100 }}ms">
                                         <div class="news-three__single" style="height: 300px;">
                                             <div class="news-three-bg" style="background-image: url({{ asset('/images/section_elements/list_1/thumb/thumb_'.$slider_list_elements[$i-1]->list_image) }});"></div>
                                             <div class="news-three__content">
