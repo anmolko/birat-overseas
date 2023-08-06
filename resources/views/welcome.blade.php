@@ -183,6 +183,53 @@
         </section>
     @endif
 
+    @if(count($latestJobs) > 1)
+        <section class="benefits">
+            <div class="benefits-bg-2" style="background-image: url({{asset('assets/frontend/images/backgrounds/benefits-bg-2.jpg')}});"></div>
+            <div class="container">
+                <div class="section-title text-center">
+                    <div class="section-sub-title-box">
+                        <p class="section-sub-title">Our current demans</p>
+                        <div class="section-title-shape-1">
+                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                        </div>
+                        <div class="section-title-shape-2">
+                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                        </div>
+                    </div>
+                    <h2 class="section-title__title">Latest jobs for<br> everyone</h2>
+                </div>
+
+                <div class="row">
+                    @foreach($latestJobs as $index=>$job)
+                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
+                            <div class="news-three__single">
+                                <div class="news-three-bg" style="background-image: url({{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/birat.png')}});"></div>
+                                <div class="news-three__client-info">
+                                    <div class="news-three__client-content">
+                                        <p><i class="far fa-calendar-alt"></i>Apply date</p>
+                                        <h5> @if(@$job->end_date >= $today)
+                                                {{date('M j, Y',strtotime(@$job->start_date))}} - {{date('M j, Y',strtotime(@$job->end_date))}}
+                                            @else
+                                                Expired
+                                            @endif
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div class="news-three__content">
+                                    <h3 class="news-three__title"><a href="{{route('job.single',@$job->slug)}}">{{ucfirst($job->name)}}</a></h3>
+                                    <div class="news-three__arrow">
+                                        <a href="{{route('job.single',@$job->slug)}}"><span class="icon-right-arrow1"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
     @if(count($latestServices) > 0)
         <section class="services-three">
             <div class="container">
@@ -594,53 +641,6 @@
         </section>
     @endif
 
-    @if(count($latestJobs) > 1)
-        <section class="benefits">
-            <div class="benefits-bg-2" style="background-image: url({{asset('assets/frontend/images/backgrounds/benefits-bg-2.jpg')}});"></div>
-            <div class="container">
-                <div class="section-title text-center">
-                    <div class="section-sub-title-box">
-                        <p class="section-sub-title">Our current demans</p>
-                        <div class="section-title-shape-1">
-                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
-                        </div>
-                        <div class="section-title-shape-2">
-                            <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
-                        </div>
-                    </div>
-                    <h2 class="section-title__title">Latest jobs for<br> everyone</h2>
-                </div>
-
-                <div class="row">
-                    @foreach($latestJobs as $index=>$job)
-                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
-                            <div class="news-three__single">
-                                <div class="news-three-bg" style="background-image: url({{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/birat.png')}});"></div>
-                                <div class="news-three__client-info">
-                                    <div class="news-three__client-content">
-                                        <p><i class="far fa-calendar-alt"></i>Apply date</p>
-                                        <h5> @if(@$job->end_date >= $today)
-                                                {{date('M j, Y',strtotime(@$job->start_date))}} - {{date('M j, Y',strtotime(@$job->end_date))}}
-                                            @else
-                                                Expired
-                                            @endif
-                                        </h5>
-                                    </div>
-                                </div>
-                                <div class="news-three__content">
-                                    <h3 class="news-three__title"><a href="{{route('job.single',@$job->slug)}}">{{ucfirst($job->name)}}</a></h3>
-                                    <div class="news-three__arrow">
-                                        <a href="{{route('job.single',@$job->slug)}}"><span class="icon-right-arrow1"></span></a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </section>
-    @endif
-
     @if(count($director) > 0)
         <section class="testimonial-three">
             <div class="container">
@@ -711,8 +711,10 @@
                                                                 <div class="team-details__top-content">
                                                                     <p class="team-details__top-title">{{ucfirst(@$managing->designation)}}</p>
                                                                     <h3 class="team-details__top-name">{{ucfirst(@$managing->heading)}}</h3>
-                                                                    <p class="team-details__top-text-2">{{@$managing->description}}</p>
-
+                                                                    <p class="team-details__top-text-2 text-justify">{{@$managing->description}}</p>
+                                                                    @if(@$managing->link)
+                                                                        <a href="{{ $managing->link }}" class="thm-btn services-three__get-quote-btn">{{ @$managing->button ?? 'Read More' }}</a>
+                                                                    @endif
                                                                 </div>
                                                             </div>
                                                         </div>

@@ -61,6 +61,22 @@
                                 </div>
                             </div>
 
+                            <div class="form-group mb-3">
+                                <label>Button </label>
+                                <input type="text" class="form-control" name="button">
+                                <div class="invalid-feedback">
+                                    Please enter the button.
+                                </div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label>Link <span class="text-muted text-danger">Enter page link for director *</span></label>
+                                <input type="text" class="form-control" name="link">
+                                <div class="invalid-feedback">
+                                    Please enter the button link.
+                                </div>
+                            </div>
+
                             <div class="text-center mb-3">
                                 <button type="submit" class="btn btn-success w-sm mt-4">Add details</button>
                             </div>
@@ -209,6 +225,22 @@
                                             <textarea class="form-control" rows="16" maxlength="700" name="description" id="ckeditor-classic-director" required></textarea>
                                             <div class="invalid-feedback">
                                                 Please write the short description
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label>Button </label>
+                                            <input type="text" class="form-control" name="button" id="button">
+                                            <div class="invalid-feedback">
+                                                Please enter the button.
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group mb-3">
+                                            <label>Link <span class="text-muted text-danger">Enter page link for director *</span></label>
+                                            <input type="text" class="form-control" name="link" id="link">
+                                            <div class="invalid-feedback">
+                                                Please enter the button link.
                                             </div>
                                         </div>
 

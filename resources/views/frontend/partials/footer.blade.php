@@ -14,7 +14,7 @@
                                              alt=""></a>
                         </div>
                         <div class="footer-widget__about-text-box">
-                            <div class="footer-widget__about-text">
+                            <div class="footer-widget__about-text text-justify">
                                 {!! ucfirst(@$setting_data->website_description ?? '') !!}
                             </div>
                         </div>
