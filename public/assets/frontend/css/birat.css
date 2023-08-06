@@ -21308,3 +21308,27 @@ ul li ul .is-new-menu>a>span::after {
 .text-justify{
     text-align: justify;
 }
+
+.modal-fullscreen{
+    /*width: 80vw;*/
+    max-width: none;
+    height: 100%;
+    margin: 0;
+}
+
+.modal-header{
+    border-bottom: 1px solid transparent;
+}
+.modal-body{
+    padding: 2rem;
+}
+
+.btn-close {
+    top: 62px;
+    right: 30px;
+    position: relative;
+    z-index: 999999;
+    font-size: 30px;
+    float: right;
+}
+

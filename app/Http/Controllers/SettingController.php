@@ -101,6 +101,24 @@ class SettingController extends Controller
             }
         }
 
+        if (!empty($request->file('intro_heading'))){
+            $path    = base_path().'/public/images/settings/';
+            $image   = $request->file('intro_heading');
+            $name1   = uniqid().'_popup1_'.$image->getClientOriginalName();
+            if ($image->move($path,$name1)){
+                $data['intro_heading']= $name1;
+            }
+        }
+
+        if (!empty($request->file('intro_subheading'))){
+            $path    = base_path().'/public/images/settings/';
+            $image   = $request->file('intro_subheading');
+            $name1   = uniqid().'_popup2_'.$image->getClientOriginalName();
+            if ($image->move($path,$name1)){
+                $data['intro_subheading']= $name1;
+            }
+        }
+
         $theme = Setting::create($data);
         if($theme){
             Session::flash('success','Dashboard Settings Saved!');
@@ -166,6 +184,8 @@ class SettingController extends Controller
         $oldimage_logo                          = $update_theme->logo;
         $oldimage_logo_white                    = $update_theme->logo_white;
         $oldimage_favicon                       = $update_theme->favicon;
+        $popup1                                 = $update_theme->intro_heading;
+        $popup2                                 = $update_theme->intro_subheading;
 
         if (!empty($request->file('logo'))){
             $path  = base_path().'/public/images/settings/';
@@ -203,7 +223,30 @@ class SettingController extends Controller
                     @unlink(public_path().'/images/settings/'.$oldimage_favicon);
                 }
             }
+        }
 
+        if (!empty($request->file('intro_heading'))){
+            $path = base_path().'/public/images/settings/';
+            $image =$request->file('intro_heading');
+            $name1 = uniqid().'_popup1_'.$image->getClientOriginalName();
+            if ($image->move($path,$name1)){
+                $update_theme->intro_heading= $name1;
+                if (!empty($popup1) && file_exists(public_path().'/images/settings/'.$popup1)){
+                    @unlink(public_path().'/images/settings/'.$popup1);
+                }
+            }
+        }
+
+        if (!empty($request->file('intro_subheading'))){
+            $path = base_path().'/public/images/settings/';
+            $image =$request->file('intro_subheading');
+            $name1 = uniqid().'_popup2_'.$image->getClientOriginalName();
+            if ($image->move($path,$name1)){
+                $update_theme->intro_subheading = $name1;
+                if (!empty($popup2) && file_exists(public_path().'/images/settings/'.$popup2)){
+                    @unlink(public_path().'/images/settings/'.$popup2);
+                }
+            }
         }
 
         $status=$update_theme->update();

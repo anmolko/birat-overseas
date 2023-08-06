@@ -932,7 +932,24 @@
         </section>
         <!--News Three End-->
     @endif
+
+    @include('frontend.includes.modal')
 @endsection
 
 @section('js')
+    <script>
+        $(document).ready(function () {
+            let popup1 = "{{$setting_data->intro_heading}}";
+            let popup2 = "{{$setting_data->intro_subheading}}";
+
+            if(popup1){
+                $('#firstmodal').modal('toggle');
+            }
+            if(popup2){
+                $('#firstmodal').on('hidden.bs.modal', function () {
+                    $('#secondmodal').modal('toggle');
+                });
+            }
+        });
+    </script>
 @endsection
