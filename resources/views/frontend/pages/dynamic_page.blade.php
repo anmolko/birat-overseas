@@ -427,14 +427,18 @@
                                     <div class="accrodion-grp faq-one-accrodion" data-grp-name="faq-one-accrodion-1">
                                         @foreach(@$accordian2_elements as $index=>$accordian2_element)
                                             <div class="accrodion {{$index==0? 'active':''}}">
-                                                <div class="accrodion-title">
-                                                    <h4><span>?</span> {{@$accordian2_element->list_header}}</h4>
+                                                <div class="accrodion-title" style="padding-left: 30px;">
+                                                    <h4>
+{{--                                                        <span>?</span>--}}
+                                                        {{@$accordian2_element->list_header}}</h4>
                                                 </div>
+                                                @if($accordian2_element->list_description)
                                                 <div class="accrodion-content">
                                                     <div class="inner">
                                                         <p>{{@$accordian2_element->list_description}}</p>
                                                     </div><!-- /.inner -->
                                                 </div>
+                                                @endif
                                             </div>
                                         @endforeach
                                     </div>
