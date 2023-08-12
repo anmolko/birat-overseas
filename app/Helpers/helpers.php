@@ -253,7 +253,7 @@ if (!function_exists('get_legal_documents')) {
     {
 
         $values = [];
-        $page_detail = Page::with('sections')->where('slug', 'legal-document')->where('status','active')->first() ?? Page::with('sections')->where('slug', 'legal-documents')->where('status','active')->first();
+        $page_detail = Page::with('sections')->whereIn('slug', ['legal-document','legal-documents'])->where('status','active')->first();
 
         if($page_detail){
             $page_section = PageSection::with('page')->where('page_id', $page_detail->id)->orderBy('position', 'ASC')->get();

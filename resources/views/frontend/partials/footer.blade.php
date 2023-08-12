@@ -64,38 +64,22 @@
                     </div>
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="300ms">
-                    <div class="footer-widget__column footer-widget-three__latest-news clearfix">
-                        <h3 class="footer-widget-three__title">Latest Jobs</h3>
-                        <ul class="footer-widget-three__latest-news-list list-unstyled clearfix">
-                            @foreach(@$footer_jobs as $index=>$job)
-                                <li>
-                                    <div class="footer-widget-three__latest-news-img">
-                                        <img src="{{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/birat.png')}}"
-                                             alt="">
-                                    </div>
-                                    <div class="footer-widget-three__latest-news-content">
-                                        <p class="footer-widget-three__latest-news-date">
-                                            @if(@$job->end_date >= $today)
-                                                {{date('M j, Y',strtotime(@$job->end_date))}}
-                                            @else
-                                                Expired
-                                            @endif</p>
-                                        <h4 class="footer-widget-three__latest-news-title"><a
-                                                href="{{route('job.single',@$job->slug)}}"> {{ ucfirst($job->name)}}</a></h4>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                        <div class="footer-widget__phone mt-4">
-                            <div class="footer-widget__phone-icon">
-                                <span class="icon-telephone"></span>
-                            </div>
-                            <div class="footer-widget__phone-text">
-                                <a href="tel:9200368090">{{@$setting_data->phone ?? @$setting_data->mobile ?? ''}}</a>
-                                <p>Call to Our Experts</p>
-                            </div>
+                    @if($footer_nav_data2!==null)
+                        <div class="footer-widget__column footer-widget-three__links clearfix">
+                            <h3 class="footer-widget-three__title">{{ $footer_nav_title1 ?? '' }}</h3>
+                            <ul class="footer-widget-three__links-list list-unstyled clearfix">
+                                @foreach(@$footer_nav_data2 as $nav)
+                                    @if(empty(@$nav->children[0]))
+                                        <li>
+                                            <a href="{{get_menu_url(@$nav->type, @$nav)}}" target="{{@$nav->target ? '_blank':''}}">
+                                                {{ @$nav->name ?? @$nav->title ?? ''}}
+                                            </a>
+                                        </li>
+                                    @endif
+                                @endforeach
+                            </ul>
                         </div>
-                    </div>
+                    @endif
                 </div>
                 <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="400ms">
                     @if(@$footer_nav_data1)

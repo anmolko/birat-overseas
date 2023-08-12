@@ -189,7 +189,7 @@
             <div class="container">
                 <div class="section-title text-center">
                     <div class="section-sub-title-box">
-                        <p class="section-sub-title">Our current demans</p>
+                        <p class="section-sub-title">Our current demands</p>
                         <div class="section-title-shape-1">
                             <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                         </div>
@@ -202,7 +202,7 @@
 
                 <div class="row">
                     @foreach($latestJobs as $index=>$job)
-                        <div class="col-xl-4 col-lg-4 wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
+                        <div class="col-xl-4 col-lg-4 d-flex align-items-stretch wow fadeInUp" data-wow-delay="{{ ($index+1) * 100 }}ms">
                             <div class="news-three__single">
                                 <div class="news-three-bg" style="background-image: url({{ ($job->image !== null) ? asset('/images/job/thumb/thumb_'.@$job->image): asset('assets/frontend/images/birat.png')}});"></div>
                                 <div class="news-three__client-info">
@@ -243,7 +243,7 @@
                             <div class="services-three__single">
                                 <div class="section-title text-left">
                                     <div class="section-sub-title-box">
-                                        <p class="section-sub-title">Our services</p>
+                                        <p class="section-sub-title">Our Categories</p>
                                         <div class="section-title-shape-1">
                                             <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
                                         </div>
@@ -273,9 +273,9 @@
                         <div class="col-xl-6 col-lg-7 col-md-9 wow fadeInUp" data-wow-delay="700ms">
                             <div class="services-three__single">
                                 <div class="services-three__get-quote">
-                                    <p class="services-three__get-quote-sub-title">Best services out there</p>
-                                    <h3 class="services-three__get-quote-title">You can reach out and get information regarding our services.</h3>
-                                    <a href="{{ route('service.frontend') }}" class="thm-btn services-three__get-quote-btn">View All Service</a>
+                                    <p class="services-three__get-quote-sub-title">Best categories out there</p>
+                                    <h3 class="services-three__get-quote-title">You can reach out and get information regarding our categories.</h3>
+                                    <a href="{{ route('service.frontend') }}" class="thm-btn services-three__get-quote-btn">View All Categories</a>
                                 </div>
                             </div>
                         </div>
@@ -286,12 +286,54 @@
         </section>
     @endif
 
+    @if(count($legal_data)>0 && count($legal_data['data'])>0)
+        <section class="portfolio" style="padding: 0px 0 80px;">
+            <div class="container">
+{{--                @if($legal_data['heading'] !==null)--}}
+                    <div class="section-title text-center">
+                        <div class="section-sub-title-box">
+                            <p class="section-sub-title">Our showcase
+{{--                                {{ ucfirst($legal_data['subheading']  ?? '')}}--}}
+                            </p>
+                            <div class="section-title-shape-1">
+                                <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                            </div>
+                            <div class="section-title-shape-2">
+                                <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                            </div>
+                        </div>
+                        <h2 class="section-title__title">
+{{--                            {{ ucfirst(@$legal_data['heading']) }}--}}
+                            Legal documents</h2>
+                    </div>
+{{--                @endif--}}
+                @if(count(@$legal_data['data']) > 0)
+                    <div class="row">
+                        @foreach(@$legal_data['data'] as $gallery_element)
+                            <div class="col-xl-4 col-lg-6 col-md-6">
+                                <div class="portfolio__single">
+                                    <div class="portfolio__img">
+                                        <img  class="lazy" data-src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="">
+                                        <div class="portfolio__plus">
+                                            <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-popup"><span
+                                                    class="icon-plus"></span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
+            </div>
+        </section>
+    @endif
+
     @if(!empty($homepage_info->core_main_heading))
         <section class="services-one">
         <div class="services-one__top">
             <div class="container">
                 <div class="row">
-                    <div class="col-xl-5 col-lg-6">
+                    <div class="col-xl-5 col-lg-6 d-flex align-items-stretch">
                         <div class="services-one__top-left">
                             <div class="section-title text-left">
                                 <div class="section-sub-title-box">
@@ -412,7 +454,10 @@
                 </div>
                 <div class="col-xl-9">
                     <div class="brand-one__main-content">
-                        <div class="thm-swiper__slider swiper-container" data-swiper-options='{"spaceBetween": 200, "slidesPerView": 4, "breakpoints": {
+                        <div class="thm-swiper__slider swiper-container" data-swiper-options='{"loop": true,"autoplay": {
+                        "delay": 1000
+                        },
+                        "spaceBetween": 200, "slidesPerView": 4, "breakpoints": {
                         "0": {
                             "spaceBetween": 60,
                             "slidesPerView": 2
