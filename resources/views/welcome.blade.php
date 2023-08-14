@@ -287,13 +287,12 @@
     @endif
 
     @if(count($legal_data)>0 && count($legal_data['data'])>0)
-        <section class="portfolio" style="padding: 0px 0 80px;">
-            <div class="container">
-{{--                @if($legal_data['heading'] !==null)--}}
+        <section class="testimonial-three">
+            @if(count(@$legal_data['data']) > 0)
+                <div class="container">
                     <div class="section-title text-center">
                         <div class="section-sub-title-box">
                             <p class="section-sub-title">Our showcase
-{{--                                {{ ucfirst($legal_data['subheading']  ?? '')}}--}}
                             </p>
                             <div class="section-title-shape-1">
                                 <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
@@ -303,28 +302,56 @@
                             </div>
                         </div>
                         <h2 class="section-title__title">
-{{--                            {{ ucfirst(@$legal_data['heading']) }}--}}
                             Legal documents</h2>
                     </div>
-{{--                @endif--}}
-                @if(count(@$legal_data['data']) > 0)
-                    <div class="row">
-                        @foreach(@$legal_data['data'] as $gallery_element)
-                            <div class="col-xl-4 col-lg-6 col-md-6">
-                                <div class="portfolio__single">
-                                    <div class="portfolio__img">
-                                        <img  class="lazy" data-src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="">
-                                        <div class="portfolio__plus">
-                                            <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-popup"><span
-                                                    class="icon-plus"></span></a>
+                    <div class="testimonial-three__bottom">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="owl-carousel owl-theme thm-owl__carousel testimonial-three__carousel"
+                                     data-owl-options='{
+                                    "loop": true,
+                                    "autoplay": true,
+                                    "margin": 30,
+                                    "nav": false,
+                                    "dots": true,
+                                    "smartSpeed": 500,
+                                    "autoplayTimeout": 10000,
+                                    "navText": ["<span class=\"fa fa-angle-left\"></span>","<span class=\"fa fa-angle-right\"></span>"],
+                                    "responsive": {
+                                        "0": {
+                                            "items": 1
+                                        },
+                                        "768": {
+                                            "items": 2
+                                        },
+                                        "992": {
+                                            "items": 2
+                                        },
+                                        "1200": {
+                                            "items": 3
+                                        }
+                                    }
+                                }'>
+                                    @foreach(@$legal_data['data'] as $gallery_element)
+                                        <div class="item">
+                                        <div class="portfolio__single">
+                                            <div class="portfolio__img">
+                                                <img  class="lazy" data-src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="">
+                                                <div class="portfolio__plus">
+                                                    <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-popup"><span
+                                                            class="icon-plus"></span></a>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
+                                    @endforeach
+
                                 </div>
                             </div>
-                        @endforeach
+                        </div>
                     </div>
-                @endif
-            </div>
+                </div>
+            @endif
         </section>
     @endif
 
