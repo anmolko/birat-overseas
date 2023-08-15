@@ -324,7 +324,7 @@
                                 <div class="col-xl-4 col-lg-6 col-md-6">
                                     <div class="portfolio__single">
                                         <div class="portfolio__img">
-                                            <img class="{{ @$page_detail->slug=='legal-document' || @$page_detail->slug=='legal-documents' ? '':'img-wrapper' }} lazy" data-src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="">
+                                            <img class="{{ @$page_detail->slug=='legal-document' || @$page_detail->slug=='legal-documents' || @$page_detail->slug=='sample-documents' || @$page_detail->slug=='sample-document' ? '':'img-wrapper' }} lazy" data-src="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" alt="">
                                             <div class="portfolio__plus">
                                                 <a href="{{asset('/images/section_elements/gallery/'.@$gallery_element->filename)}}" class="img-popup"><span
                                                         class="icon-plus"></span></a>

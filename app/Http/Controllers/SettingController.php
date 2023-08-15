@@ -64,6 +64,7 @@ class SettingController extends Controller
             'ticktock'                  => $request->input('ticktock'),
             'address'                   => $request->input('address'),
             'email'                     => $request->input('email'),
+            'contact_email'             => $request->input('contact_email'),
             'meta_title'                => $request->input('meta_title'),
             'meta_tags'                 => $request->input('meta_tags'),
             'meta_description'          => $request->input('meta_description'),
@@ -174,6 +175,7 @@ class SettingController extends Controller
         $update_theme->ticktock                 =  $request->input('ticktock');
         $update_theme->address                  =  $request->input('address');
         $update_theme->email                    =  $request->input('email');
+        $update_theme->contact_email            =  $request->input('contact_email');
         $update_theme->meta_title               =  $request->input('meta_title');
         $update_theme->meta_tags                =  $request->input('meta_tags');
         $update_theme->meta_description         =  $request->input('meta_description');

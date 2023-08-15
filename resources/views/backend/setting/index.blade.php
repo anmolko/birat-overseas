@@ -170,6 +170,12 @@
                                                                value="{{@$settings->email}}"
                                                                placeholder="Enter email address" required/>
                                                     </div>
+                                                    <div class="mb-3">
+                                                        <label for="email-number-input" class="form-label">Contact Email Address</label>
+                                                        <input type="text" class="form-control" id="email-number-input" name="contact_email"
+                                                               value="{{@$settings->contact_email}}"
+                                                               placeholder="Enter contact email address" required/>
+                                                    </div>
 
                                                     <div>
                                                         <label for="address-number-input" class="form-label">Company Address</label>

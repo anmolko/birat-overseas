@@ -91,6 +91,13 @@
                                         </li>
 
                                         <li class="nav-item">
+                                            <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#image-and-description"
+                                               role="tab">
+                                                Image and description
+                                            </a>
+                                        </li>
+
+                                        <li class="nav-item">
                                             <a class="nav-link fw-semibold" data-bs-toggle="tab" href="#simple-missionvision-action"
                                                role="tab">
                                                 Mission Vision Values
@@ -265,6 +272,8 @@
                         @if($homesettings !== null)
 
                            @include('backend.home.includes.core_value_tab')
+
+                           @include('backend.home.includes.image_and_description_tab')
 
                            @include('backend.home.includes.mission_vision_tab')
 

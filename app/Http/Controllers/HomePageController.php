@@ -446,4 +446,38 @@ class HomePageController extends Controller
         }
         return redirect()->back();
     }
+
+    public function imageDescription(Request $request, $id)
+    {
+        $update_theme                      =  HomePage::find($id);
+        $update_theme->what_heading1       =  $request->input('what_heading1');
+        $update_theme->what_heading2       =  $request->input('what_heading2');
+        $update_theme->what_heading3       =  $request->input('what_heading3');
+        $update_theme->what_heading4       =  $request->input('what_heading4');
+        $update_theme->what_heading5       =  $request->input('what_heading5');
+        $update_theme->updated_by          =  Auth::user()->id;
+        $oldimage                          = $update_theme->what_image2;
+
+        if (!empty($request->file('what_image2'))){
+            $path    = base_path().'/public/images/home/welcome/';
+            $image = $request->file('what_image2');
+            $name1 = uniqid().'_image_'.$image->getClientOriginalName();
+            $moved          = Image::make($image->getRealPath())->fit(450, 595)->orientate()->save($path.$name1);
+
+            if ($moved){
+                $update_theme->what_image2 = $name1;
+                if (!empty($oldimage) && file_exists(public_path().'/images/home/welcome/'.$oldimage)){
+                    @unlink(public_path().'/images/home/welcome/'.$oldimage);
+                }
+            }
+        }
+
+        $status=$update_theme->update();
+        if($status){
+            Session::flash('success','Image description section Updated Successfully');
+        } else{
+            Session::flash('error','Something Went Wrong. Image description section could not be Updated');
+        }
+        return redirect()->back();
+    }
 }

@@ -101,6 +101,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
     Route::post('/homepage-setting', 'App\Http\Controllers\HomePageController@store')->name('homepage.store');
     Route::put('/homepage-setting/{settings}', 'App\Http\Controllers\HomePageController@update')->name('homepage.update');
     Route::put('/homepage-setting/callaction/{settings}', 'App\Http\Controllers\HomePageController@callactionhome')->name('homepage.action');
+    Route::put('/homepage-setting/imagedescription/{settings}', 'App\Http\Controllers\HomePageController@imageDescription')->name('homepage.image_description');
     Route::put('/homepage-setting/core-values/{settings}', 'App\Http\Controllers\HomePageController@corevalues')->name('homepage.corevalues');
     Route::put('/homepage-setting/mission-values/{settings}', 'App\Http\Controllers\HomePageController@missionvalues')->name('homepage.mv');
     Route::put('/homepage-setting/makes-us-different/{settings}', 'App\Http\Controllers\HomePageController@makesdifferent')->name('homepage.different');

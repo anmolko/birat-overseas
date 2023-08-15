@@ -621,6 +621,51 @@
         </section>
     @endif
 
+    @if(!empty($homepage_info->what_heading1))
+        <section class="about-three mt-5">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="about-three__left" style="margin-right: 0px">
+                            <div class="section-title text-left" style="    margin-bottom: 10px">
+                                <div class="section-sub-title-box">
+                                    <p class="section-sub-title">{{$homepage_info->what_heading2 ?? ''}}</p>
+                                    <div class="section-title-shape-1">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-1.png')}}" alt="">
+                                    </div>
+                                    <div class="section-title-shape-2">
+                                        <img class="lazy" data-src="{{asset('assets/frontend/images/shapes/section-title-shape-2.png')}}" alt="">
+                                    </div>
+                                </div>
+                                <h2 class="section-title__title">{{$homepage_info->what_heading1 ?? ''}}</h2>
+                            </div>
+                            <div class="about-three__text">
+                                {{ ucfirst(@$homepage_info->what_heading3) }}
+                            </div>
+                            <div class="about-three__bottom">
+                                @if(@$homepage_info->what_heading5)
+                                    <div class="about-three__btn-box" style="margin-left: 0px;     margin-top: 10px;">
+                                        <a href="{{@$homepage_info->what_heading5}}" class="thm-btn about-three__btn">{{@$homepage_info->what_heading4 ?? 'Learn More'}}</a>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-6">
+                        <div class="about-three__right">
+                            <div class="about-three__img-box wow slideInRight" data-wow-delay="100ms"
+                                 data-wow-duration="2500ms">
+                                <div class="about-three__img">
+                                    <img class="lazy" data-src="{{ @$homepage_info->what_image2 ? asset('/images/home/welcome/'.@$homepage_info->what_image2):''}}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    @endif
+
     @if(!empty($homepage_info->why_heading))
         <section class="about-two mt-5">
             <div class="container">
