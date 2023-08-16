@@ -10,12 +10,17 @@
                 <input  type="file" accept="image/png, image/jpeg" hidden
                         id="image-heading" onchange="loadbasicFile('image-heading','current-edit-heading',event)" name="intro_heading"
                         class="profile-foreground-img-file-input" >
-                <div class="invalid-feedback" >
+                <div class="invalid-feedback">
                     Please select a image.
                 </div>
                 <label for="image-heading" class="profile-photo-edit btn btn-light feature-image-button">
                     <i class="ri-image-edit-line align-bottom me-1"></i> Update Image
                 </label>
+                @if($settings->intro_heading)
+                    <label class="btn btn-danger feature-image-button remove-popup-image" id="intro_heading" data-value="current-edit-heading">
+                        <i class="ri-delete-back-fill align-bottom me-1"></i> Remove Image
+                    </label>
+                @endif
             </div>
         </div>
         <div class="mb-4">
@@ -31,6 +36,11 @@
                 <label for="image-subheading" class="profile-photo-edit btn btn-light feature-image-button">
                     <i class="ri-image-edit-line align-bottom me-1"></i> Update Image
                 </label>
+                @if($settings->intro_subheading)
+                    <label class="btn btn-danger feature-image-button remove-popup-image" id="intro_subheading" data-value="current-edit-subheading">
+                        <i class="ri-delete-back-fill align-bottom me-1"></i> Remove Image
+                    </label>
+                @endif
             </div>
         </div>
 

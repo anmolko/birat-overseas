@@ -306,7 +306,7 @@
 
     <script src="{{asset('assets/backend/libs/@ckeditor/ckeditor5-build-classic/build/ckeditor.js')}}"></script>
 
-    <script src="{{asset('assets/backend/js/pages/ecommerce-product-create.init.js')}}"></script>
+{{--    <script src="{{asset('assets/backend/js/pages/ecommerce-product-create.init.js')}}"></script>--}}
 
     <script src="{{asset('assets/backend/libs/sweetalert2/sweetalert2.min.js')}}"></script>
 
@@ -316,6 +316,21 @@
             var replacement = document.getElementById(id2);
             replacement.src = URL.createObjectURL(event.target.files[0]);
         };
+        $(document).ready(function() {
+            $('.remove-popup-image').on('click', function() {
+                let type          = $(this).attr('id');
+                let current_image = $(this).attr('current-edit-subheading');
+                let setting_id = '{{ $settings->id ?? ''}}';
+                var url = '{{ route("settings.remove_popup") }}' + '?type=' + type + '&id=' + setting_id;
+                $.ajax({
+                    url: url,
+                    method: 'GET',
+                    success: function(response) {
+                        // Reload the page
+                        location.reload();
+                    }
+                });
+            });
+        });
     </script>
-
 @endsection

@@ -131,6 +131,7 @@ Route::group(['prefix' => 'auth', 'middleware' => ['auth']], function () {
 
     //End Blog
 
+    Route::get('/dashboard-settings/remove-popup-image', 'App\Http\Controllers\SettingController@removePopupImage')->name('settings.remove_popup');
     Route::get('/dashboard-settings', 'App\Http\Controllers\SettingController@index')->name('settings.index');
     Route::get('/dashboard-settings/create', 'App\Http\Controllers\SettingController@create')->name('settings.create');
     Route::post('/dashboard-settings', 'App\Http\Controllers\SettingController@store')->name('settings.store');

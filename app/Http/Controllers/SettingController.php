@@ -295,13 +295,13 @@ class SettingController extends Controller
         if (!empty($request->file('intro_image'))){
             $image     = $request->file('intro_image');
             $name1     = uniqid().'_'.$image->getClientOriginalName();
-            $path      = base_path().'/public/images/uploads/settings/';
+            $path      = base_path().'/public/images/settings/';
             $moved     = Image::make($image->getRealPath())->resize(710, 695)->orientate()->save($path.$name1);
 
             if ($moved){
                 $update_intro->intro_image= $name1;
-                if (!empty($oldimage) && file_exists(public_path().'/images/uploads/settings/'.$oldimage)){
-                    @unlink(public_path().'/images/uploads/settings/'.$oldimage);
+                if (!empty($oldimage) && file_exists(public_path().'/images/settings/'.$oldimage)){
+                    @unlink(public_path().'/images/settings/'.$oldimage);
                 }
             }
         }
@@ -325,13 +325,13 @@ class SettingController extends Controller
         $oldimage_favicon                       = $update_theme->favicon;
 
         if (!empty($request->file('logo'))){
-            $path = base_path().'/public/images/uploads/settings';
+            $path = base_path().'/public/images/settings';
             $image =$request->file('logo');
             $name1 = uniqid().'_'.$image->getClientOriginalName();
             if ($image->move($path,$name1)){
                 $update_theme->logo= $name1;
-                if (!empty($oldimage_logo) && file_exists(public_path().'/images/uploads/settings/'.$oldimage_logo)){
-                    @unlink(public_path().'/images/uploads/settings/'.$oldimage_logo);
+                if (!empty($oldimage_logo) && file_exists(public_path().'/images/settings/'.$oldimage_logo)){
+                    @unlink(public_path().'/images/settings/'.$oldimage_logo);
                 }
             }
 
@@ -343,21 +343,21 @@ class SettingController extends Controller
             $name1 = uniqid().'_'.$image->getClientOriginalName();
             if ($image->move($path,$name1)){
                 $update_theme->logo_white= $name1;
-                if (!empty($oldimage_logo_white) && file_exists(public_path().'/images/uploads/settings/'.$oldimage_logo_white)){
-                    @unlink(public_path().'/images/uploads/settings/'.$oldimage_logo_white);
+                if (!empty($oldimage_logo_white) && file_exists(public_path().'/images/settings/'.$oldimage_logo_white)){
+                    @unlink(public_path().'/images/settings/'.$oldimage_logo_white);
                 }
             }
 
         }
 
         if (!empty($request->file('favicon'))){
-            $path = base_path().'/public/images/uploads/settings/';
+            $path = base_path().'/public/images/settings/';
             $image =$request->file('favicon');
             $name1 = uniqid().'_'.$image->getClientOriginalName();
             if ($image->move($path,$name1)){
                 $update_theme->favicon= $name1;
-                if (!empty($oldimage_favicon) && file_exists(public_path().'/images/uploads/settings/'.$oldimage_favicon)){
-                    @unlink(public_path().'/images/uploads/settings/'.$oldimage_favicon);
+                if (!empty($oldimage_favicon) && file_exists(public_path().'/images/settings/'.$oldimage_favicon)){
+                    @unlink(public_path().'/images/settings/'.$oldimage_favicon);
                 }
             }
 
@@ -387,13 +387,13 @@ class SettingController extends Controller
             if (!empty($request->file('callaction1_image'))){
                 $image     = $request->file('callaction1_image');
                 $name1     = uniqid().'_callaction1_'.$image->getClientOriginalName();
-                $path      = base_path().'/public/images/uploads/settings/';
+                $path      = base_path().'/public/images/settings/';
                 $moved     = Image::make($image->getRealPath())->resize(1920, 950)->orientate()->save($path.$name1);
 
                 if ($moved){
                     $callaction->callaction1_image = $name1;
-                    if (!empty($oldimage) && file_exists(public_path().'/images/uploads/settings/'.$oldimage)){
-                        @unlink(public_path().'/images/uploads/settings/'.$oldimage);
+                    if (!empty($oldimage) && file_exists(public_path().'/images/settings/'.$oldimage)){
+                        @unlink(public_path().'/images/settings/'.$oldimage);
                     }
                 }
             }
@@ -481,5 +481,34 @@ class SettingController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function removePopupImage()
+    {
+        $setting                    = Setting::find(\request()->id);
+
+        if(\request()->type == 'intro_heading'){
+            $oldimage = $setting->intro_heading;
+            if (!empty($oldimage) && file_exists(public_path().'/images/settings/'.$oldimage)){
+                @unlink(public_path().'/images/settings/'.$oldimage);
+                $setting->intro_heading = null;
+            }
+        }else{
+            $oldimage = $setting->intro_subheading;
+            if (!empty($oldimage) && file_exists(public_path().'/images/settings/'.$oldimage)){
+                @unlink(public_path().'/images/settings/'.$oldimage);
+                $setting->intro_subheading = null;
+            }
+        }
+
+        $status = $setting->update();
+        if($status){
+            Session::flash('success','Popup image removed successfully.');
+            return response()->json('success');
+        }
+        else{
+            Session::flash('error','Something Went Wrong. Popup image could not be removed.');
+            return response()->json('error');
+        }
     }
 }
